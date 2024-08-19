@@ -12,7 +12,7 @@ Postman is (to put it very simply) a platform for building, testing and catalogi
 
 One of the most convenient features is the possibility of cataloging all our requests in what are called **collections** , which are a concept very similar to directories.
 
-![Postman Collections](https://github.com/basteez/basteez.github.io/blob/main/assets/img/postman-keycloak/01.png)
+![Postman Collections](https://github.com/basteez/basteez.github.io/blob/main/assets/img/postman-keycloak/01.png?raw=true)
 **Each collection can be configured in its own way and this is exactly what we are going to do to automatically obtain the keycloak** authentication token .
 
 ## Pre-request script
@@ -62,12 +62,12 @@ pm.sendRequest({
 });
 ```
 Then we open the **Authorization** tab and set the type field as _Bearer Token_ and the Token field as`{{access-token}}`
-![Postman Authorization tab](https://github.com/basteez/basteez.github.io/blob/main/assets/img/postman-keycloak/02.png)
+![Postman Authorization tab](https://github.com/basteez/basteez.github.io/blob/main/assets/img/postman-keycloak/02.png?raw=true)
 ## Single request
 
 At this point the last thing to do is to set the individual requests so that they inherit the authorization mode from the collection. To do this we open our request and in the Authorization tab we set the Type field as _Inherit auth from parent_ .
 
-![Postman Request](https://github.com/basteez/basteez.github.io/blob/main/assets/img/postman-keycloak/03.png)
+![Postman Request](https://github.com/basteez/basteez.github.io/blob/main/assets/img/postman-keycloak/03.png?raw=true)
 At this point, every time we start the request, Postman will automatically contact the keycloak SSO to obtain the authentication token before making the request itself.
 
 ## Conclusions
