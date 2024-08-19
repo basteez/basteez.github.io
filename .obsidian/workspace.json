@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2017-10-24-welcome.md",
+                "file": "_posts/2024-08-19-welcome-jekyll.md",
                 "mode": "source",
                 "source": false
               }
@@ -56,14 +56,6 @@
                 "sortOrder": "alphabetical"
               }
             }
-          },
-          {
-            "id": "9cf8e9b9ce0d5638",
-            "type": "leaf",
-            "state": {
-              "type": "bookmarks",
-              "state": {}
-            }
           }
         ]
       }
@@ -80,29 +72,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "22479e3d24167615",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "_posts/2017-10-24-welcome.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
             "id": "2ebb86f866fb7e0d",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2017-10-24-welcome.md",
+                "file": "_posts/2024-08-19-welcome-jekyll.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +100,24 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2017-10-24-welcome.md"
+                "file": "_posts/2024-08-19-welcome-jekyll.md"
+              }
+            }
+          },
+          {
+            "id": "29b74612d0b2181d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "_posts/2024-08-19-welcome-jekyll.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
               }
             }
           }
@@ -148,6 +140,11 @@
   },
   "active": "8f3d52a972bbf58f",
   "lastOpenFiles": [
+    "categories/writing.html",
+    "categories/travel.html",
+    "README.md",
+    "2024-08-19.md",
+    "_posts/2017-10-24-welcome.md",
     "_site/Gemfile.lock",
     "_site/Gemfile",
     "_site/assets/css/style.css",
@@ -161,7 +158,6 @@
     "_site/2017-10/welcome-copy.html",
     "_posts/2017-10-24-welcome copy.md",
     "_posts/2017-11-01-s2.md",
-    "_posts/2018-07-04-t1.md",
-    "_posts/2017-10-24-welcome.md"
+    "_posts/2018-07-04-t1.md"
   ]
 }
