@@ -72,4 +72,4 @@ At this point, every time we start the request, Postman will automatically conta
 
 ## Conclusions
 
-**We have seen how to automatically obtain the keycloak** authentication token with **Postman** . Did you already know this method? Do you know any other interesting uses of pre-request scripts? Let me know in the comments
+**We have seen how to automatically obtain the keycloak** authentication token with **Postman** . Did you already know this method? Do you know any other interesting uses of pre-request scripts?
