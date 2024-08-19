@@ -1,0 +1,162 @@
+{
+  "main": {
+    "id": "934c51966b25fb72",
+    "type": "split",
+    "children": [
+      {
+        "id": "d836603f739d6e71",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8f3d52a972bbf58f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/2017-10-24-welcome.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fccd71d419d2c08e",
+    "type": "split",
+    "children": [
+      {
+        "id": "80e629fd5301532f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "40f681fdfb599b29",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b25c040a12ed87c2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9cf8e9b9ce0d5638",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "55556038f881334a",
+    "type": "split",
+    "children": [
+      {
+        "id": "607514a79ce09ed0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "22479e3d24167615",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "_posts/2017-10-24-welcome.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "2ebb86f866fb7e0d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "_posts/2017-10-24-welcome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3f596a2321045ea1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "5e0957e1eac47ed5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "_posts/2017-10-24-welcome.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "8f3d52a972bbf58f",
+  "lastOpenFiles": [
+    "_site/assets/img/avatar.jpeg",
+    "assets/img/avatar.jpeg",
+    "_site/assets/img/1000014780-01.jpeg",
+    "assets/img/1000014780-01.jpeg",
+    "_site/assets/img/dmode.jpg",
+    "_site/2017-10/welcome-copy.html",
+    "_posts/2017-10-24-welcome copy.md",
+    "_posts/2017-11-01-s2.md",
+    "_posts/2018-07-04-t1.md",
+    "_posts/2017-10-24-welcome.md"
+  ]
+}
