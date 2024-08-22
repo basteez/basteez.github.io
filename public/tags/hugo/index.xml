@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Hugo on Tiziano Basile | Software Engineer</title>
+        <link>http://localhost:1313/tags/hugo/</link>
+        <description>Recent content in Hugo on Tiziano Basile | Software Engineer</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>Tiziano Basile</copyright>
+        <lastBuildDate>Mon, 19 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Goodbye Wordpress, welcome Hugo!</title>
+        <link>http://localhost:1313/p/goodbye-wordpress-welcome-hugo/</link>
+        <pubDate>Mon, 19 Aug 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/goodbye-wordpress-welcome-hugo/</guid>
+        <description>&lt;p&gt;I&amp;rsquo;ve been looking for a quick and possibly &amp;ldquo;distraction-free&amp;rdquo; system to get back to writing on my blog for a while.&lt;/p&gt;
+&lt;p&gt;WordPress had become slow and unmanageable, and with each update, it got worse and worse (probably my fault, but I neither had the time nor the desire to figure out the cause), so I thought: &amp;ldquo;What if I try &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo&lt;/a&gt;?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;After all, using WordPress, for what I do, is like using a &lt;em&gt;&lt;em&gt;insert expensive car brand here&lt;/em&gt;&lt;/em&gt; to go grocery shopping at a discount store: for instance, I don&amp;rsquo;t need comments on my posts, social media already provides that, and I don&amp;rsquo;t want to spend too much time managing security, drafts, cache, etc.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;EDIT: I added disqus comments, just in case&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A static site is perfect for what I need, and that&amp;rsquo;s where &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo&lt;/a&gt; comes in, which I hope will help me gain in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Speed and performance&lt;/li&gt;
+&lt;li&gt;Control over content&lt;/li&gt;
+&lt;li&gt;Security&lt;/li&gt;
+&lt;li&gt;Costs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I will definitely do another post in the future to summarize this choice.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;speed-and-performance&#34;&gt;Speed and Performance
+&lt;/h2&gt;&lt;p&gt;Even if you try to keep things minimal, with WordPress you still have to add plugins to manage certain aspects, like cache and SEO, and each plugin you add tends to slow down the platform a bit.&lt;/p&gt;
+&lt;p&gt;Additionally, I&amp;rsquo;m not sure if it&amp;rsquo;s an issue with my hosting, Cloudflare, or who knows what, but lately I noticed that my WordPress blog was taking up to 20 seconds to load a simple page, despite having cache and Cloudflare&amp;rsquo;s CDN.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo&lt;/a&gt;, on the other hand, generates static content, which means no database, no processes running at page load, and no backend queries. You open the page, and it&amp;rsquo;s served to you as static content.&lt;/p&gt;
+&lt;h2 id=&#34;control-over-content&#34;&gt;Control over Content
+&lt;/h2&gt;&lt;p&gt;Sure, WordPress is powerful and flexible, but after a while, I noticed I was spending more time managing WordPress itself than creating content, and that’s not good.&lt;/p&gt;
+&lt;p&gt;With &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo&lt;/a&gt;, I just have to write markdown files to publish on GitHub Pages—nothing more, nothing less.&lt;/p&gt;
+&lt;p&gt;By the way, I found a way to integrate &lt;a class=&#34;link&#34; href=&#34;https://obsidian.md/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Obsidian&lt;/a&gt; with templates and daily notes, so I can automatically create a markdown template for the day&amp;rsquo;s post and start from there without having to copy and paste common parts from other files. It couldn’t be more convenient&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;security-and-costs&#34;&gt;Security and Costs
+&lt;/h2&gt;&lt;p&gt;As mentioned earlier, I no longer need a backend or a database, which automatically improves security and reduces costs.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;In conclusion, switching from WordPress to &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo&lt;/a&gt; was a decision driven by my need for speed, control, security, and simplicity. WordPress remains an excellent platform for many, but for someone like me who seeks a lighter, more minimalist approach to blogging, &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo&lt;/a&gt; looks like a perfect solution.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

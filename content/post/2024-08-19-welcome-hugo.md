@@ -1,9 +1,10 @@
 ---
 title: Goodbye Wordpress, welcome Hugo!
 tags:
-  - postman
+  - hugo
+  - golang
 categories:
-  - development-tools
+  - blogging
 comments: true
 date: 2024-08-19
 ---
