@@ -7,16 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Tiziano Basile</copyright>
-        <lastBuildDate>Thu, 22 Aug 2024 14:25:53 +0200</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Test_post</title>
-        <link>http://localhost:1313/p/test_post/</link>
-        <pubDate>Thu, 22 Aug 2024 14:25:53 +0200</pubDate>
-        
-        <guid>http://localhost:1313/p/test_post/</guid>
-        <description>&lt;p&gt;Lorem ipsum&lt;/p&gt;
-</description>
-        </item>
-        <item>
+        <lastBuildDate>Sat, 10 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Postman &#43; Keycloak – How to automatically get the authentication token</title>
         <link>http://localhost:1313/p/postman--keycloak-how-to-automatically-get-the-authentication-token/</link>
         <pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
@@ -206,14 +197,6 @@ At this point, every time we start the request, Postman will automatically conta
     &gt;Jekyll&lt;/a&gt; was a decision driven by my need for speed, control, security, and simplicity. WordPress remains an excellent platform for many, but for someone like me who seeks a lighter, more minimalist approach to blogging, &lt;a class=&#34;link&#34; href=&#34;https://jekyllrb.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Jekyll&lt;/a&gt; looks like a perfect solution.&lt;/p&gt;
 </description>
-        </item>
-        <item>
-        <title>How I wrote a Keycloak plugin without going crazy</title>
-        <link>http://localhost:1313/p/how-i-wrote-a-keycloak-plugin-without-going-crazy/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/p/how-i-wrote-a-keycloak-plugin-without-going-crazy/</guid>
-        <description></description>
         </item>
         
     </channel>
