@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2024-08-19-postman-keycloak-how-to-automatically-get-auth-token.md",
+                "file": "_posts/2024-08-20-keycloak-plugin.md",
                 "mode": "source",
                 "source": false
               }
@@ -77,7 +77,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-08-19-postman-keycloak-how-to-automatically-get-auth-token.md",
+                "file": "_posts/2024-08-20-keycloak-plugin.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -100,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-08-19-postman-keycloak-how-to-automatically-get-auth-token.md"
+                "file": "_posts/2024-08-20-keycloak-plugin.md"
               }
             }
           },
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-08-19-postman-keycloak-how-to-automatically-get-auth-token.md",
+                "file": "_posts/2024-08-20-keycloak-plugin.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,7 +132,6 @@
     "hiddenItems": {
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false
@@ -140,6 +139,8 @@
   },
   "active": "8f3d52a972bbf58f",
   "lastOpenFiles": [
+    "_posts/2024-08-19-postman-keycloak-how-to-automatically-get-auth-token.md",
+    "_posts/2024-08-20-keycloak-plugin.md",
     "_site/assets/img/postman-keycloak/03.png",
     "assets/img/postman-keycloak/03.png",
     "assets/img/postman-keycloak/03.png.crdownload",
@@ -155,7 +156,6 @@
     "_posts/2024-08-19-welcome-jekyll.md",
     "_site/2024-08/postman-keycloak.html",
     "_posts/2024-08-19.md",
-    "_posts/2024-08-19-postman-keycloak-how-to-automatically-get-auth-token.md",
     "_site/categories/development-tools.html",
     "categories/development-tools.html",
     "_site/categories/dev copy.html",
@@ -166,7 +166,6 @@
     "assets/img/avatar.jpeg",
     "_site/assets/img/1000014780-01.jpeg",
     "assets/img/1000014780-01.jpeg",
-    "_site/assets/img/dmode.jpg",
     "_posts/2017-10-24-welcome copy.md",
     "_posts/2017-11-01-s2.md",
     "_posts/2018-07-04-t1.md"

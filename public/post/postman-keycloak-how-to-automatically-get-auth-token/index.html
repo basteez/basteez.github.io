@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="IT-it" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how What is Postman If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you: Postman is (to put it very simply) a platform for building, testing and cataloging APIs.">
+<title>Postman &#43; Keycloak – How to automatically get the authentication token</title>
+
+<link rel='canonical' href='http://localhost:1313/post/postman-keycloak-how-to-automatically-get-auth-token/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Postman + Keycloak – How to automatically get the authentication token">
+<meta property='og:description' content="It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how What is Postman If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you: Postman is (to put it very simply) a platform for building, testing and cataloging APIs.">
+<meta property='og:url' content='http://localhost:1313/post/postman-keycloak-how-to-automatically-get-auth-token/'>
+<meta property='og:site_name' content='Tiziano Basile | Software Engineer'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:modified_time' content='2024-08-19T18:25:37&#43;02:00'/>
+<meta name="twitter:title" content="Postman + Keycloak – How to automatically get the authentication token">
+<meta name="twitter:description" content="It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how What is Postman If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you: Postman is (to put it very simply) a platform for building, testing and cataloging APIs.">
+    <link rel="shortcut icon" href="/images/github-mark.png" />
+
+  
+    
+      
+    
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu13739649187745961479.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Tiziano Basile | Software Engineer</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/development-tools/" >
+                Development-Tools
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/postman-keycloak-how-to-automatically-get-auth-token/">Postman &#43; Keycloak – How to automatically get the authentication token</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how</p>
+<h2 id="what-is-postman">What is Postman
+</h2><p>If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you:</p>
+<p>Postman is (to put it very simply) a platform for building, testing and cataloging APIs. It can be downloaded for free from the <a class="link" href="https://translate.google.com/website?sl=it&amp;tl=en&amp;hl=en&amp;client=webapp&amp;u=https://www.postman.com/"  title="official site"
+     target="_blank" rel="noopener"
+    >official website</a> and also has paid plans for teams and more complex projects, but the free version is fine for us.</p>
+<p>One of the most convenient features is the possibility of cataloging all our requests in what are called <strong>collections</strong> , which are a concept very similar to directories.</p>
+<p><img src="https://github.com/basteez/basteez.github.io/blob/main/assets/img/postman-keycloak/01.png?raw=true"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Postman Collections"
+	
+	
+>
+<strong>Each collection can be configured in its own way and this is exactly what we are going to do to automatically obtain the keycloak</strong> authentication token .</p>
+<h2 id="pre-request-script">Pre-request script
+</h2><p>Pre-request scripts are, in fact, JavaScript scripts that are executed before a request. They can be inserted in two different places: within the single request or in the collection; the advantage of doing it in the collection is that in this way all requests within it will automatically execute the script.</p>
+<p>We then open our collection and in the <strong>Pre-request Script</strong> tab we add the following code, obviously being careful to make the appropriate substitutions in the first part with the variables:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">client_id</span> <span class="o">=</span> <span class="s2">&#34;your keycloak client_id&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">client_secret</span> <span class="o">=</span> <span class="s2">&#34;your keycloak secret&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">server_url</span> <span class="o">=</span> <span class="s2">&#34;keycloak auth url&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">realm</span> <span class="o">=</span> <span class="s2">&#34;keycloak realm&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">username</span> <span class="o">=</span> <span class="s2">&#34;username&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">password</span> <span class="o">=</span> <span class="s2">&#34;password&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">token_endpoint</span> <span class="o">=</span> <span class="nx">server_url</span> <span class="o">+</span> <span class="s2">&#34;/auth/realms/&#34;</span> <span class="o">+</span> <span class="nx">realm</span> <span class="o">+</span> <span class="s2">&#34;/protocol/openid-connect/token&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">details</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;grant_type&#34;</span> <span class="o">:</span> <span class="s2">&#34;password&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;username&#34;</span><span class="o">:</span> <span class="nx">username</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;password&#34;</span><span class="o">:</span> <span class="nx">password</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">formBody</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">property</span> <span class="k">in</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">encodedKey</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">property</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">encodedValue</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">details</span><span class="p">[</span><span class="nx">property</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">formBody</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">encodedKey</span> <span class="o">+</span> <span class="s2">&#34;=&#34;</span> <span class="o">+</span> <span class="nx">encodedValue</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">formBody</span> <span class="o">=</span> <span class="nx">formBody</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&#34;&amp;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">pm</span><span class="p">.</span><span class="nx">sendRequest</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">url</span><span class="o">:</span> <span class="nx">token_endpoint</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">header</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       <span class="s1">&#39;Authorization&#39;</span> <span class="o">:</span><span class="s1">&#39;Basic &#39;</span> <span class="o">+</span> <span class="nx">btoa</span><span class="p">(</span><span class="nx">client_id</span><span class="o">+</span><span class="s2">&#34;:&#34;</span><span class="o">+</span><span class="nx">client_secret</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">},</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">body</span><span class="o">:</span> <span class="nx">formBody</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">jsonResponse</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jsonResponse</span><span class="p">.</span><span class="nx">access_token</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">pm</span><span class="p">.</span><span class="nx">collectionVariables</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;access-token&#34;</span><span class="p">,</span> <span class="nx">jsonResponse</span><span class="p">.</span><span class="nx">access_token</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>Then we open the <strong>Authorization</strong> tab and set the type field as <em>Bearer Token</em> and the Token field as<code>{{access-token}}</code>
+<img src="https://github.com/basteez/basteez.github.io/blob/main/assets/img/postman-keycloak/02.png?raw=true"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Postman Authorization tab"
+	
+	
+></p>
+<h2 id="single-request">Single request
+</h2><p>At this point the last thing to do is to set the individual requests so that they inherit the authorization mode from the collection. To do this we open our request and in the Authorization tab we set the Type field as <em>Inherit auth from parent</em> .</p>
+<p><img src="https://github.com/basteez/basteez.github.io/blob/main/assets/img/postman-keycloak/03.png?raw=true"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Postman Request"
+	
+	
+>
+At this point, every time we start the request, Postman will automatically contact the keycloak SSO to obtain the authentication token before making the request itself.</p>
+<h2 id="conclusions">Conclusions
+</h2><p><strong>We have seen how to automatically obtain the keycloak</strong> authentication token with <strong>Postman</strong> . Did you already know this method? Do you know any other interesting uses of pre-request scripts?</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            Last updated on Aug 19, 2024 18:25 CEST
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/test_post/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Test_post</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/2024-08-19-welcome-jekyll/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Goodbye Wordpress, welcome Jekyll!</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/2024-08-20-keycloak-plugin/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">How I wrote a Keycloak plugin without going crazy</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Tiziano Basile | Software Engineer
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
