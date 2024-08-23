@@ -13,9 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2024-08-20-keycloak-plugin.md",
+                "file": "content/post/2024-08-20-keycloak-plugin.md",
                 "mode": "source",
-                "source": false
+                "source": true
               }
             }
           }
@@ -77,7 +77,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-08-20-keycloak-plugin.md",
+                "file": "content/post/2024-08-20-keycloak-plugin.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -100,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-08-20-keycloak-plugin.md"
+                "file": "content/post/2024-08-20-keycloak-plugin.md"
               }
             }
           },
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-08-20-keycloak-plugin.md",
+                "file": "content/post/2024-08-20-keycloak-plugin.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,6 +139,11 @@
   },
   "active": "8f3d52a972bbf58f",
   "lastOpenFiles": [
+    "content/post/2024-08-19-welcome-hugo.md",
+    "templates/new post.md",
+    "content/post/2024-08-23.md",
+    "content/post/2024-08-20-postman-keycloak-how-to-automatically-get-auth-token/index.md",
+    "templates",
     "_posts/2024-08-19-postman-keycloak-how-to-automatically-get-auth-token.md",
     "_posts/2024-08-20-keycloak-plugin.md",
     "_site/assets/img/postman-keycloak/03.png",
@@ -158,7 +163,6 @@
     "_posts/2024-08-19.md",
     "_site/categories/development-tools.html",
     "categories/development-tools.html",
-    "_site/categories/dev copy.html",
     "README.md",
     "2024-08-19.md",
     "_posts/2017-10-24-welcome.md",
