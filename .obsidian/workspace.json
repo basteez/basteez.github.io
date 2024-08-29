@@ -13,9 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/post/2024-08-20-keycloak-plugin.md",
+                "file": "content/post/2024-08-29-design-pattern-proxy/index.md",
                 "mode": "source",
-                "source": true
+                "source": false
               }
             }
           }
@@ -77,7 +77,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "content/post/2024-08-20-keycloak-plugin.md",
+                "file": "content/post/2024-08-29-design-pattern-proxy/index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -100,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "content/post/2024-08-20-keycloak-plugin.md"
+                "file": "content/post/2024-08-29-design-pattern-proxy/index.md"
               }
             }
           },
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/post/2024-08-20-keycloak-plugin.md",
+                "file": "content/post/2024-08-29-design-pattern-proxy/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,42 +134,45 @@
       "graph:Open graph view": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "templater-obsidian:Templater": false
     }
   },
   "active": "8f3d52a972bbf58f",
   "lastOpenFiles": [
+    "content/post/2024-08-29-design-pattern-proxy/ProxyDiagram.svg",
+    "content/post/2024-08-29-design-pattern-proxy/RemoteServiceDiagram.svg",
+    "content/post/2024-08-29-design-pattern-proxy/index.md",
+    "public/categories/design-patterns/index.xml",
+    "public/tags/gof/page/1/index.html",
+    "public/tags/gof/page/1",
+    "public/tags/gof/page",
+    "public/tags/gof/index.xml",
+    "public/tags/gof/index.html",
+    "public/tags/gof",
+    "public/tags/structural-patterns/page/1/index.html",
+    "public/tags/structural-patterns/page/1",
+    "public/tags/structural-patterns/page",
+    "public/p/design-patterns-proxy-pattern/RemoteServiceDiagram.svg",
+    "public/p/design-patterns-proxy-pattern/ProxyDiagram.svg",
+    "content/post/2024-08-20-postman-keycloak-how-to-automatically-get-auth-token/index.md",
+    "content/post/2024-08-20-keycloak-plugin.md",
     "content/post/2024-08-19-welcome-hugo.md",
     "templates/new post.md",
     "content/post/2024-08-23.md",
-    "content/post/2024-08-20-postman-keycloak-how-to-automatically-get-auth-token/index.md",
-    "templates",
     "_posts/2024-08-19-postman-keycloak-how-to-automatically-get-auth-token.md",
     "_posts/2024-08-20-keycloak-plugin.md",
     "_site/assets/img/postman-keycloak/03.png",
     "assets/img/postman-keycloak/03.png",
-    "assets/img/postman-keycloak/03.png.crdownload",
     "_site/assets/img/postman-keycloak/02.png",
     "assets/img/postman-keycloak/02.png",
-    "assets/img/postman-keycloak/02.png.crdownload",
     "_site/assets/img/postman-keycloak/01.png",
-    "_site/assets/img/postman-keycloak",
     "assets/img/postman-keycloak/01.png",
-    "assets/img/postman-keycloak/01.png.crdownload",
-    "assets/img/postman-keycloak",
-    "_site/2024-08/postman-keycloak-how-to-automatically-get-auth-token.html",
     "_posts/2024-08-19-welcome-jekyll.md",
-    "_site/2024-08/postman-keycloak.html",
     "_posts/2024-08-19.md",
-    "_site/categories/development-tools.html",
-    "categories/development-tools.html",
     "README.md",
     "2024-08-19.md",
     "_posts/2017-10-24-welcome.md",
-    "_site/assets/img/avatar.jpeg",
-    "assets/img/avatar.jpeg",
-    "_site/assets/img/1000014780-01.jpeg",
-    "assets/img/1000014780-01.jpeg",
     "_posts/2017-10-24-welcome copy.md",
     "_posts/2017-11-01-s2.md",
     "_posts/2018-07-04-t1.md"

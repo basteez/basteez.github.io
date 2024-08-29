@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Tiziano Basile</copyright>
-        <lastBuildDate>Sat, 10 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/development-tools/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 20 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/development-tools/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Postman &#43; Keycloak – How to automatically get the authentication token</title>
         <link>http://localhost:1313/p/postman--keycloak-how-to-automatically-get-the-authentication-token/</link>
-        <pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 20 Aug 2024 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/p/postman--keycloak-how-to-automatically-get-the-authentication-token/</guid>
         <description>&lt;p&gt;It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&amp;rsquo;s see how&lt;/p&gt;
