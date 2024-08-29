@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how What is Postman If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you: Postman is (to put it very simply) a platform for building, testing and cataloging APIs.">
-<title>Postman &#43; Keycloak – How to automatically get the authentication token</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Adapter is a structural design pattern that enables one component to work with another that has an incompatible interface. Problem In software development, you might encounter situations where a component needs to collaborate with another that has a completely incompatible interface. Often, this incompatibility arises because the component is part of a third-party library or legacy code that cannot be modified. Solution This is where the Adapter pattern becomes useful. You can create an adapter that converts the data or interface from one format to another, allowing the components to communicate effectively.">
+<title>Design Patterns: Adapter</title>
 
-<link rel='canonical' href='http://localhost:1313/p/postman--keycloak-how-to-automatically-get-the-authentication-token/'>
+<link rel='canonical' href='http://localhost:1313/p/design-patterns-adapter/'>
 
-<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Postman + Keycloak – How to automatically get the authentication token">
-<meta property='og:description' content="It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how What is Postman If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you: Postman is (to put it very simply) a platform for building, testing and cataloging APIs.">
-<meta property='og:url' content='http://localhost:1313/p/postman--keycloak-how-to-automatically-get-the-authentication-token/'>
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Design Patterns: Adapter">
+<meta property='og:description' content="Adapter is a structural design pattern that enables one component to work with another that has an incompatible interface. Problem In software development, you might encounter situations where a component needs to collaborate with another that has a completely incompatible interface. Often, this incompatibility arises because the component is part of a third-party library or legacy code that cannot be modified. Solution This is where the Adapter pattern becomes useful. You can create an adapter that converts the data or interface from one format to another, allowing the components to communicate effectively.">
+<meta property='og:url' content='http://localhost:1313/p/design-patterns-adapter/'>
 <meta property='og:site_name' content='Tiziano Basile | Software Engineer'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='postman' /><meta property='article:published_time' content='2024-08-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-08-20T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='structural-patterns' /><meta property='article:tag' content='GoF' /><meta property='article:published_time' content='2024-08-29T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-08-29T00:00:00&#43;00:00'/>
 <meta name="twitter:site" content="@_basteez_">
-    <meta name="twitter:creator" content="@_basteez_"><meta name="twitter:title" content="Postman + Keycloak – How to automatically get the authentication token">
-<meta name="twitter:description" content="It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how What is Postman If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you: Postman is (to put it very simply) a platform for building, testing and cataloging APIs.">
+    <meta name="twitter:creator" content="@_basteez_"><meta name="twitter:title" content="Design Patterns: Adapter">
+<meta name="twitter:description" content="Adapter is a structural design pattern that enables one component to work with another that has an incompatible interface. Problem In software development, you might encounter situations where a component needs to collaborate with another that has a completely incompatible interface. Often, this incompatibility arises because the component is part of a third-party library or legacy code that cannot be modified. Solution This is where the Adapter pattern becomes useful. You can create an adapter that converts the data or interface from one format to another, allowing the components to communicate effectively.">
     <link rel="shortcut icon" href="/favicon.ico" />
 
   
@@ -205,10 +205,11 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#what-is-postman">What is Postman</a></li>
-    <li><a href="#pre-request-script">Pre-request script</a></li>
-    <li><a href="#single-request">Single request</a></li>
-    <li><a href="#conclusions">Conclusions</a></li>
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#real-world-example">Real-World example</a></li>
+    <li><a href="#java-example">Java example</a></li>
+    <li><a href="#applications">Applications</a></li>
   </ol>
 </nav>
         </div>
@@ -227,8 +228,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/development-tools/" >
-                Development-Tools
+            <a href="/categories/design-patterns/" >
+                Design-Patterns
             </a>
         
     </header>
@@ -236,7 +237,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/postman--keycloak-how-to-automatically-get-the-authentication-token/">Postman &#43; Keycloak – How to automatically get the authentication token</a>
+            <a href="/p/design-patterns-adapter/">Design Patterns: Adapter</a>
         </h2>
     
         
@@ -258,7 +259,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Aug 20, 2024</time>
+                <time class="article-time--published">Aug 29, 2024</time>
             </div>
         
 
@@ -273,7 +274,7 @@
 
 
                 <time class="article-time--reading">
-                    3 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -288,32 +289,18 @@
     <section class="article-content">
     
     
-    <p>It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how</p>
-<h2 id="what-is-postman">What is Postman
-</h2><p>If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you:</p>
-<p>Postman is (to put it very simply) a platform for building, testing and cataloging APIs. It can be downloaded for free from the <a class="link" href="https://www.postman.com/"  title="official site"
-     target="_blank" rel="noopener"
-    >official website</a> and also has paid plans for teams and more complex projects, but the free version is fine for us.</p>
-<p>One of the most convenient features is the possibility of cataloging all our requests in what are called <strong>collections</strong> , which are a concept very similar to directories.</p>
-<p><img src="/p/postman--keycloak-how-to-automatically-get-the-authentication-token/01.png"
-	width="762"
-	height="634"
-	srcset="/p/postman--keycloak-how-to-automatically-get-the-authentication-token/01_hu3363836497206410658.png 480w, /p/postman--keycloak-how-to-automatically-get-the-authentication-token/01_hu1953131935199831964.png 1024w"
-	loading="lazy"
-	
-		alt="Postman Collections"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="120"
-		data-flex-basis="288px"
-	
->
-<strong>Each collection can be configured in its own way and this is exactly what we are going to do to automatically obtain the keycloak</strong> authentication token .</p>
-<h2 id="pre-request-script">Pre-request script
-</h2><p>Pre-request scripts are, in fact, JavaScript scripts that are executed before a request. They can be inserted in two different places: within the single request or in the collection; the advantage of doing it in the collection is that in this way all requests within it will automatically execute the script.</p>
-<p>We then open our collection and in the <strong>Pre-request Script</strong> tab we add the following code, obviously being careful to make the appropriate substitutions in the first part with the variables:</p>
-<div class="highlight"><div class="chroma">
+    <p>Adapter is a <strong>structural design pattern</strong> that enables one component to work with another that has an incompatible interface.</p>
+<h2 id="problem">Problem
+</h2><p>In software development, you might encounter situations where a component needs to collaborate with another that has a completely incompatible interface. Often, this incompatibility arises because the component is part of a third-party library or legacy code that cannot be modified.</p>
+<h2 id="solution">Solution
+</h2><p>This is where the Adapter pattern becomes useful. You can create an <strong>adapter</strong> that converts the data or interface from one format to another, allowing the components to communicate effectively. For instance, you can build an adapter that converts XML data into JSON and passes it to a library that only understands JSON.</p>
+<p>In this scenario, the main actors are the adapter and the adaptee. They do not—and cannot—share a common interface.</p>
+<p>![[AdapterDiagram.svg]]</p>
+<h2 id="real-world-example">Real-World example
+</h2><p>Imagine you&rsquo;re developing an application that needs to measure temperature. You have a remote sensor that provides temperature readings in Celsius, but your application uses a library that only works with Fahrenheit. Since you cannot modify the library to accept Celsius, you need a way to convert the temperature readings before passing them to the library.</p>
+<p>In this scenario, you can create an adapter that converts the Celsius readings from the sensor into Fahrenheit, allowing your application to work seamlessly with the existing library.</p>
+<h2 id="java-example">Java example
+</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -351,86 +338,59 @@
 </span><span class="lnt">34
 </span><span class="lnt">35
 </span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">client_id</span> <span class="o">=</span> <span class="s2">&#34;your keycloak client_id&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">client_secret</span> <span class="o">=</span> <span class="s2">&#34;your keycloak secret&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">server_url</span> <span class="o">=</span> <span class="s2">&#34;keycloak auth url&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">realm</span> <span class="o">=</span> <span class="s2">&#34;keycloak realm&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">username</span> <span class="o">=</span> <span class="s2">&#34;username&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">password</span> <span class="o">=</span> <span class="s2">&#34;password&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">token_endpoint</span> <span class="o">=</span> <span class="nx">server_url</span> <span class="o">+</span> <span class="s2">&#34;/auth/realms/&#34;</span> <span class="o">+</span> <span class="nx">realm</span> <span class="o">+</span> <span class="s2">&#34;/protocol/openid-connect/token&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">details</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="s2">&#34;grant_type&#34;</span> <span class="o">:</span> <span class="s2">&#34;password&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">   <span class="s2">&#34;username&#34;</span><span class="o">:</span> <span class="nx">username</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">   <span class="s2">&#34;password&#34;</span><span class="o">:</span> <span class="nx">password</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">formBody</span> <span class="o">=</span> <span class="p">[];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">property</span> <span class="k">in</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">encodedKey</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">property</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">encodedValue</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">details</span><span class="p">[</span><span class="nx">property</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">formBody</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">encodedKey</span> <span class="o">+</span> <span class="s2">&#34;=&#34;</span> <span class="o">+</span> <span class="nx">encodedValue</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">formBody</span> <span class="o">=</span> <span class="nx">formBody</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&#34;&amp;&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">pm</span><span class="p">.</span><span class="nx">sendRequest</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">url</span><span class="o">:</span> <span class="nx">token_endpoint</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">   <span class="nx">header</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">       <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">       <span class="s1">&#39;Authorization&#39;</span> <span class="o">:</span><span class="s1">&#39;Basic &#39;</span> <span class="o">+</span> <span class="nx">btoa</span><span class="p">(</span><span class="nx">client_id</span><span class="o">+</span><span class="s2">&#34;:&#34;</span><span class="o">+</span><span class="nx">client_secret</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">         <span class="p">},</span>
-</span></span><span class="line"><span class="cl">     <span class="nx">body</span><span class="o">:</span> <span class="nx">formBody</span>
-</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">jsonResponse</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jsonResponse</span><span class="p">.</span><span class="nx">access_token</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">pm</span><span class="p">.</span><span class="nx">collectionVariables</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;access-token&#34;</span><span class="p">,</span> <span class="nx">jsonResponse</span><span class="p">.</span><span class="nx">access_token</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// adaptee</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">CelsiusThermometer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getTemperature</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">25</span><span class="p">.</span><span class="na">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// returns temperature in Celsius</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// adapter</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">TemperatureAdapter</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">FahrenheitThermometer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">CelsiusThermometer</span><span class="w"> </span><span class="n">celsiusThermometer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">TemperatureAdapter</span><span class="p">(</span><span class="n">CelsiusThermometer</span><span class="w"> </span><span class="n">celsiusThermometer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">celsiusThermometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">celsiusThermometer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getTemperatureInFahrenheit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">celsius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">celsiusThermometer</span><span class="p">.</span><span class="na">getTemperature</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">celsius</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">9</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">32</span><span class="p">;</span><span class="w"> </span><span class="c1">// Convert to Fahrenheit</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// client interface</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">interface</span> <span class="nc">FahrenheitThermometer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">getTemperatureInFahrenheit</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// client code</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">CelsiusThermometer</span><span class="w"> </span><span class="n">celsiusThermometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CelsiusThermometer</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">FahrenheitThermometer</span><span class="w"> </span><span class="n">fahrenheitThermometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TemperatureAdapter</span><span class="p">(</span><span class="n">celsiusThermometer</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Temperature in Fahrenheit: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fahrenheitThermometer</span><span class="p">.</span><span class="na">getTemperatureInFahrenheit</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>Then we open the <strong>Authorization</strong> tab and set the type field as <em>Bearer Token</em> and the Token field as<code>{{access-token}}</code>
-<img src="/p/postman--keycloak-how-to-automatically-get-the-authentication-token/02.png"
-	width="1416"
-	height="597"
-	srcset="/p/postman--keycloak-how-to-automatically-get-the-authentication-token/02_hu6782987734623756763.png 480w, /p/postman--keycloak-how-to-automatically-get-the-authentication-token/02_hu5879844790590796094.png 1024w"
-	loading="lazy"
-	
-		alt="Postman Authorization tab"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="237"
-		data-flex-basis="569px"
-	
-></p>
-<h2 id="single-request">Single request
-</h2><p>At this point the last thing to do is to set the individual requests so that they inherit the authorization mode from the collection. To do this we open our request and in the Authorization tab we set the Type field as <em>Inherit auth from parent</em> .</p>
-<p><img src="/p/postman--keycloak-how-to-automatically-get-the-authentication-token/03.png"
-	width="790"
-	height="642"
-	srcset="/p/postman--keycloak-how-to-automatically-get-the-authentication-token/03_hu6944560798903508806.png 480w, /p/postman--keycloak-how-to-automatically-get-the-authentication-token/03_hu7084368486689082085.png 1024w"
-	loading="lazy"
-	
-		alt="Postman Request"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="123"
-		data-flex-basis="295px"
-	
->
-At this point, every time we start the request, Postman will automatically contact the keycloak SSO to obtain the authentication token before making the request itself.</p>
-<h2 id="conclusions">Conclusions
-</h2><p><strong>We have seen how to automatically obtain the keycloak</strong> authentication token with <strong>Postman</strong> . Did you already know this method? Do you know any other interesting uses of pre-request scripts?</p>
+</div><h2 id="applications">Applications
+</h2><p>You can use the Adapter pattern in the following situations:</p>
+<ul>
+<li>
+<p>When you want to reuse legacy subclasses that lack certain functionality, and you cannot modify the superclass.</p>
+<blockquote>
+<p>Extending these subclasses might lead to code duplication and violate clean code principles.</p>
+</blockquote>
+</li>
+<li>
+<p>When you need to interact with a third-party library that functions differently from your codebase.</p>
+</li>
+</ul>
 
 </section>
 
@@ -439,7 +399,9 @@ At this point, every time we start the request, Postman will automatically conta
     
     <section class="article-tags">
         
-            <a href="/tags/postman/">Postman</a>
+            <a href="/tags/structural-patterns/">Structural-Patterns</a>
+        
+            <a href="/tags/gof/">GoF</a>
         
     </section>
 
@@ -465,6 +427,28 @@ At this point, every time we start the request, Postman will automatically conta
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/design-patterns-proxy/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Design Patterns: Proxy</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

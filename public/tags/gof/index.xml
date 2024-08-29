@@ -8,11 +8,11 @@
         <language>en</language>
         <copyright>Tiziano Basile</copyright>
         <lastBuildDate>Thu, 29 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/gof/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Design Patterns: Proxy Pattern</title>
-        <link>http://localhost:1313/p/design-patterns-proxy-pattern/</link>
+        <title>Design Patterns: Proxy</title>
+        <link>http://localhost:1313/p/design-patterns-proxy/</link>
         <pubDate>Thu, 29 Aug 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/design-patterns-proxy-pattern/</guid>
+        <guid>http://localhost:1313/p/design-patterns-proxy/</guid>
         <description>&lt;p&gt;Proxy is a &lt;strong&gt;structural pattern&lt;/strong&gt; that lets you put a placeholder between the clients and a real object.&lt;/p&gt;
 &lt;h2 id=&#34;problem&#34;&gt;Problem
 &lt;/h2&gt;&lt;p&gt;Imagine an application where there&amp;rsquo;s a client that communicates with an object that&amp;rsquo;s very heavy in terms of resources. You may want to implement lazy loading but it could lead to code duplication.
@@ -21,10 +21,19 @@ Alternatively, the object might require pre-processing or post-processing.&lt;/p
 &lt;/h2&gt;&lt;p&gt;This is where the &lt;strong&gt;proxy pattern&lt;/strong&gt; comes into play.
 With this pattern, the client interacts with the proxy, which then communicates with the real object, potentially performing additional tasks before returning the result to the client.&lt;/p&gt;
 &lt;p&gt;In this scenario, there are three key components: the client, the proxy, and the real object. Both the proxy and the real object should implement the same interface, ensuring that the client remains unaware of which object it is communicating with.&lt;/p&gt;
-&lt;p&gt;![[ProxyDiagram.svg]]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/design-patterns-proxy/ProxyDiagram.svg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ProxyDiagram.svg&#34;
+	
+	
+&gt;&lt;/p&gt;
 &lt;h2 id=&#34;real-world-example&#34;&gt;Real-World example
 &lt;/h2&gt;&lt;p&gt;Imagine you have a remote service that fetches data from a server. Accessing this service might be slow or expensive, so you want to add some logging to see when it&amp;rsquo;s being accessed. Instead of modifying the service itself, you can use a proxy to handle the logging.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/design-patterns-proxy-pattern/RemoteServiceDiagram.svg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/design-patterns-proxy/RemoteServiceDiagram.svg&#34;
 	
 	
 	
@@ -150,7 +159,8 @@ With this pattern, the client interacts with the proxy, which then communicates 
 &lt;/ul&gt;
 &lt;h2 id=&#34;tips&#34;&gt;Tips
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;It is not always possible to extract a common interface from a pre-existing class, especially if doing so requires altering all client code or if the class belongs to a third-party library. In the first case, consider making the proxy a subclass. In the latter case, consider using the adapter pattern.&lt;/li&gt;
+&lt;li&gt;It is not always possible to extract a common interface from a pre-existing class, especially if doing so requires altering all client code or if the class belongs to a third-party library. In the first case, consider making the proxy a subclass. In the latter case, consider using the &lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/p/design-patterns-proxy/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;adapter pattern&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>

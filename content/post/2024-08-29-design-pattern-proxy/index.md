@@ -94,4 +94,4 @@ The proxy pattern can be applied in various ways:
 - **Logging Proxy**: When you need to add logging before or after interacting with the real object.
 
 ## Tips
-* It is not always possible to extract a common interface from a pre-existing class, especially if doing so requires altering all client code or if the class belongs to a third-party library. In the first case, consider making the proxy a subclass. In the latter case, consider using the adapter pattern.
+* It is not always possible to extract a common interface from a pre-existing class, especially if doing so requires altering all client code or if the class belongs to a third-party library. In the first case, consider making the proxy a subclass. In the latter case, consider using the [adapter pattern]({{% ref "2024-08-30-design-pattern-adapter" %}}).

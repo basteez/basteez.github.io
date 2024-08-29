@@ -4,7 +4,7 @@ tags:
   - postman
 categories:
   - development-tools
-comments: false
+comments: true
 date: 2024-08-20
 ---
 It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let's see how
