@@ -1,5 +1,5 @@
 ---
-title: "Design Patterns: Proxy Pattern"
+title: "Design Patterns: Proxy"
 draft: false
 tags:
   - structural-patterns
