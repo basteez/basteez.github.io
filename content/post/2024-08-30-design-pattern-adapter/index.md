@@ -7,7 +7,7 @@ tags:
 categories:
   - design-patterns
 comments: true
-date: 2024-08-29
+date: 2024-08-30
 ---
 Adapter is a **structural design pattern** that enables one component to work with another that has an incompatible interface.
 ## Problem

@@ -10,7 +10,7 @@
 <meta property='og:description' content="Adapter is a structural design pattern that enables one component to work with another that has an incompatible interface. Problem In software development, you might encounter situations where a component needs to collaborate with another that has a completely incompatible interface. Often, this incompatibility arises because the component is part of a third-party library or legacy code that cannot be modified. Solution This is where the Adapter pattern becomes useful. You can create an adapter that converts the data or interface from one format to another, allowing the components to communicate effectively.">
 <meta property='og:url' content='http://localhost:1313/p/design-patterns-adapter/'>
 <meta property='og:site_name' content='Tiziano Basile | Software Engineer'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='structural-patterns' /><meta property='article:tag' content='GoF' /><meta property='article:published_time' content='2024-08-29T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-08-29T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='structural-patterns' /><meta property='article:tag' content='GoF' /><meta property='article:published_time' content='2024-08-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-08-30T00:00:00&#43;00:00'/>
 <meta name="twitter:site" content="@_basteez_">
     <meta name="twitter:creator" content="@_basteez_"><meta name="twitter:title" content="Design Patterns: Adapter">
 <meta name="twitter:description" content="Adapter is a structural design pattern that enables one component to work with another that has an incompatible interface. Problem In software development, you might encounter situations where a component needs to collaborate with another that has a completely incompatible interface. Often, this incompatibility arises because the component is part of a third-party library or legacy code that cannot be modified. Solution This is where the Adapter pattern becomes useful. You can create an adapter that converts the data or interface from one format to another, allowing the components to communicate effectively.">
@@ -259,7 +259,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Aug 29, 2024</time>
+                <time class="article-time--published">Aug 30, 2024</time>
             </div>
         
 
@@ -295,7 +295,16 @@
 <h2 id="solution">Solution
 </h2><p>This is where the Adapter pattern becomes useful. You can create an <strong>adapter</strong> that converts the data or interface from one format to another, allowing the components to communicate effectively. For instance, you can build an adapter that converts XML data into JSON and passes it to a library that only understands JSON.</p>
 <p>In this scenario, the main actors are the adapter and the adaptee. They do not—and cannot—share a common interface.</p>
-<p>![[AdapterDiagram.svg]]</p>
+<p><img src="/p/design-patterns-adapter/AdapterDiagram.svg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="AdapterDiagram.svg"
+	
+	
+></p>
 <h2 id="real-world-example">Real-World example
 </h2><p>Imagine you&rsquo;re developing an application that needs to measure temperature. You have a remote sensor that provides temperature readings in Celsius, but your application uses a library that only works with Fahrenheit. Since you cannot modify the library to accept Celsius, you need a way to convert the temperature readings before passing them to the library.</p>
 <p>In this scenario, you can create an adapter that converts the Celsius readings from the sensor into Fahrenheit, allowing your application to work seamlessly with the existing library.</p>
