@@ -17,7 +17,7 @@ This is where the Adapter pattern becomes useful. You can create an **adapter** 
 
 In this scenario, the main actors are the adapter and the adaptee. They do not—and cannot—share a common interface.
 
-![[AdapterDiagram.svg]]
+![AdapterDiagram.svg](AdapterDiagram.svg)
 
 ## Real-World example
 Imagine you're developing an application that needs to measure temperature. You have a remote sensor that provides temperature readings in Celsius, but your application uses a library that only works with Fahrenheit. Since you cannot modify the library to accept Celsius, you need a way to convert the temperature readings before passing them to the library.
