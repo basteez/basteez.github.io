@@ -2,31 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2024-09-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-09-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/design-patterns-adapter/</loc>
-    <lastmod>2024-08-29T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/creational-patterns/</loc>
+    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/p/design-patterns-proxy/</loc>
-    <lastmod>2024-08-29T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/p/design-patterns-singleton/</loc>
+    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/design-patterns/</loc>
-    <lastmod>2024-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/gof/</loc>
-    <lastmod>2024-08-29T00:00:00+00:00</lastmod>
+    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/structural-patterns/</loc>
-    <lastmod>2024-08-29T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/java/</loc>
+    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/singleton-pattern-thread-safety-in-java/</loc>
+    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/design-patterns-decorator/</loc>
+    <lastmod>2024-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/structural-patterns/</loc>
+    <lastmod>2024-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/design-patterns-adapter/</loc>
+    <lastmod>2024-08-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/design-patterns-proxy/</loc>
     <lastmod>2024-08-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/development-tools/</loc>

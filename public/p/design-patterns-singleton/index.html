@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Adapter is a structural design pattern that enables one component to work with another that has an incompatible interface. Problem In software development, you might encounter situations where a component needs to collaborate with another that has a completely incompatible interface. Often, this incompatibility arises because the component is part of a third-party library or legacy code that cannot be modified. Solution This is where the Adapter pattern becomes useful. You can create an adapter that converts the data or interface from one format to another, allowing the components to communicate effectively.">
-<title>Design Patterns: Adapter</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Singleton is a creational design pattern that ensures a class has only one instance and provides a global access point to that instance. Problem In software development, it&rsquo;s common to need a single instance of a class to be shared across an application. Having multiple instances can lead to issues such as unexpected behaviors or inefficient resource usage. Solution The Singleton pattern addresses this problem by: Making the class constructor private to prevent direct instantiation from outside the class.">
+<title>Design Patterns: Singleton</title>
 
-<link rel='canonical' href='http://localhost:1313/p/design-patterns-adapter/'>
+<link rel='canonical' href='http://localhost:1313/p/design-patterns-singleton/'>
 
-<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Design Patterns: Adapter">
-<meta property='og:description' content="Adapter is a structural design pattern that enables one component to work with another that has an incompatible interface. Problem In software development, you might encounter situations where a component needs to collaborate with another that has a completely incompatible interface. Often, this incompatibility arises because the component is part of a third-party library or legacy code that cannot be modified. Solution This is where the Adapter pattern becomes useful. You can create an adapter that converts the data or interface from one format to another, allowing the components to communicate effectively.">
-<meta property='og:url' content='http://localhost:1313/p/design-patterns-adapter/'>
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Design Patterns: Singleton">
+<meta property='og:description' content="Singleton is a creational design pattern that ensures a class has only one instance and provides a global access point to that instance. Problem In software development, it&rsquo;s common to need a single instance of a class to be shared across an application. Having multiple instances can lead to issues such as unexpected behaviors or inefficient resource usage. Solution The Singleton pattern addresses this problem by: Making the class constructor private to prevent direct instantiation from outside the class.">
+<meta property='og:url' content='http://localhost:1313/p/design-patterns-singleton/'>
 <meta property='og:site_name' content='Tiziano Basile | Software Engineer'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='structural-patterns' /><meta property='article:tag' content='GoF' /><meta property='article:published_time' content='2024-08-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-08-30T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='GoF' /><meta property='article:tag' content='creational-patterns' /><meta property='article:published_time' content='2024-09-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-09-04T00:00:00&#43;00:00'/>
 <meta name="twitter:site" content="@_basteez_">
-    <meta name="twitter:creator" content="@_basteez_"><meta name="twitter:title" content="Design Patterns: Adapter">
-<meta name="twitter:description" content="Adapter is a structural design pattern that enables one component to work with another that has an incompatible interface. Problem In software development, you might encounter situations where a component needs to collaborate with another that has a completely incompatible interface. Often, this incompatibility arises because the component is part of a third-party library or legacy code that cannot be modified. Solution This is where the Adapter pattern becomes useful. You can create an adapter that converts the data or interface from one format to another, allowing the components to communicate effectively.">
+    <meta name="twitter:creator" content="@_basteez_"><meta name="twitter:title" content="Design Patterns: Singleton">
+<meta name="twitter:description" content="Singleton is a creational design pattern that ensures a class has only one instance and provides a global access point to that instance. Problem In software development, it&rsquo;s common to need a single instance of a class to be shared across an application. Having multiple instances can lead to issues such as unexpected behaviors or inefficient resource usage. Solution The Singleton pattern addresses this problem by: Making the class constructor private to prevent direct instantiation from outside the class.">
     <link rel="shortcut icon" href="/favicon.ico" />
 
   
@@ -207,9 +207,9 @@
   <ol>
     <li><a href="#problem">Problem</a></li>
     <li><a href="#solution">Solution</a></li>
-    <li><a href="#real-world-example">Real-World example</a></li>
     <li><a href="#java-example">Java example</a></li>
     <li><a href="#applications">Applications</a></li>
+    <li><a href="#tips">Tips</a></li>
   </ol>
 </nav>
         </div>
@@ -237,7 +237,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/design-patterns-adapter/">Design Patterns: Adapter</a>
+            <a href="/p/design-patterns-singleton/">Design Patterns: Singleton</a>
         </h2>
     
         
@@ -259,7 +259,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Aug 30, 2024</time>
+                <time class="article-time--published">Sep 04, 2024</time>
             </div>
         
 
@@ -289,25 +289,25 @@
     <section class="article-content">
     
     
-    <p>Adapter is a <strong>structural design pattern</strong> that enables one component to work with another that has an incompatible interface.</p>
+    <p><strong>Singleton</strong> is a creational design pattern that ensures a class has only one instance and provides a global access point to that instance.</p>
 <h2 id="problem">Problem
-</h2><p>In software development, you might encounter situations where a component needs to collaborate with another that has a completely incompatible interface. Often, this incompatibility arises because the component is part of a third-party library or legacy code that cannot be modified.</p>
+</h2><p>In software development, it&rsquo;s common to need a single instance of a class to be shared across an application. Having multiple instances can lead to issues such as unexpected behaviors or inefficient resource usage.</p>
 <h2 id="solution">Solution
-</h2><p>This is where the Adapter pattern becomes useful. You can create an <strong>adapter</strong> that converts the data or interface from one format to another, allowing the components to communicate effectively. For instance, you can build an adapter that converts XML data into JSON and passes it to a library that only understands JSON.</p>
-<p>In this scenario, the main actors are the adapter and the adaptee. They do not—and cannot—share a common interface.</p>
-<p><img src="/p/design-patterns-adapter/AdapterDiagram.svg"
+</h2><p>The <strong>Singleton</strong> pattern addresses this problem by:</p>
+<ul>
+<li>Making the class constructor private to prevent direct instantiation from outside the class.</li>
+<li>Providing a static public method that acts as a constructor. Before creating a new instance, it checks if an instance already exists in a private static field. If the field is <code>null</code>, it creates a new instance and assigns it to the field; otherwise, it returns the existing instance.</li>
+</ul>
+<p><img src="/p/design-patterns-singleton/SingletonDiagram.svg"
 	
 	
 	
 	loading="lazy"
 	
-		alt="AdapterDiagram.svg"
+		alt="SingletonDiagram.svg"
 	
 	
 ></p>
-<h2 id="real-world-example">Real-World example
-</h2><p>Imagine you&rsquo;re developing an application that needs to measure temperature. You have a remote sensor that provides temperature readings in Celsius, but your application uses a library that only works with Fahrenheit. Since you cannot modify the library to accept Celsius, you need a way to convert the temperature readings before passing them to the library.</p>
-<p>In this scenario, you can create an adapter that converts the Celsius readings from the sensor into Fahrenheit, allowing your application to work seamlessly with the existing library.</p>
 <h2 id="java-example">Java example
 </h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -325,80 +325,30 @@
 </span><span class="lnt">12
 </span><span class="lnt">13
 </span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// adaptee</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">CelsiusThermometer</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getTemperature</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">25</span><span class="p">.</span><span class="na">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// returns temperature in Celsius</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Singleton</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Singleton</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// adapter</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">TemperatureAdapter</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">FahrenheitThermometer</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">CelsiusThermometer</span><span class="w"> </span><span class="n">celsiusThermometer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="nf">Singleton</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1">// initialization code</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">TemperatureAdapter</span><span class="p">(</span><span class="n">CelsiusThermometer</span><span class="w"> </span><span class="n">celsiusThermometer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">celsiusThermometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">celsiusThermometer</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getTemperatureInFahrenheit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">celsius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">celsiusThermometer</span><span class="p">.</span><span class="na">getTemperature</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">celsius</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">9</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">32</span><span class="p">;</span><span class="w"> </span><span class="c1">// Convert to Fahrenheit</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// client interface</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">interface</span> <span class="nc">FahrenheitThermometer</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">getTemperatureInFahrenheit</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// client code</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">CelsiusThermometer</span><span class="w"> </span><span class="n">celsiusThermometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CelsiusThermometer</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">FahrenheitThermometer</span><span class="w"> </span><span class="n">fahrenheitThermometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TemperatureAdapter</span><span class="p">(</span><span class="n">celsiusThermometer</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Temperature in Fahrenheit: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fahrenheitThermometer</span><span class="p">.</span><span class="na">getTemperatureInFahrenheit</span><span class="p">());</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Singleton</span><span class="w"> </span><span class="nf">getInstance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="n">intance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Singleton</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="applications">Applications
-</h2><p>You can use the Adapter pattern in the following situations:</p>
-<ul>
-<li>
-<p>When you want to reuse legacy subclasses that lack certain functionality, and you cannot modify the superclass.</p>
-<blockquote>
-<p>Extending these subclasses might lead to code duplication and violate clean code principles.</p>
-</blockquote>
-</li>
-<li>
-<p>When you need to interact with a third-party library that functions differently from your codebase.</p>
-</li>
+</h2><p>Use the <strong>Singleton</strong> pattern when you need a single instance of a class to be shared across the entire application.</p>
+<h2 id="tips">Tips
+</h2><ul>
+<li>Be careful when using the <strong>Singleton</strong> pattern in multi-threaded scenarios, as it is not inherently thread-safe. Check <a class="link" href="http://localhost:1313/p/singleton-pattern-thread-safety-in-java/"  target="_blank" rel="noopener"
+    >this article</a> for further details</li>
 </ul>
 
 </section>
@@ -408,9 +358,9 @@
     
     <section class="article-tags">
         
-            <a href="/tags/structural-patterns/">Structural-Patterns</a>
-        
             <a href="/tags/gof/">GoF</a>
+        
+            <a href="/tags/creational-patterns/">Creational-Patterns</a>
         
     </section>
 
@@ -444,6 +394,19 @@
             
                 
 <article class="">
+    <a href="/p/singleton-pattern-thread-safety-in-java/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Singleton pattern thread-safety in java</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/design-patterns-decorator/">
         
         
@@ -457,38 +420,25 @@
             
                 
 <article class="">
+    <a href="/p/design-patterns-adapter/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Design Patterns: Adapter</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/design-patterns-proxy/">
         
         
 
         <div class="article-details">
             <h2 class="article-title">Design Patterns: Proxy</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/design-patterns-singleton/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Design Patterns: Singleton</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/singleton-pattern-thread-safety-in-java/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Singleton pattern thread-safety in java</h2>
         </div>
     </a>
 </article>
