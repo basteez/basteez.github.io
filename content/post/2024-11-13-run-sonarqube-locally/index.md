@@ -19,17 +19,9 @@ First, ensure you have Docker installed. With Docker, getting SonarQube up and r
 
 1. **Pull the SonarQube image**:
     
-    bash
-    
-    Copia codice
-    
     `docker pull sonarqube`
     
 2. **Run SonarQube**:
-    
-    bash
-    
-    Copia codice
     
     `docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube`
     
