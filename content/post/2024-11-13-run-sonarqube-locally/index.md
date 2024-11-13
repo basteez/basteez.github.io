@@ -7,7 +7,7 @@ tags:
 categories:
   - devops
 comments: true
-date: 2024-08-20
+date: 2024-11-13
 ---
 Code quality tools can make a huge difference in improving your coding skills by helping you identify code smells, bugs, and potential vulnerabilities. 
 
