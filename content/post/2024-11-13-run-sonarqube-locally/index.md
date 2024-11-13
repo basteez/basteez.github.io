@@ -13,7 +13,7 @@ Code quality tools can make a huge difference in improving your coding skills by
 
 In this guide, we’ll explore how to set up **SonarQube** and **SonarScanner** locally. This allows you to analyze your code for potential improvements right on your machine.
 
-### Step 1: Setting Up SonarQube with Docker
+## Step 1: Setting Up SonarQube with Docker
 
 First, ensure you have Docker installed. With Docker, getting SonarQube up and running is straightforward:
 
@@ -36,7 +36,7 @@ First, ensure you have Docker installed. With Docker, getting SonarQube up and r
     This command runs SonarQube in the background, mapping port `9000` (for the SonarQube web interface) and `9092` (optional).
     
 
-### Step 2: Accessing SonarQube
+## Step 2: Accessing SonarQube
 
 With SonarQube running, open your browser and go to [http://localhost:9000](http://localhost:9000). Enter the default credentials:
 
@@ -45,7 +45,7 @@ With SonarQube running, open your browser and go to [http://localhost:9000](http
 
 Once logged in, you will be prompted to change the default password.
 
-### Step 3: Generate an Authentication Token
+## Step 3: Generate an Authentication Token
 
 To allow SonarScanner to connect to SonarQube, you need to create an authentication token.
 
@@ -53,7 +53,7 @@ To allow SonarScanner to connect to SonarQube, you need to create an authenticat
 2. Navigate to the **Security** tab and click **Generate a token**.
 3. Name your token (it can be user-specific or global) and save it somewhere secure, as it will only be displayed once.
 
-### Step 4: Configure `sonar-project.properties`
+## Step 4: Configure `sonar-project.properties`
 
 Next, set up a configuration file to define key project properties SonarQube will use to analyze your code. In the root directory of your project, create a file named `sonar-project.properties` and add the following content:
 
@@ -68,7 +68,7 @@ sonar.tests=src/test/java # Adjust based on your test directory
 
 This configuration file tells SonarQube about the structure and setup of your project.
 
-### Step 5: Run SonarScanner
+## Step 5: Run SonarScanner
 
 With everything set up, it’s time to analyze your project. Open a terminal at the root of your project and execute the following command:
 
@@ -93,7 +93,7 @@ This command does the following:
 
 Replace `{YOUR LOCAL IP}` with your machine’s local IP address and `{YOUR SONARQUBE TOKEN}` with the token you generated in Step 4.
 
-### Step 6: Review the Analysis Results in SonarQube
+## Step 6: Review the Analysis Results in SonarQube
 
 Once SonarScanner completes its run, return to [http://localhost:9000](http://localhost:9000) and navigate to your project dashboard. Here, you’ll see a detailed report on:
 
@@ -101,6 +101,6 @@ Once SonarScanner completes its run, return to [http://localhost:9000](http://lo
 - **Bugs**: Logical errors or anomalies in the code.
 - **Vulnerabilities**: Security-related issues.
 
-### Conclusion
+## Conclusion
 
 Setting up SonarQube and SonarScanner locally allows you to take your code quality analysis into your own hands. Regularly reviewing these reports can help you develop better habits, improve your understanding of code quality principles, and ultimately level up your coding skills.
