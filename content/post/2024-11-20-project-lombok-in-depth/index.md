@@ -6,7 +6,7 @@ tags:
 categories:
   - dev
 comments: true
-date: 2024-08-20
+date: 2024-11-20
 ---
 Following up on [my earlier post about 𝗣𝗿𝗼𝗷𝗲𝗰𝘁 𝗟𝗼𝗺𝗯𝗼𝗸 on LinkedIn](https://www.linkedin.com/posts/tiziano-basile-264681147_projectlombok-java-cleancode-activity-7262501993489846272-MjPY?utm_source=share&utm_medium=member_desktop), let’s dive deeper into 𝘄𝗵𝘆 𝗟𝗼𝗺𝗯𝗼𝗸 𝗰𝗮𝗻 𝗯𝗲 𝗮 𝗯𝗹𝗲𝘀𝘀𝗶𝗻𝗴 𝗮𝗻𝗱 𝗮 𝗰𝘂𝗿𝘀𝗲 in your codebase.
 
