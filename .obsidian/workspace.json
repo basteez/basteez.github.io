@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/post/2024-11-20-project-lombok-in-depth/index.md",
+                "file": "content/post/2024-11-22-code-smells/index.md",
                 "mode": "source",
                 "source": false
               },
@@ -154,8 +154,10 @@
   },
   "active": "040c85ed8de87a7c",
   "lastOpenFiles": [
-    "content/post/2024-11-13-run-sonarqube-locally/index.md",
     "content/post/2024-11-20-project-lombok-in-depth/index.md",
+    "content/post/2024-11-22-code-smells/index.md",
+    "content/post/2024-11-22-code-smells",
+    "content/post/2024-11-13-run-sonarqube-locally/index.md",
     "content/post/2024-11-20-project-lombok-in-depth",
     "content/post/2024-09-04-singleton-thread-safety/index.md",
     "content/post/2024-11-13-run-sonarqube-locally",
@@ -166,7 +168,6 @@
     "public/tags/java/index.html",
     "public/tags/java",
     "public/tags/creational-patterns/page/1/index.html",
-    "public/tags/creational-patterns/page/1",
     "public/p/design-patterns-decorator/DecoratorDiagram.svg",
     "public/p/design-patterns-singleton/SingletonDiagram.svg",
     "content/post/2024-09-04-design-pattern-singleton/index.md",
