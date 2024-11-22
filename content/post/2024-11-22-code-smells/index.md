@@ -1,6 +1,6 @@
 ---
 title: "Code Smells: Learn to Sniff Them Out"
-draft: true
+draft: false
 tags:
   - clean-code
   - java
