@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="This year again, as every November since 2012, GitHub Game Off takes place, the game jam organized by GitHub where you have to develop a video game on a specific theme within a month. This year I decided to participate with the excuse of practicing with JavaScript (specifically I chose to use p5.js, but this might change if I see it doesn&rsquo;t quite suit my needs).\nThe theme This year&rsquo;s theme is waves (quoting from the jam page)\n">
+<title>DevLog #1 GravSync</title>
+
+<link rel='canonical' href='http://localhost:1313/p/devlog-%231-gravsync/'>
+
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="DevLog #1 GravSync">
+<meta property='og:description' content="This year again, as every November since 2012, GitHub Game Off takes place, the game jam organized by GitHub where you have to develop a video game on a specific theme within a month. This year I decided to participate with the excuse of practicing with JavaScript (specifically I chose to use p5.js, but this might change if I see it doesn&rsquo;t quite suit my needs).\nThe theme This year&rsquo;s theme is waves (quoting from the jam page)\n">
+<meta property='og:url' content='http://localhost:1313/p/devlog-%231-gravsync/'>
+<meta property='og:site_name' content='Tiziano Basile | Software Engineer'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='game-dev' /><meta property='article:tag' content='javascript' /><meta property='article:published_time' content='2025-11-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-11-02T00:00:00&#43;00:00'/>
+<meta name="twitter:site" content="@_basteez_">
+    <meta name="twitter:creator" content="@_basteez_"><meta name="twitter:title" content="DevLog #1 GravSync">
+<meta name="twitter:description" content="This year again, as every November since 2012, GitHub Game Off takes place, the game jam organized by GitHub where you have to develop a video game on a specific theme within a month. This year I decided to participate with the excuse of practicing with JavaScript (specifically I chose to use p5.js, but this might change if I see it doesn&rsquo;t quite suit my needs).\nThe theme This year&rsquo;s theme is waves (quoting from the jam page)\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q9Q50G4P9"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9Q9Q50G4P9');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_ba228744478ca02a.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">💻</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Tiziano Basile | Software Engineer</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/basteez'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/tiziano-basile-264681147/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px"><path d="M 17.722656 10 C 10.560656 10 10 10.560656 10 17.722656 L 10 32.277344 C 10 39.439344 10.560656 40 17.722656 40 L 32.277344 40 C 39.439344 40 40 39.439344 40 32.277344 L 40 17.769531 C 40 10.563531 39.436469 10 32.230469 10 L 17.722656 10 z M 17 11 L 33 11 C 38.565 11 39 11.435 39 17 L 39 33 C 39 38.565 38.565 39 33 39 L 17 39 C 11.435 39 11 38.565 11 33 L 11 17 C 11 11.435 11.435 11 17 11 z M 17.876953 14.878906 C 16.654953 14.878906 15.664062 15.866891 15.664062 17.087891 C 15.664062 18.308891 16.653953 19.300781 17.876953 19.300781 C 19.095953 19.300781 20.085937 18.308891 20.085938 17.087891 C 20.085937 15.868891 19.095953 14.878906 17.876953 14.878906 z M 29.449219 20.742188 C 27.604219 20.742187 26.368328 21.755844 25.861328 22.714844 L 25.810547 22.714844 L 25.810547 21.046875 L 22.171875 21.046875 L 22.171875 33.25 L 25.962891 33.25 L 25.962891 27.212891 C 25.962891 25.621891 26.264281 24.078125 28.238281 24.078125 C 30.183281 24.078125 30.210938 25.898453 30.210938 27.314453 L 30.210938 33.25 L 34 33.25 L 34 26.556641 C 34 23.270641 33.289219 20.742188 29.449219 20.742188 z M 15.978516 21.046875 L 15.978516 33.25 L 19.771484 33.25 L 19.771484 21.046875 L 15.978516 21.046875 z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/_basteez_'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#the-theme">The theme</a></li>
+    <li><a href="#my-idea">My idea</a></li>
+    <li><a href="#first-day-done">First day done</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/game-dev/" >
+                Game-Dev
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/devlog-%231-gravsync/">DevLog #1 GravSync</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 02, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>This year again, as every November since 2012, <a class="link" href="https://itch.io/jam/game-off-2025"  target="_blank" rel="noopener"
+    >GitHub Game Off</a> takes place, the game jam organized by GitHub where you have to develop a video game on a specific theme within a month.
+This year I decided to participate with the excuse of practicing with JavaScript (specifically I chose to use <a class="link" href="https://p5js.org/"  target="_blank" rel="noopener"
+    >p5.js</a>, but this might change if I see it doesn&rsquo;t quite suit my needs).</p>
+<h2 id="the-theme">The theme
+</h2><p>This year&rsquo;s theme is <strong>waves</strong> (quoting from the jam page)</p>
+<blockquote>
+<p><strong>wave /weɪv/</strong></p>
+<p><strong>Noun</strong></p>
+<ul>
+<li>A moving ridge on the surface of a liquid (for example, ocean waves or coffee ripples).</li>
+<li>A repeating pattern of motion, energy, or sound (for example, sound waves or radio waves).</li>
+<li>A sudden burst or surge (for example, a wave of enemies or a wave of emotion).</li>
+<li>A gesture of greeting or farewell.</li>
+</ul>
+<p><strong>Verb</strong></p>
+<ul>
+<li>To move your hand in greeting or farewell.</li>
+<li>To undulate or fluctuate (for example, wheat waving in the wind).</li>
+<li>To signal or summon (for example, waving someone through a door).</li>
+</ul>
+<p><strong>Adjective</strong></p>
+<ul>
+<li>Flowing, wavy, or oscillating (for example, wavy hair).</li>
+</ul>
+<p><strong>Acronyms (OK, we made these up)</strong></p>
+<ul>
+<li>Wizards Accelerating Velocity Every Sunday</li>
+<li>Warriors Against Variable Energy Surges</li>
+<li>Whales And Vikings Engaging Submarines</li>
+<li>Or make up your own—we love seeing how creative you get with it!</li>
+</ul>
+</blockquote>
+<h2 id="my-idea">My idea
+</h2><p>As a space and astrophysics enthusiast, the word &ldquo;waves&rdquo; immediately brought <a class="link" href="https://en.wikipedia.org/wiki/Gravitational_wave"  target="_blank" rel="noopener"
+    >gravitational waves</a> to mind, so why not create a mini puzzle game where you have to save Earth from malicious gravitational waves (whatever that means)?</p>
+<p>The idea is simple: The player tunes multiple gravitational waves to achieve resonance and stabilize the universe. The challenge is to synchronize the waves under time pressure while maintaining alignment.</p>
+<p>But how to implement it?</p>
+<p>Initially, since you need to make something small for a jam, I simply thought of showing two sine waves, the first being the target wave and the second controlled by the player, but that would have been incredibly boring, so why not put Earth at the center and make the waves &ldquo;arrive&rdquo; on it?</p>
+<p>So here&rsquo;s planet Earth in all its splendor
+<img src="/p/devlog-"
+	width="1264"
+	height="948"
+	srcset="/p/devlog- 480w, /p/devlog- 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></p>
+<p>But how do you create a circular sine wave?
+Searching a bit on the web, it turns out that the formula for drawing a sine wave on a circumference is this</p>
+<p>[
+r(\theta) = r_0 + A \cdot \sin(n \theta + \phi)
+]</p>
+<p>so having defined my JS object to represent the wave like this</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">targetWave</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">baseRadius</span><span class="o">:</span> <span class="mi">380</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">amplitude</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">frequency</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">phase</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">animationSpeed</span><span class="o">:</span> <span class="mf">0.05</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">color</span><span class="o">:</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>I defined the function to draw it along a circumference like this</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">drawWave</span><span class="p">(</span><span class="nx">wave</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">stroke</span><span class="p">(</span><span class="nx">wave</span><span class="p">.</span><span class="nx">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">wave</span><span class="p">.</span><span class="nx">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">wave</span><span class="p">.</span><span class="nx">color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nx">wave</span><span class="p">.</span><span class="nx">color</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">noFill</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">beginShape</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">angle</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">angle</span> <span class="o">&lt;=</span> <span class="nx">TWO_PI</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">;</span> <span class="nx">angle</span> <span class="o">+=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">phaseRadians</span> <span class="o">=</span> <span class="nx">radians</span><span class="p">(</span><span class="nx">wave</span><span class="p">.</span><span class="nx">phase</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">baseRadius</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">wave</span><span class="p">.</span><span class="nx">baseRadius</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">wave</span><span class="p">.</span><span class="nx">amplitude</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">sin</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">wave</span><span class="p">.</span><span class="nx">frequency</span> <span class="o">*</span> <span class="nx">angle</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">phaseRadians</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">currentTime</span> <span class="o">*</span> <span class="nx">wave</span><span class="p">.</span><span class="nx">animationSpeed</span> <span class="o">*</span> <span class="mi">50</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">radius</span> <span class="o">=</span> <span class="nx">baseRadius</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">earthX</span> <span class="o">+</span> <span class="nx">radius</span> <span class="o">*</span> <span class="nx">cos</span><span class="p">(</span><span class="nx">angle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">earthY</span> <span class="o">+</span> <span class="nx">radius</span> <span class="o">*</span> <span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">vertex</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">endShape</span><span class="p">(</span><span class="nx">CLOSE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>and here&rsquo;s the result</p>
+<p><img src="/p/devlog-"
+	width="400"
+	height="301"
+	srcset="/p/devlog- 480w, /p/devlog- 1024w"
+	loading="lazy"
+	
+		alt="1.gif"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="132"
+		data-flex-basis="318px"
+	
+></p>
+<p>At this point, however, it seemed more like the circumferences were rotating rather than being sine waves, so I decided to add some disturbance, but only for rendering purposes so as not to influence the player&rsquo;s synchronization calculation.</p>
+<p>The <code>drawWave</code> function therefore became like this</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">drawWave</span><span class="p">(</span><span class="nx">wave</span><span class="p">,</span> <span class="nx">currentTime</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">stroke</span><span class="p">(</span><span class="nx">wave</span><span class="p">.</span><span class="nx">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">wave</span><span class="p">.</span><span class="nx">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">wave</span><span class="p">.</span><span class="nx">color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nx">wave</span><span class="p">.</span><span class="nx">color</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">strokeWeight</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">noFill</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">beginShape</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">angle</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">angle</span> <span class="o">&lt;=</span> <span class="nx">TWO_PI</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">;</span> <span class="nx">angle</span> <span class="o">+=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">phaseRadians</span> <span class="o">=</span> <span class="nx">radians</span><span class="p">(</span><span class="nx">wave</span><span class="p">.</span><span class="nx">phase</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Base wave calculation (for sync)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">let</span> <span class="nx">baseRadius</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">wave</span><span class="p">.</span><span class="nx">baseRadius</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">wave</span><span class="p">.</span><span class="nx">amplitude</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">sin</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">wave</span><span class="p">.</span><span class="nx">frequency</span> <span class="o">*</span> <span class="nx">angle</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">phaseRadians</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">currentTime</span> <span class="o">*</span> <span class="nx">wave</span><span class="p">.</span><span class="nx">animationSpeed</span> <span class="o">*</span> <span class="mi">50</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Add subtle disturbance for visual effect only
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">let</span> <span class="nx">disturbance</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">      <span class="mi">3</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span> <span class="o">*</span> <span class="mi">15</span> <span class="o">+</span> <span class="nx">currentTime</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">cos</span><span class="p">(</span><span class="nx">angle</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="nx">currentTime</span> <span class="o">*</span> <span class="mf">0.6</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">      <span class="mi">2</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span> <span class="o">*</span> <span class="mi">23</span> <span class="o">+</span> <span class="nx">currentTime</span> <span class="o">*</span> <span class="mf">1.2</span><span class="p">)</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">cos</span><span class="p">(</span><span class="nx">angle</span> <span class="o">*</span> <span class="mi">12</span> <span class="o">+</span> <span class="nx">currentTime</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">radius</span> <span class="o">=</span> <span class="nx">baseRadius</span> <span class="o">+</span> <span class="nx">disturbance</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">earthX</span> <span class="o">+</span> <span class="nx">radius</span> <span class="o">*</span> <span class="nx">cos</span><span class="p">(</span><span class="nx">angle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">earthY</span> <span class="o">+</span> <span class="nx">radius</span> <span class="o">*</span> <span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">vertex</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">endShape</span><span class="p">(</span><span class="nx">CLOSE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/devlog-"
+	width="400"
+	height="301"
+	srcset="/p/devlog- 480w, /p/devlog- 1024w"
+	loading="lazy"
+	
+		alt="2.gif"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="132"
+		data-flex-basis="318px"
+	
+></p>
+<p>At this point, the last thing to do before closing the day was to make the target wave circumference reduce over time and once it reached the player&rsquo;s circumference, calculate the score based on the sync value (for now I add a point to the score if sync &gt; 80%, we&rsquo;ll see later)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">targetWave</span><span class="p">.</span><span class="nx">baseRadius</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">targetWave</span><span class="p">.</span><span class="nx">baseRadius</span> <span class="o">-=</span> <span class="mf">0.5</span><span class="p">;</span> <span class="c1">// Reduce base radius by 0.5 each frame
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">targetWave</span><span class="p">.</span><span class="nx">baseRadius</span> <span class="o">=</span> <span class="nx">max</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="nx">targetWave</span><span class="p">.</span><span class="nx">baseRadius</span><span class="p">);</span> <span class="c1">// Don&#39;t go below 50
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">targetWave</span><span class="p">.</span><span class="nx">baseRadius</span> <span class="o">===</span> <span class="nx">playerWave</span><span class="p">.</span><span class="nx">baseRadius</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">sync</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">score</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// make the target wave big again to simulate a second wave
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">targetWave</span><span class="p">.</span><span class="nx">baseRadius</span> <span class="o">=</span> <span class="mi">380</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/devlog-"
+	width="400"
+	height="299"
+	srcset="/p/devlog- 480w, /p/devlog- 1024w"
+	loading="lazy"
+	
+		alt="3.gif"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="321px"
+	
+></p>
+<p>Obviously the player can use the keyboard to modify the amplitude and frequency of their own wave to align with the target wave</p>
+<p><img src="/p/devlog-"
+	width="400"
+	height="297"
+	srcset="/p/devlog- 480w, /p/devlog- 1024w"
+	loading="lazy"
+	
+		alt="4.gif"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="134"
+		data-flex-basis="323px"
+	
+></p>
+<h2 id="first-day-done">First day done
+</h2><p>For now I&rsquo;m satisfied, I&rsquo;ve omitted the technical details on how I calculated the sync and other little things (forgive me, it&rsquo;s my first devlog). If you want to take a look at the code it&rsquo;s available <a class="link" href="https://github.com/basteez/grav-sync"  target="_blank" rel="noopener"
+    >on my GitHub profile</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/game-dev/">Game-Dev</a>
+        
+            <a href="/tags/javascript/">Javascript</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "basteez-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2025 Tiziano Basile
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

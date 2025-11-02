@@ -107,7 +107,7 @@ function drawWave(wave) {
 
 and here's the result
 
-![](1.gif)
+![1.gif](1.gif)
 
 At this point, however, it seemed more like the circumferences were rotating rather than being sine waves, so I decided to add some disturbance, but only for rendering purposes so as not to influence the player's synchronization calculation.
 
@@ -150,7 +150,7 @@ function drawWave(wave, currentTime) {
 }
 ```
 
-![](2.gif)
+![2.gif](2.gif)
 
 At this point, the last thing to do before closing the day was to make the target wave circumference reduce over time and once it reached the player's circumference, calculate the score based on the sync value (for now I add a point to the score if sync > 80%, we'll see later)
 
@@ -169,11 +169,11 @@ if (targetWave.baseRadius === playerWave.baseRadius) {
 }
 ```
 
-![](3.gif)
+![3.gif](3.gif)
 
 Obviously the player can use the keyboard to modify the amplitude and frequency of their own wave to align with the target wave
 
-![](4.gif)
+![4.gif](4.gif)
 
 ## First day done
 

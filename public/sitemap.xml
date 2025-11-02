@@ -3,7 +3,55 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-11-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/devlog-%231-gravsync/</loc>
+    <lastmod>2025-11-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/game-dev/</loc>
+    <lastmod>2025-11-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/game-dev/</loc>
+    <lastmod>2025-11-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/javascript/</loc>
+    <lastmod>2025-11-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2025-11-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-11-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-11-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/clean-code/</loc>
+    <lastmod>2024-11-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/code-smells-learn-to-sniff-them-out/</loc>
+    <lastmod>2024-11-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/dev/</loc>
+    <lastmod>2024-11-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/java/</loc>
+    <lastmod>2024-11-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/an-in-depth-look-at-project-lombok-a-follow-up/</loc>
+    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/devops/</loc>
+    <lastmod>2024-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/devops/</loc>
+    <lastmod>2024-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/docker/</loc>
+    <lastmod>2024-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/how-to-use-sonarqube-and-sonarscanner-locally-to-level-up-your-code-quality/</loc>
+    <lastmod>2024-11-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/creational-patterns/</loc>
     <lastmod>2024-09-04T00:00:00+00:00</lastmod>
@@ -17,25 +65,16 @@
     <loc>http://localhost:1313/tags/gof/</loc>
     <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/java/</loc>
-    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/p/singleton-pattern-thread-safety-in-java/</loc>
     <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-09-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/p/design-patterns-decorator/</loc>
-    <lastmod>2024-09-02T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/p/design-patterns-facade/</loc>
+    <lastmod>2024-09-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/structural-patterns/</loc>
+    <lastmod>2024-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/design-patterns-decorator/</loc>
     <lastmod>2024-09-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/p/design-patterns-adapter/</loc>
@@ -64,5 +103,7 @@
   </url><url>
     <loc>http://localhost:1313/tags/hugo/</loc>
     <lastmod>2024-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/p/how-i-wrote-a-keycloak-plugin-without-going-crazy/</loc>
   </url>
 </urlset>

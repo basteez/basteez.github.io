@@ -7,7 +7,31 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Tiziano Basile</copyright>
-        <lastBuildDate>Wed, 04 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 02 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Game-Dev</title>
+        <link>http://localhost:1313/categories/game-dev/</link>
+        <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/game-dev/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Dev</title>
+        <link>http://localhost:1313/categories/dev/</link>
+        <pubDate>Fri, 22 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/dev/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Devops</title>
+        <link>http://localhost:1313/categories/devops/</link>
+        <pubDate>Wed, 13 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/devops/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Design-Patterns</title>
         <link>http://localhost:1313/categories/design-patterns/</link>
         <pubDate>Wed, 04 Sep 2024 00:00:00 +0000</pubDate>
