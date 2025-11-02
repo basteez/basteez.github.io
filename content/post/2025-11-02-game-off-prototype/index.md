@@ -54,7 +54,7 @@ But how to implement it?
 Initially, since you need to make something small for a jam, I simply thought of showing two sine waves, the first being the target wave and the second controlled by the player, but that would have been incredibly boring, so why not put Earth at the center and make the waves "arrive" on it?
 
 So here's planet Earth in all its splendor
-![](pale-blue-dot.png)
+![](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/pale-blue-dot.png?raw=true)
 
 But how do you create a circular sine wave?
 Searching a bit on the web, it turns out that the formula for drawing a sine wave on a circumference is this
@@ -107,7 +107,7 @@ function drawWave(wave) {
 
 and here's the result
 
-![1.gif](1.gif)
+![1.gif](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/1.gif?raw=true)
 
 At this point, however, it seemed more like the circumferences were rotating rather than being sine waves, so I decided to add some disturbance, but only for rendering purposes so as not to influence the player's synchronization calculation.
 
@@ -150,7 +150,7 @@ function drawWave(wave, currentTime) {
 }
 ```
 
-![2.gif](2.gif)
+![2.gif](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/2.gif?raw=true)
 
 At this point, the last thing to do before closing the day was to make the target wave circumference reduce over time and once it reached the player's circumference, calculate the score based on the sync value (for now I add a point to the score if sync > 80%, we'll see later)
 
@@ -169,11 +169,11 @@ if (targetWave.baseRadius === playerWave.baseRadius) {
 }
 ```
 
-![3.gif](3.gif)
+![3.gif](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/3.gif?raw=true)
 
 Obviously the player can use the keyboard to modify the amplitude and frequency of their own wave to align with the target wave
 
-![4.gif](4.gif)
+![4.gif](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/4.gif?raw=true)
 
 ## First day done
 
