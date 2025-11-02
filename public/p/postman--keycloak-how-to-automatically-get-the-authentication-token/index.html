@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how\nWhat is Postman If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you:\nPostman is (to put it very simply) a platform for building, testing and cataloging APIs. It can be downloaded for free from the\u00a0official website\u00a0and also has paid plans for teams and more complex projects, but the free version is fine for us.\n">
-<title>Postman &#43; Keycloak – How to automatically get the authentication token</title>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" /><meta
+name='description' content="It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how\nWhat is Postman If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you:\nPostman is (to put it very simply) a platform for building, testing and cataloging APIs. It can be downloaded for free from the\u00a0official website\u00a0and also has paid plans for teams and more complex projects, but the free version is fine for us.\n"> <title>Postman &#43; Keycloak – How to automatically get the authentication token</title>
 
-<link rel='canonical' href='http://localhost:1313/p/postman--keycloak-how-to-automatically-get-the-authentication-token/'>
-
-<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="Postman + Keycloak – How to automatically get the authentication token">
+<link rel="canonical" href="http://localhost:1313/p/postman--keycloak-how-to-automatically-get-the-authentication-token/" /> 
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css" />
+<meta property='og:title' content="Postman + Keycloak – How to automatically get the authentication token">
 <meta property='og:description' content="It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how\nWhat is Postman If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you:\nPostman is (to put it very simply) a platform for building, testing and cataloging APIs. It can be downloaded for free from the\u00a0official website\u00a0and also has paid plans for teams and more complex projects, but the free version is fine for us.\n">
 <meta property='og:url' content='http://localhost:1313/p/postman--keycloak-how-to-automatically-get-the-authentication-token/'>
 <meta property='og:site_name' content='Tiziano Basile | Software Engineer'>
@@ -14,7 +14,7 @@
 <meta name="twitter:site" content="@_basteez_">
     <meta name="twitter:creator" content="@_basteez_"><meta name="twitter:title" content="Postman + Keycloak – How to automatically get the authentication token">
 <meta name="twitter:description" content="It often happens that you have to test REST services that require authentication, perhaps with keycloak. With Postman you can automatically get the access token before making each REST call. Let&rsquo;s see how\nWhat is Postman If you develop backends you will surely know what Postman is, if not (or if you are new to the industry), allow me to introduce it to you:\nPostman is (to put it very simply) a platform for building, testing and cataloging APIs. It can be downloaded for free from the\u00a0official website\u00a0and also has paid plans for teams and more complex projects, but the free version is fine for us.\n">
-    <link rel="shortcut icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" />
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q9Q50G4P9"></script>
       <script>

@@ -155,6 +155,8 @@ r(\theta) = r_0 + A \cdot \sin(n \theta + \phi)
 	srcset=&#34;http://localhost:1313/p/devlog- 480w, http://localhost:1313/p/devlog- 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+		alt=&#34;1.gif&#34;
+	
 	
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;132&#34;
@@ -243,6 +245,8 @@ r(\theta) = r_0 + A \cdot \sin(n \theta + \phi)
 	srcset=&#34;http://localhost:1313/p/devlog- 480w, http://localhost:1313/p/devlog- 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+		alt=&#34;2.gif&#34;
+	
 	
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;132&#34;
@@ -286,6 +290,8 @@ r(\theta) = r_0 + A \cdot \sin(n \theta + \phi)
 	srcset=&#34;http://localhost:1313/p/devlog- 480w, http://localhost:1313/p/devlog- 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+		alt=&#34;3.gif&#34;
+	
 	
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;133&#34;
@@ -298,6 +304,8 @@ r(\theta) = r_0 + A \cdot \sin(n \theta + \phi)
 	height=&#34;297&#34;
 	srcset=&#34;http://localhost:1313/p/devlog- 480w, http://localhost:1313/p/devlog- 1024w&#34;
 	loading=&#34;lazy&#34;
+	
+		alt=&#34;4.gif&#34;
 	
 	
 		class=&#34;gallery-image&#34; 

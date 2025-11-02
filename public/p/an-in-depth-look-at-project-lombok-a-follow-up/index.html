@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Following up on my earlier post about 𝗣𝗿𝗼𝗷𝗲𝗰𝘁 𝗟𝗼𝗺𝗯𝗼𝗸 on LinkedIn, let’s dive deeper into 𝘄𝗵𝘆 𝗟𝗼𝗺𝗯𝗼𝗸 𝗰𝗮𝗻 𝗯𝗲 𝗮 𝗯𝗹𝗲𝘀𝘀𝗶𝗻𝗴 𝗮𝗻𝗱 𝗮 𝗰𝘂𝗿𝘀𝗲 in your codebase.\n✅ 𝗧𝗵𝗲 𝗚𝗼𝗼𝗱: 𝗪𝗵𝘆 𝗟𝗼𝗺𝗯𝗼𝗸 𝗦𝗵𝗶𝗻𝗲𝘀 𝗖𝗹𝗲𝗮𝗻𝗲𝗿, 𝗥𝗲𝗮𝗱𝗮𝗯𝗹𝗲 𝗖𝗼𝗱𝗲: Lombok eliminates the need for repetitive methods like getters, setters, toString, and constructors. With annotations like @Getter, @Setter, @Builder, and @Data, classes become concise and easier to understand.\n𝗙𝗮𝘀𝘁𝗲𝗿 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗺𝗲𝗻𝘁: Focus on 𝘄𝗵𝗮𝘁 𝗺𝗮𝘁𝘁𝗲𝗿𝘀—business logic—while Lombok handles the repetitive tasks.\n">
-<title>An In-Depth Look at Project Lombok: A Follow-Up 🚀</title>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" /><meta
+name='description' content="Following up on my earlier post about 𝗣𝗿𝗼𝗷𝗲𝗰𝘁 𝗟𝗼𝗺𝗯𝗼𝗸 on LinkedIn, let’s dive deeper into 𝘄𝗵𝘆 𝗟𝗼𝗺𝗯𝗼𝗸 𝗰𝗮𝗻 𝗯𝗲 𝗮 𝗯𝗹𝗲𝘀𝘀𝗶𝗻𝗴 𝗮𝗻𝗱 𝗮 𝗰𝘂𝗿𝘀𝗲 in your codebase.\n✅ 𝗧𝗵𝗲 𝗚𝗼𝗼𝗱: 𝗪𝗵𝘆 𝗟𝗼𝗺𝗯𝗼𝗸 𝗦𝗵𝗶𝗻𝗲𝘀 𝗖𝗹𝗲𝗮𝗻𝗲𝗿, 𝗥𝗲𝗮𝗱𝗮𝗯𝗹𝗲 𝗖𝗼𝗱𝗲: Lombok eliminates the need for repetitive methods like getters, setters, toString, and constructors. With annotations like @Getter, @Setter, @Builder, and @Data, classes become concise and easier to understand.\n𝗙𝗮𝘀𝘁𝗲𝗿 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗺𝗲𝗻𝘁: Focus on 𝘄𝗵𝗮𝘁 𝗺𝗮𝘁𝘁𝗲𝗿𝘀—business logic—while Lombok handles the repetitive tasks.\n"> <title>An In-Depth Look at Project Lombok: A Follow-Up 🚀</title>
 
-<link rel='canonical' href='http://localhost:1313/p/an-in-depth-look-at-project-lombok-a-follow-up/'>
-
-<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="An In-Depth Look at Project Lombok: A Follow-Up 🚀">
+<link rel="canonical" href="http://localhost:1313/p/an-in-depth-look-at-project-lombok-a-follow-up/" /> 
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css" />
+<meta property='og:title' content="An In-Depth Look at Project Lombok: A Follow-Up 🚀">
 <meta property='og:description' content="Following up on my earlier post about 𝗣𝗿𝗼𝗷𝗲𝗰𝘁 𝗟𝗼𝗺𝗯𝗼𝗸 on LinkedIn, let’s dive deeper into 𝘄𝗵𝘆 𝗟𝗼𝗺𝗯𝗼𝗸 𝗰𝗮𝗻 𝗯𝗲 𝗮 𝗯𝗹𝗲𝘀𝘀𝗶𝗻𝗴 𝗮𝗻𝗱 𝗮 𝗰𝘂𝗿𝘀𝗲 in your codebase.\n✅ 𝗧𝗵𝗲 𝗚𝗼𝗼𝗱: 𝗪𝗵𝘆 𝗟𝗼𝗺𝗯𝗼𝗸 𝗦𝗵𝗶𝗻𝗲𝘀 𝗖𝗹𝗲𝗮𝗻𝗲𝗿, 𝗥𝗲𝗮𝗱𝗮𝗯𝗹𝗲 𝗖𝗼𝗱𝗲: Lombok eliminates the need for repetitive methods like getters, setters, toString, and constructors. With annotations like @Getter, @Setter, @Builder, and @Data, classes become concise and easier to understand.\n𝗙𝗮𝘀𝘁𝗲𝗿 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗺𝗲𝗻𝘁: Focus on 𝘄𝗵𝗮𝘁 𝗺𝗮𝘁𝘁𝗲𝗿𝘀—business logic—while Lombok handles the repetitive tasks.\n">
 <meta property='og:url' content='http://localhost:1313/p/an-in-depth-look-at-project-lombok-a-follow-up/'>
 <meta property='og:site_name' content='Tiziano Basile | Software Engineer'>
@@ -14,7 +14,7 @@
 <meta name="twitter:site" content="@_basteez_">
     <meta name="twitter:creator" content="@_basteez_"><meta name="twitter:title" content="An In-Depth Look at Project Lombok: A Follow-Up 🚀">
 <meta name="twitter:description" content="Following up on my earlier post about 𝗣𝗿𝗼𝗷𝗲𝗰𝘁 𝗟𝗼𝗺𝗯𝗼𝗸 on LinkedIn, let’s dive deeper into 𝘄𝗵𝘆 𝗟𝗼𝗺𝗯𝗼𝗸 𝗰𝗮𝗻 𝗯𝗲 𝗮 𝗯𝗹𝗲𝘀𝘀𝗶𝗻𝗴 𝗮𝗻𝗱 𝗮 𝗰𝘂𝗿𝘀𝗲 in your codebase.\n✅ 𝗧𝗵𝗲 𝗚𝗼𝗼𝗱: 𝗪𝗵𝘆 𝗟𝗼𝗺𝗯𝗼𝗸 𝗦𝗵𝗶𝗻𝗲𝘀 𝗖𝗹𝗲𝗮𝗻𝗲𝗿, 𝗥𝗲𝗮𝗱𝗮𝗯𝗹𝗲 𝗖𝗼𝗱𝗲: Lombok eliminates the need for repetitive methods like getters, setters, toString, and constructors. With annotations like @Getter, @Setter, @Builder, and @Data, classes become concise and easier to understand.\n𝗙𝗮𝘀𝘁𝗲𝗿 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗺𝗲𝗻𝘁: Focus on 𝘄𝗵𝗮𝘁 𝗺𝗮𝘁𝘁𝗲𝗿𝘀—business logic—while Lombok handles the repetitive tasks.\n">
-    <link rel="shortcut icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" />
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q9Q50G4P9"></script>
       <script>

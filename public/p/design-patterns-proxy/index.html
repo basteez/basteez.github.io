@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Proxy is a structural pattern that lets you put a placeholder between the clients and a real object.\nProblem Imagine an application where there&rsquo;s a client that communicates with an object that&rsquo;s very heavy in terms of resources. You may want to implement lazy loading but it could lead to code duplication. Alternatively, the object might require pre-processing or post-processing.\nSolution This is where the proxy pattern comes into play. With this pattern, the client interacts with the proxy, which then communicates with the real object, potentially performing additional tasks before returning the result to the client.\n">
-<title>Design Patterns: Proxy</title>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" /><meta
+name='description' content="Proxy is a structural pattern that lets you put a placeholder between the clients and a real object.\nProblem Imagine an application where there&rsquo;s a client that communicates with an object that&rsquo;s very heavy in terms of resources. You may want to implement lazy loading but it could lead to code duplication. Alternatively, the object might require pre-processing or post-processing.\nSolution This is where the proxy pattern comes into play. With this pattern, the client interacts with the proxy, which then communicates with the real object, potentially performing additional tasks before returning the result to the client.\n"> <title>Design Patterns: Proxy</title>
 
-<link rel='canonical' href='http://localhost:1313/p/design-patterns-proxy/'>
-
-<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="Design Patterns: Proxy">
+<link rel="canonical" href="http://localhost:1313/p/design-patterns-proxy/" /> 
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css" />
+<meta property='og:title' content="Design Patterns: Proxy">
 <meta property='og:description' content="Proxy is a structural pattern that lets you put a placeholder between the clients and a real object.\nProblem Imagine an application where there&rsquo;s a client that communicates with an object that&rsquo;s very heavy in terms of resources. You may want to implement lazy loading but it could lead to code duplication. Alternatively, the object might require pre-processing or post-processing.\nSolution This is where the proxy pattern comes into play. With this pattern, the client interacts with the proxy, which then communicates with the real object, potentially performing additional tasks before returning the result to the client.\n">
 <meta property='og:url' content='http://localhost:1313/p/design-patterns-proxy/'>
 <meta property='og:site_name' content='Tiziano Basile | Software Engineer'>
@@ -14,7 +14,7 @@
 <meta name="twitter:site" content="@_basteez_">
     <meta name="twitter:creator" content="@_basteez_"><meta name="twitter:title" content="Design Patterns: Proxy">
 <meta name="twitter:description" content="Proxy is a structural pattern that lets you put a placeholder between the clients and a real object.\nProblem Imagine an application where there&rsquo;s a client that communicates with an object that&rsquo;s very heavy in terms of resources. You may want to implement lazy loading but it could lead to code duplication. Alternatively, the object might require pre-processing or post-processing.\nSolution This is where the proxy pattern comes into play. With this pattern, the client interacts with the proxy, which then communicates with the real object, potentially performing additional tasks before returning the result to the client.\n">
-    <link rel="shortcut icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" />
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q9Q50G4P9"></script>
       <script>

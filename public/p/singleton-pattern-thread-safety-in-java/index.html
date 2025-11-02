@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="As stated in this article, singleton is not thread-safe by default. Let&rsquo;s see how to make it thread-safe.\nBasic singleton class First, let&rsquo;s recap how to create a basic singleton:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 public class Singleton { private static Singleton instance; private Singleton() { // initialization code } public static Singleton getInstance() { if(instance == null) { instance = new Singleton(); } return instance; } } This implementation does not guarantee correct behavior in a multithreaded environment.\n">
-<title>Singleton pattern thread-safety in java</title>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" /><meta
+name='description' content="As stated in this article, singleton is not thread-safe by default. Let&rsquo;s see how to make it thread-safe.\nBasic singleton class First, let&rsquo;s recap how to create a basic singleton:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 public class Singleton { private static Singleton instance; private Singleton() { // initialization code } public static Singleton getInstance() { if(instance == null) { instance = new Singleton(); } return instance; } } This implementation does not guarantee correct behavior in a multithreaded environment.\n"> <title>Singleton pattern thread-safety in java</title>
 
-<link rel='canonical' href='http://localhost:1313/p/singleton-pattern-thread-safety-in-java/'>
-
-<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="Singleton pattern thread-safety in java">
+<link rel="canonical" href="http://localhost:1313/p/singleton-pattern-thread-safety-in-java/" /> 
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css" />
+<meta property='og:title' content="Singleton pattern thread-safety in java">
 <meta property='og:description' content="As stated in this article, singleton is not thread-safe by default. Let&rsquo;s see how to make it thread-safe.\nBasic singleton class First, let&rsquo;s recap how to create a basic singleton:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 public class Singleton { private static Singleton instance; private Singleton() { // initialization code } public static Singleton getInstance() { if(instance == null) { instance = new Singleton(); } return instance; } } This implementation does not guarantee correct behavior in a multithreaded environment.\n">
 <meta property='og:url' content='http://localhost:1313/p/singleton-pattern-thread-safety-in-java/'>
 <meta property='og:site_name' content='Tiziano Basile | Software Engineer'>
@@ -14,7 +14,7 @@
 <meta name="twitter:site" content="@_basteez_">
     <meta name="twitter:creator" content="@_basteez_"><meta name="twitter:title" content="Singleton pattern thread-safety in java">
 <meta name="twitter:description" content="As stated in this article, singleton is not thread-safe by default. Let&rsquo;s see how to make it thread-safe.\nBasic singleton class First, let&rsquo;s recap how to create a basic singleton:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 public class Singleton { private static Singleton instance; private Singleton() { // initialization code } public static Singleton getInstance() { if(instance == null) { instance = new Singleton(); } return instance; } } This implementation does not guarantee correct behavior in a multithreaded environment.\n">
-    <link rel="shortcut icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" />
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Q9Q50G4P9"></script>
       <script>
