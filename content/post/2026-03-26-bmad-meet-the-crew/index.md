@@ -11,6 +11,14 @@ tags:
 comments: true
 ---
 
+**This post is part of a series:**
+
+1. [Don't be mad, BMAD instead](/p/dont-be-mad-bmad-instead/)
+2. BMAD: meet the crew (you are here)
+3. [BMAD in action: building TODOdoro](/p/bmad-tododoro-walkthrough/)
+
+---
+
 In the [previous post](/p/dont-be-mad-bmad-instead/), I talked about why I was skeptical of AI coding tools and how BMAD changed my perspective. The short version: it forces you to think before you code, and it keeps you in the driver's seat.
 
 But I glossed over the most distinctive part of the framework: the agents.

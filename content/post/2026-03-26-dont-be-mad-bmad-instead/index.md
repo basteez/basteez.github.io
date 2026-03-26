@@ -11,6 +11,14 @@ tags:
 comments: true
 ---
 
+**This post is part of a series:**
+
+1. Don't be mad, BMAD instead (you are here)
+2. [BMAD: meet the crew](/p/bmad-meet-the-crew/)
+3. [BMAD in action: building TODOdoro](/p/bmad-tododoro-walkthrough/)
+
+---
+
 A few weeks ago I wrote about the tension I felt using AI coding tools, the fear that by outsourcing the friction, I was also outsourcing my competence. That piece ended with a question: are you extending yourself, or outsourcing yourself?
 
 I didn't have a clean answer then. I still don't have a universal one. But I found something that changed how I think about the problem.

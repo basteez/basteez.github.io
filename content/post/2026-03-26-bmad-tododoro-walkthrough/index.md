@@ -12,6 +12,14 @@ tags:
 comments: true
 ---
 
+**This post is part of a series:**
+
+1. [Don't be mad, BMAD instead](/p/dont-be-mad-bmad-instead/)
+2. [BMAD: meet the crew](/p/bmad-meet-the-crew/)
+3. BMAD in action: building TODOdoro (you are here)
+
+---
+
 This is the final post in my series about the BMAD Method. In [Part 1](/p/dont-be-mad-bmad-instead/), I explained why I was skeptical of AI tools and how BMAD changed my mind. In [Part 2](/p/bmad-meet-the-crew/), I introduced the agents and how they work together.
 
 Now I want to show you what BMAD looks like in practice.
