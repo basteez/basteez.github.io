@@ -15,7 +15,7 @@ comments: true
 
 1. [Don't be mad, BMAD instead](/p/dont-be-mad-bmad-instead/)
 2. BMAD: meet the crew (you are here)
-3. [BMAD in action: building TODOdoro](/p/bmad-tododoro-walkthrough/)
+3. [BMAD in action: building TODOdoro](/p/bmad-in-action-building-tododoro/)
 
 ---
 
