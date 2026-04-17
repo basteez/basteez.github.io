@@ -13,6 +13,9 @@ from scripts.crosspost.devto import (
     CredentialError,
     DevToClient,
     DevToError,
+    ListingError,
+    RateLimitError,
+    ServerError,
 )
 from scripts.crosspost.posts import (
     BlogPost,
@@ -20,6 +23,13 @@ from scripts.crosspost.posts import (
     PostDiscoveryError,
     discover_posts,
     load_hugo_config,
+)
+from scripts.crosspost.reconcile import (
+    DevToArticleSummary,
+    ReconciledAction,
+    build_canonical_index,
+    normalize_canonical_url,
+    reconcile,
 )
 from scripts.crosspost.report import Report
 from scripts.crosspost.state import StateError, load_state, save_state, update_entry
@@ -95,6 +105,32 @@ def _filter_only(posts: Iterable[BlogPost], only: str) -> list[BlogPost]:
     return [p for p in posts if p.slug in wanted]
 
 
+def _fetch_listing(
+    client: DevToClient | None,
+) -> tuple[list[DevToArticleSummary] | None, str | None]:
+    """Returns (summaries, None) on success; (None, error_detail) on failure."""
+    if client is None:
+        return [], None
+    try:
+        raw = client.list_my_articles()
+    except CredentialError as exc:
+        return None, str(exc)
+    except (ListingError, RateLimitError, ServerError) as exc:
+        return None, str(exc)
+
+    summaries = [
+        DevToArticleSummary(
+            id=int(item["id"]),
+            canonical_url_raw=item.get("canonical_url"),
+            canonical_url_norm=normalize_canonical_url(item.get("canonical_url")),
+            url=str(item.get("url", "")),
+            published=bool(item.get("published", False)),
+        )
+        for item in raw
+    ]
+    return summaries, None
+
+
 def run(argv: list[str], env: dict) -> int:
     args = _parse_args(argv)
 
@@ -133,7 +169,25 @@ def run(argv: list[str], env: dict) -> int:
     for orphan in sorted(state.keys() - known_slugs):
         report.record_skip(orphan, "orphan (no matching post on disk)")
 
-    client = None if dry_run else DevToClient(api_key)
+    # Under --dry-run we still need a client to fetch the listing (read-only), but only
+    # if we have an api key. Without a key, fall back to an empty listing and proceed —
+    # the adoption path is a no-op if no key is available for a dry run.
+    client: DevToClient | None
+    if not dry_run:
+        client = DevToClient(api_key)
+    elif api_key:
+        client = DevToClient(api_key)
+    else:
+        client = None
+
+    summaries, listing_error = _fetch_listing(client)
+    if summaries is None:
+        index: dict[str, list[int]] = {}
+        article_lookup: dict[int, DevToArticleSummary] = {}
+    else:
+        index = build_canonical_index(summaries)
+        article_lookup = {s.id: s for s in summaries}
+
     commit_sha = env.get("GITHUB_SHA", "local")
     now = datetime.now(UTC)
 
@@ -150,15 +204,50 @@ def run(argv: list[str], env: dict) -> int:
             report.record_skip(post.slug, result.reason)
             continue
 
-        if dry_run:
-            if result.action is Classification.CREATE:
-                report.record_ok(post.slug, url="(dry-run)", detail="would create")
+        if listing_error is not None:
+            report.record_fail(
+                post.slug, f"dev.to listing unavailable: {listing_error}"
+            )
+            continue
+
+        refined = reconcile(post, state.get(post.slug), index, article_lookup)
+
+        if refined.action is ReconciledAction.ADOPT:
+            if dry_run:
+                report.record_adopted(
+                    post.slug, url=refined.devto_url or "", dry_run=True
+                )
             else:
-                report.record_ok(post.slug, url="(dry-run)", detail="would update")
+                update_entry(
+                    state,
+                    slug=post.slug,
+                    devto_article_id=int(refined.devto_article_id),
+                    devto_url=str(refined.devto_url or ""),
+                    content_hash=post.content_hash,
+                    commit_sha=commit_sha,
+                )
+                state_modified = True
+                report.record_adopted(
+                    post.slug, url=str(refined.devto_url or "")
+                )
+            continue
+
+        if refined.action in (
+            ReconciledAction.FAIL_MULTIPLE_MATCHES,
+            ReconciledAction.FAIL_ID_MISMATCH,
+        ):
+            report.record_fail(post.slug, refined.reason)
+            continue
+
+        if dry_run:
+            if refined.action is ReconciledAction.CREATE:
+                report.record_created(post.slug, url="(dry-run)", dry_run=True)
+            else:
+                report.record_updated(post.slug, url="(dry-run)", dry_run=True)
             continue
 
         try:
-            if result.action is Classification.CREATE:
+            if refined.action is ReconciledAction.CREATE:
                 resp = client.create_article(
                     title=post.title,
                     body_markdown=post.body_markdown_rewritten,
@@ -174,12 +263,8 @@ def run(argv: list[str], env: dict) -> int:
                     commit_sha=commit_sha,
                 )
                 state_modified = True
-                report.record_ok(
-                    post.slug,
-                    url=str(resp["url"]),
-                    detail="created draft",
-                )
-            else:
+                report.record_created(post.slug, url=str(resp["url"]))
+            else:  # UPDATE
                 entry = state[post.slug]
                 article_id = int(entry["devto_article_id"])
                 resp = client.update_article(
@@ -189,20 +274,17 @@ def run(argv: list[str], env: dict) -> int:
                     tags=post.tags,
                     canonical_url=post.canonical_url,
                 )
+                result_url = str(resp.get("url", entry.get("devto_url", "")))
                 update_entry(
                     state,
                     slug=post.slug,
                     devto_article_id=article_id,
-                    devto_url=str(resp.get("url", entry.get("devto_url", ""))),
+                    devto_url=result_url,
                     content_hash=post.content_hash,
                     commit_sha=commit_sha,
                 )
                 state_modified = True
-                report.record_ok(
-                    post.slug,
-                    url=str(resp.get("url", entry.get("devto_url", ""))),
-                    detail="updated (body hash changed)",
-                )
+                report.record_updated(post.slug, url=result_url)
         except ArticleMissingError:
             entry = state.get(post.slug, {})
             article_id = entry.get("devto_article_id", "?")

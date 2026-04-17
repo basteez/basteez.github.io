@@ -17,42 +17,74 @@ class _Line:
 
 
 @dataclass
+class ReportCounts:
+    created: int = 0
+    updated: int = 0
+    adopted: int = 0
+    skipped: int = 0
+    failed: int = 0
+
+    @property
+    def ok(self) -> int:
+        return self.created + self.updated + self.adopted
+
+    @property
+    def total(self) -> int:
+        return self.ok + self.skipped + self.failed
+
+
+@dataclass
 class Report:
     _lines: list[_Line] = field(default_factory=list)
+    counts: ReportCounts = field(default_factory=ReportCounts)
 
-    def record_ok(self, slug: str, *, url: str, detail: str) -> None:
-        self._lines.append(_Line(OK, slug, f"{detail} {url}".strip()))
+    def record_created(self, slug: str, *, url: str, dry_run: bool = False) -> None:
+        text = f"(dry-run) would create {url}" if dry_run else f"created draft {url}"
+        self._lines.append(_Line(OK, slug, text))
+        self.counts.created += 1
+
+    def record_updated(self, slug: str, *, url: str, dry_run: bool = False) -> None:
+        text = (
+            f"(dry-run) would update {url}"
+            if dry_run
+            else f"updated (body hash changed) {url}"
+        )
+        self._lines.append(_Line(OK, slug, text))
+        self.counts.updated += 1
+
+    def record_adopted(self, slug: str, *, url: str, dry_run: bool = False) -> None:
+        text = f"(dry-run) would adopt {url}" if dry_run else f"adopted {url}"
+        self._lines.append(_Line(OK, slug, text))
+        self.counts.adopted += 1
 
     def record_skip(self, slug: str, reason: str) -> None:
         self._lines.append(_Line(SKIP, slug, reason))
+        self.counts.skipped += 1
 
     def record_fail(self, slug: str, reason: str) -> None:
         self._lines.append(_Line(FAIL, slug, reason))
+        self.counts.failed += 1
 
     def _sorted(self) -> list[_Line]:
         return sorted(self._lines, key=lambda ln: ln.slug)
 
     @property
-    def counts(self) -> tuple[int, int, int]:
-        ok = sum(1 for ln in self._lines if ln.outcome == OK)
-        skip = sum(1 for ln in self._lines if ln.outcome == SKIP)
-        fail = sum(1 for ln in self._lines if ln.outcome == FAIL)
-        return ok, skip, fail
-
-    @property
     def exit_code(self) -> int:
-        _, _, fail = self.counts
-        return 1 if fail else 0
+        return 1 if self.counts.failed else 0
+
+    def _summary_body(self) -> str:
+        c = self.counts
+        return (
+            f"{c.created} created, {c.updated} updated, {c.adopted} adopted, "
+            f"{c.skipped} skipped, {c.failed} failed (of {c.total} candidates)"
+        )
 
     def render_stdout(self) -> str:
-        rows = []
-        for ln in self._sorted():
-            rows.append(f"{ln.outcome:<{_OUTCOME_PAD}}{ln.slug}  {ln.text}")
-        ok, skip, fail = self.counts
-        total = ok + skip + fail
-        rows.append(
-            f"-- summary: {ok} ok, {skip} skipped, {fail} failed (of {total} candidates)"
-        )
+        rows = [
+            f"{ln.outcome:<{_OUTCOME_PAD}}{ln.slug}  {ln.text}"
+            for ln in self._sorted()
+        ]
+        rows.append(f"-- summary: {self._summary_body()}")
         return "\n".join(rows) + "\n"
 
     def render_github_summary(self) -> str:
@@ -62,8 +94,6 @@ class Report:
         ]
         for ln in self._sorted():
             rows.append(f"| {ln.outcome} | {ln.slug} | {ln.text} |")
-        ok, skip, fail = self.counts
-        total = ok + skip + fail
         rows.append("")
-        rows.append(f"**Summary:** {ok} ok, {skip} skipped, {fail} failed (of {total} candidates)")
+        rows.append(f"**Summary:** {self._summary_body()}")
         return "\n".join(rows) + "\n"
