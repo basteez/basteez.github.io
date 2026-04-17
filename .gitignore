@@ -4,6 +4,7 @@ _site
 .jekyll-metadata
 vendor
 Gemfile.lock
+public
 
 # Python
 __pycache__/
