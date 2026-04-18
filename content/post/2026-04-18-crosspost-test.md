@@ -3,7 +3,7 @@ title: Crosspost
 categories:
   - dev
 comments: true
-draft: true
+draft: false
 ---
 
 Crossposting test
