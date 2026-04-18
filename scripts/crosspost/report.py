@@ -27,6 +27,32 @@ def format_outcome(outcome: PostOutcome) -> str:
     return f"{tag} {path}"
 
 
+_STEP_SUMMARY_HEADER = (
+    "| File | Title | Result | Detail |\n"
+    "| ---- | ----- | ------ | ------ |\n"
+)
+
+
+def _escape_cell(value: str | None) -> str:
+    if not value:
+        return ""
+    return value.replace("|", r"\|").replace("\n", " ").replace("\r", " ")
+
+
+def format_step_summary(summary: RunSummary, before: str, after: str) -> str:
+    del before, after
+    rows: list[str] = []
+    for outcome in summary.outcomes:
+        title_cell = _escape_cell(outcome.title)
+        detail_cell = _escape_cell(outcome.detail)
+        rows.append(
+            f"| `{outcome.path}` | {title_cell} | {outcome.result} | {detail_cell} |"
+        )
+    if not rows:
+        return _STEP_SUMMARY_HEADER
+    return _STEP_SUMMARY_HEADER + "\n".join(rows) + "\n"
+
+
 def format_summary(summary: RunSummary, before: str, after: str) -> str:
     drafted = sum(1 for o in summary.outcomes if o.result == "drafted")
     errors = sum(1 for o in summary.outcomes if o.result == "error")
