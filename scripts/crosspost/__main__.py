@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from .changeset import resolve_added_posts
+from .changeset import resolve_touched_posts
 from .devto import (
     AuthRejected,
     DevtoClient,
@@ -16,7 +16,7 @@ from .devto import (
 from .frontmatter import FrontmatterError, parse as parse_frontmatter
 from .models import PostFile, PostOutcome, RunSummary
 from .reconcile import build_title_index
-from .report import format_outcome, format_summary
+from .report import format_outcome, format_step_summary, format_summary
 
 
 def _log(message: str) -> None:
@@ -48,6 +48,15 @@ def _build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _maybe_write_step_summary(summary: RunSummary, before: str, after: str) -> None:
+    target = os.environ.get("GITHUB_STEP_SUMMARY")
+    if not target:
+        return
+    text = format_step_summary(summary, before, after)
+    with open(target, "a", encoding="utf-8") as fp:
+        fp.write(text)
+
+
 def _load_post(path: str, repo_root: Path) -> tuple[Optional[PostFile], Optional[str]]:
     try:
         text = (repo_root / path).read_text(encoding="utf-8")
@@ -77,7 +86,7 @@ def run(argv: list[str] | None = None) -> int:
         _log(format_summary(summary, args.before, args.after))
         return 0
 
-    entries = resolve_added_posts(args.before, args.after, cwd=repo_root)
+    entries = resolve_touched_posts(args.before, args.after, cwd=repo_root)
 
     # Stage 1: load and eligibility-filter.
     publishable: list[PostFile] = []
@@ -120,7 +129,11 @@ def run(argv: list[str] | None = None) -> int:
 
     # Short-circuit if nothing publishable — skip network entirely.
     if not publishable and not entries:
+        _log(
+            f"no candidate post files in push range {args.before}..{args.after}"
+        )
         _log(format_summary(summary, args.before, args.after))
+        _maybe_write_step_summary(summary, args.before, args.after)
         return 0
 
     client = DevtoClient(api_key=api_key)
@@ -140,6 +153,7 @@ def run(argv: list[str] | None = None) -> int:
         for outcome in summary.outcomes:
             _log(format_outcome(outcome))
         _log(format_summary(summary, args.before, args.after))
+        _maybe_write_step_summary(summary, args.before, args.after)
         print(f"global_failure: {summary.global_failure}", file=sys.stderr)
         return 1
 
@@ -227,7 +241,12 @@ def run(argv: list[str] | None = None) -> int:
 
     for outcome in summary.outcomes:
         _log(format_outcome(outcome))
+    if not entries:
+        _log(
+            f"no candidate post files in push range {args.before}..{args.after}"
+        )
     _log(format_summary(summary, args.before, args.after))
+    _maybe_write_step_summary(summary, args.before, args.after)
     if summary.global_failure is not None:
         print(f"global_failure: {summary.global_failure}", file=sys.stderr)
         return 1

@@ -12,12 +12,16 @@ def _silence_sleep(monkeypatch):
     monkeypatch.setattr("scripts.crosspost.devto.time.sleep", lambda s: None)
 
 
-def _post_body(title: str) -> str:
-    return f'---\ntitle: "{title}"\ndate: 2026-04-17\ndraft: false\n---\nHello {title}.\n'
+def _post_body(title: str, draft: bool = False) -> str:
+    flag = "true" if draft else "false"
+    return (
+        f'---\ntitle: "{title}"\ndate: 2026-04-17\ndraft: {flag}\n'
+        f"---\nHello {title}.\n"
+    )
 
 
-def _write_post(repo, rel_path: str, title: str) -> None:
-    repo.write(rel_path, _post_body(title))
+def _write_post(repo, rel_path: str, title: str, draft: bool = False) -> None:
+    repo.write(rel_path, _post_body(title, draft=draft))
 
 
 def test_first_push_creates_draft(
@@ -383,3 +387,272 @@ def test_all_creates_retry_exhausted_is_global_failure(
     assert exit_code == 1
     captured = capsys.readouterr()
     assert "global_failure" in captured.err
+
+
+# --- 004: publish-detection fix ---
+
+
+def test_draft_flip_publishes_once(
+    tmp_git_repo, devto_responses, monkeypatch, capsys
+):
+    repo = tmp_git_repo()
+    repo.write("README.md", "readme\n")
+    repo.add_all()
+    repo.commit("init")
+
+    post_path = "content/post/2026-04-18-crosspost-test.md"
+    _write_post(repo, post_path, "Crosspost Test", draft=True)
+    repo.add_all()
+    before = repo.commit("draft: add crosspost test")
+
+    _write_post(repo, post_path, "Crosspost Test", draft=False)
+    repo.add_all()
+    after = repo.commit("publish: flip draft to false")
+
+    devto_responses.add(
+        devto_responses.GET, f"{BASE}/articles/me/published", json=[], status=200
+    )
+    devto_responses.add(
+        devto_responses.GET, f"{BASE}/articles/me/unpublished", json=[], status=200
+    )
+    devto_responses.add(
+        devto_responses.POST,
+        f"{BASE}/articles",
+        json={
+            "id": 9999,
+            "title": "Crosspost Test",
+            "published": False,
+            "url": "https://dev.to/test/9999",
+        },
+        status=201,
+    )
+
+    monkeypatch.setenv("DEVTO_API_KEY", "test-key")
+    monkeypatch.setenv("DEVTO_API_BASE", BASE)
+
+    exit_code = run(
+        [
+            "--before",
+            before,
+            "--after",
+            after,
+            "--repo-root",
+            str(repo.path),
+        ]
+    )
+
+    assert exit_code == 0
+    post_calls = [c for c in devto_responses.calls if c.request.method == "POST"]
+    assert len(post_calls) == 1
+    captured = capsys.readouterr()
+    assert f"[drafted] {post_path}" in captured.out
+    assert (
+        f"summary: drafted=1 skipped=0 errors=0 range={before}..{after}"
+        in captured.out
+    )
+
+
+def test_single_file_draft_flip_drafts_once(
+    tmp_git_repo, devto_responses, monkeypatch, capsys
+):
+    repo = tmp_git_repo()
+    repo.write("README.md", "readme\n")
+    repo.add_all()
+    repo.commit("init")
+
+    post_path = "content/post/2026-04-18-single-flip.md"
+    _write_post(repo, post_path, "Single Flip", draft=True)
+    repo.add_all()
+    before = repo.commit("draft: add single flip")
+
+    _write_post(repo, post_path, "Single Flip", draft=False)
+    repo.add_all()
+    after = repo.commit("publish: flip single")
+
+    devto_responses.add(
+        devto_responses.GET, f"{BASE}/articles/me/published", json=[], status=200
+    )
+    devto_responses.add(
+        devto_responses.GET, f"{BASE}/articles/me/unpublished", json=[], status=200
+    )
+    devto_responses.add(
+        devto_responses.POST,
+        f"{BASE}/articles",
+        json={
+            "id": 8888,
+            "title": "Single Flip",
+            "published": False,
+            "url": "https://dev.to/test/8888",
+        },
+        status=201,
+    )
+
+    monkeypatch.setenv("DEVTO_API_KEY", "test-key")
+    monkeypatch.setenv("DEVTO_API_BASE", BASE)
+
+    exit_code = run(
+        [
+            "--before",
+            before,
+            "--after",
+            after,
+            "--repo-root",
+            str(repo.path),
+        ]
+    )
+
+    assert exit_code == 0
+    post_calls = [c for c in devto_responses.calls if c.request.method == "POST"]
+    assert len(post_calls) == 1
+    captured = capsys.readouterr()
+    assert f"[drafted] {post_path}" in captured.out
+
+
+def test_no_candidate_posts_emits_explicit_line(
+    tmp_git_repo, devto_responses, monkeypatch, capsys
+):
+    repo = tmp_git_repo()
+    repo.write("README.md", "readme\n")
+    repo.add_all()
+    before = repo.commit("init")
+
+    repo.write("README.md", "readme\nupdated\n")
+    repo.add_all()
+    after = repo.commit("touch readme only")
+
+    monkeypatch.setenv("DEVTO_API_KEY", "test-key")
+    monkeypatch.setenv("DEVTO_API_BASE", BASE)
+
+    exit_code = run(
+        [
+            "--before",
+            before,
+            "--after",
+            after,
+            "--repo-root",
+            str(repo.path),
+        ]
+    )
+
+    assert exit_code == 0
+    assert len(devto_responses.calls) == 0
+    captured = capsys.readouterr()
+    assert (
+        f"no candidate post files in push range {before}..{after}" in captured.out
+    )
+    for tag in ("[drafted]", "[skipped_", "[error]"):
+        assert tag not in captured.out
+    summary_idx = captured.out.index("summary:")
+    notice_idx = captured.out.index("no candidate post files")
+    assert notice_idx < summary_idx
+
+
+def test_step_summary_is_written_when_env_set(
+    tmp_git_repo, devto_responses, monkeypatch, capsys, tmp_path
+):
+    repo = tmp_git_repo()
+    repo.write("README.md", "readme\n")
+    repo.add_all()
+    repo.commit("init")
+
+    post_path = "content/post/2026-04-18-summary.md"
+    _write_post(repo, post_path, "Summary Post", draft=True)
+    repo.add_all()
+    before = repo.commit("draft: add summary post")
+
+    _write_post(repo, post_path, "Summary Post", draft=False)
+    repo.add_all()
+    after = repo.commit("publish: flip summary")
+
+    devto_responses.add(
+        devto_responses.GET, f"{BASE}/articles/me/published", json=[], status=200
+    )
+    devto_responses.add(
+        devto_responses.GET, f"{BASE}/articles/me/unpublished", json=[], status=200
+    )
+    devto_responses.add(
+        devto_responses.POST,
+        f"{BASE}/articles",
+        json={
+            "id": 7777,
+            "title": "Summary Post",
+            "published": False,
+            "url": "https://dev.to/test/7777",
+        },
+        status=201,
+    )
+
+    summary_file = tmp_path / "summary.md"
+    monkeypatch.setenv("DEVTO_API_KEY", "test-key")
+    monkeypatch.setenv("DEVTO_API_BASE", BASE)
+    monkeypatch.setenv("GITHUB_STEP_SUMMARY", str(summary_file))
+
+    exit_code = run(
+        [
+            "--before",
+            before,
+            "--after",
+            after,
+            "--repo-root",
+            str(repo.path),
+        ]
+    )
+
+    assert exit_code == 0
+    assert summary_file.exists()
+    content = summary_file.read_text(encoding="utf-8")
+    assert "| File | Title | Result | Detail |" in content
+    assert "| ---- | ----- | ------ | ------ |" in content
+    assert f"`{post_path}`" in content
+    assert "drafted" in content
+
+
+def test_step_summary_skipped_when_env_unset(
+    tmp_git_repo, devto_responses, monkeypatch, tmp_path
+):
+    repo = tmp_git_repo()
+    repo.write("README.md", "readme\n")
+    repo.add_all()
+    before_sha = repo.commit("init")
+
+    post_path = "content/post/2026-04-18-no-summary.md"
+    _write_post(repo, post_path, "No Summary", draft=False)
+    repo.add_all()
+    after_sha = repo.commit("add post")
+
+    devto_responses.add(
+        devto_responses.GET, f"{BASE}/articles/me/published", json=[], status=200
+    )
+    devto_responses.add(
+        devto_responses.GET, f"{BASE}/articles/me/unpublished", json=[], status=200
+    )
+    devto_responses.add(
+        devto_responses.POST,
+        f"{BASE}/articles",
+        json={
+            "id": 6666,
+            "title": "No Summary",
+            "published": False,
+            "url": "https://dev.to/test/6666",
+        },
+        status=201,
+    )
+
+    monkeypatch.setenv("DEVTO_API_KEY", "test-key")
+    monkeypatch.setenv("DEVTO_API_BASE", BASE)
+    monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
+
+    exit_code = run(
+        [
+            "--before",
+            before_sha,
+            "--after",
+            after_sha,
+            "--repo-root",
+            str(repo.path),
+        ]
+    )
+
+    assert exit_code == 0
+    leftovers = list(tmp_path.glob("summary*.md"))
+    assert leftovers == []

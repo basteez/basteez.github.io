@@ -23,11 +23,11 @@ def _git(*args: str, cwd: Optional[Path] = None) -> subprocess.CompletedProcess[
     )
 
 
-def _diff_added(
-    range_spec: str, cwd: Optional[Path]
+def _diff(
+    range_spec: str, cwd: Optional[Path], diff_filter: str
 ) -> list[ChangesetEntry]:
     result = _git(
-        "diff", "--name-status", "--diff-filter=A", range_spec, cwd=cwd
+        "diff", "--name-status", f"--diff-filter={diff_filter}", range_spec, cwd=cwd
     )
     entries: list[ChangesetEntry] = []
     for line in result.stdout.splitlines():
@@ -45,6 +45,12 @@ def _diff_added(
     return entries
 
 
+def _diff_touched(
+    range_spec: str, cwd: Optional[Path]
+) -> list[ChangesetEntry]:
+    return _diff(range_spec, cwd, "AM")
+
+
 def _merge_base(a: str, b: str, cwd: Optional[Path]) -> Optional[str]:
     try:
         result = _git("merge-base", a, b, cwd=cwd)
@@ -60,12 +66,12 @@ def _commits_in_range(
     return [line.strip() for line in result.stdout.splitlines() if line.strip()]
 
 
-def resolve_added_posts(
+def resolve_touched_posts(
     before: str,
     after: str,
     cwd: Optional[Path | str] = None,
 ) -> list[ChangesetEntry]:
-    """Return the union of added post files across every commit in before..after.
+    """Return the union of touched (added or modified) post files in before..after.
 
     - First-push (before == ZERO_SHA) → diff after^..after only.
     - before == after → empty range.
@@ -73,6 +79,15 @@ def resolve_added_posts(
     - Renames (R*) and copies (C*) are excluded.
     - Only paths matching is_post_path() are returned.
     """
+    return _resolve(before, after, cwd, _diff_touched)
+
+
+def _resolve(
+    before: str,
+    after: str,
+    cwd: Optional[Path | str],
+    diff_fn,
+) -> list[ChangesetEntry]:
     cwd_path = Path(cwd) if cwd is not None else None
 
     if before == after:
@@ -80,7 +95,7 @@ def resolve_added_posts(
 
     if before == ZERO_SHA:
         range_spec = f"{after}^..{after}"
-        return _uniq(_diff_added(range_spec, cwd_path))
+        return _uniq(diff_fn(range_spec, cwd_path))
 
     mb = _merge_base(before, after, cwd_path)
     if mb is None:
@@ -92,16 +107,13 @@ def resolve_added_posts(
             after,
         )
         range_spec = f"{after}^..{after}"
-        return _uniq(_diff_added(range_spec, cwd_path))
+        return _uniq(diff_fn(range_spec, cwd_path))
 
-    # Aggregate adds across the full range.
-    aggregate = _diff_added(f"{before}..{after}", cwd_path)
+    aggregate = diff_fn(f"{before}..{after}", cwd_path)
 
-    # Union with per-commit adds so a file added in commit N and renamed in N+1
-    # is still captured (aggregate diff would report only the rename).
     per_commit: list[ChangesetEntry] = []
     for sha in _commits_in_range(f"{before}..{after}", cwd_path):
-        per_commit.extend(_diff_added(f"{sha}^..{sha}", cwd_path))
+        per_commit.extend(diff_fn(f"{sha}^..{sha}", cwd_path))
 
     return _uniq(aggregate + per_commit)
 
