@@ -1,5 +1,0 @@
----
-date: 2026-04-17
-draft: false
----
-Body with no title frontmatter key.

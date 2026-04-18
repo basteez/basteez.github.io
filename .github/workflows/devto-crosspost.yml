@@ -1,12 +1,5 @@
 name: Dev.to Crosspost
 
-# Isolation (FR-015): this workflow does NOT share `needs:` or `concurrency:` with
-# `.github/workflows/hugo.yml`. A failure here must never block the Hugo deploy.
-#
-# Global failure (FR-016): when `secrets.DEVTO_API_KEY` is empty or missing, the CLI
-# exits non-zero and this run goes red. We intentionally do NOT guard the step with
-# `if: ${{ secrets.DEVTO_API_KEY != '' }}` — the red signal is the alert.
-
 on:
   push:
     branches: [main]
@@ -23,18 +16,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Crosspost new posts to dev.to
+        uses: basteez/hugo-to-devto-action@v1
         with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install -r scripts/crosspost/requirements.txt
-
-      - name: Run crosspost CLI
-        env:
-          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
-        run: |
-          python -m scripts.crosspost \
-            --before "${{ github.event.before }}" \
-            --after "${{ github.event.after }}"
+          devto-api-key: ${{ secrets.DEVTO_API_KEY }}
+          before: ${{ github.event.before }}
+          after: ${{ github.event.after }}
