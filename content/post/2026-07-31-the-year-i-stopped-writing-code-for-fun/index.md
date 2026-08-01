@@ -1,7 +1,7 @@
 ---
 title: "The year I stopped writing code for fun"
 date: 2026-07-31
-draft: false
+draft: true
 categories:
   - dev
 tags:
