@@ -1,0 +1,7 @@
+<figure class="mermaid-figure">
+    <pre class="mermaid">
+{{- .Inner | htmlEscape | safeHTML -}}
+    </pre>
+    <figcaption class="mermaid-caption">🔍 click the diagram to enlarge</figcaption>
+</figure>
+{{ .Page.Store.Set "hasMermaid" true }}
