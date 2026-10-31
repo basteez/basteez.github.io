@@ -203,13 +203,6 @@ menu:
       url: https://github.com/basteez
       params:
         icon: brand-github
-
-    - identifier: twitter
-      name: Twitter
-      url: https://twitter.com/_basteez_
-      params:
-        icon: brand-twitter
-
     - identifier: linkedin
       name: LinkedIn
       url: https://www.linkedin.com/in/tiziano-basile-264681147/
