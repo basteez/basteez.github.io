@@ -61,6 +61,6 @@ I'm making this solo, as director and playtester. The code is written by AI agen
 
 ## Next up
 
-The first real bug: **Infinite Loop**, a snake made of code that repeats its attacks… until you find its weak window. Plus the rubber duck, who finally gets a voice, powered by [mumble-speech](https://github.com/basteez/mumble-speech), a little speech-babble library I wrote for this (its v0.3.0 added Godot web support just for this game).
+The first real bug: **Infinite Loop**, a snake made of code that repeats its attacks… until you find its weak window. Plus the rubber duck, who finally gets a voice, powered by [mumble-speech](https://github.com/basteez/mumble-speech), my own library: v0.3.0 added Godot web support, so the duck can talk in the browser too.
 
 Thanks for reading!
