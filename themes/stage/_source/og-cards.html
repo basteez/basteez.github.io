@@ -1,0 +1,71 @@
+<!doctype html>
+<!--
+  Source artwork for the link-preview (OpenGraph/Twitter) cards.
+  Hugo does not read this folder; the rendered PNGs live in assets/og/.
+
+  Two 1200x630 cards:
+    #site       -> assets/og/site.png       (home, lists, about, search)
+    #post-base  -> assets/og/post-base.png  (background for per-post cards;
+                                             layouts/partials/og-card.html writes series,
+                                             title and date on it at build time)
+
+  To regenerate, screenshot each element at exactly 1200x630, e.g. with Playwright:
+    await page.goto('file://…/og-cards.html'); await page.evaluate(() => document.fonts.ready);
+    await page.locator('#site').screenshot({ path: 'assets/og/site.png' });
+    await page.locator('#post-base').screenshot({ path: 'assets/og/post-base.png' });
+  If you move the text area on #post-base, update the x/y/width values in og-card.html.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:"Dela Gothic One";src:url("../static/fonts/dela-gothic-one-400.woff2") format("woff2")}
+@font-face{font-family:"Fraunces";src:url("../static/fonts/fraunces-900.woff2") format("woff2");font-weight:900}
+@font-face{font-family:"Courier Prime";src:url("../static/fonts/courier-prime-700.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Anton";src:url("../static/fonts/anton-400.woff2") format("woff2")}
+@font-face{font-family:"Fira Code";src:url("../static/fonts/fira-code-var.woff2") format("woff2");font-weight:300 700}
+:root{--red:#e60012;--black:#000;--white:#fff}
+body{margin:0;background:#333;display:grid;gap:20px;padding:20px;justify-content:start}
+.card{position:relative;width:1200px;height:630px;overflow:hidden;
+  background-color:var(--red);background-image:radial-gradient(rgba(0,0,0,.26) 2.6px,transparent 3px);background-size:12px 12px}
+.burst{position:absolute;width:1920px;height:1920px;right:-744px;top:50%;margin-top:-960px;border-radius:50%;
+  background:repeating-conic-gradient(rgba(0,0,0,.22) 0 11deg,transparent 11deg 22.5deg)}
+.slab{position:absolute;left:0;top:57px;bottom:57px;width:936px;background:var(--white);
+  clip-path:polygon(0 0,100% 0,96% 18%,98% 19.5%,90% 62%,93% 63.5%,86% 100%,0 100%)}
+.slab::after{content:"";position:absolute;inset:0;background:var(--black);
+  clip-path:polygon(0 0,97.6% 0,93.6% 17.5%,95.6% 19%,87.6% 61.5%,90.6% 63%,83.6% 100%,0 100%)}
+.tile{display:inline-grid;place-items:center;min-width:.8em;height:1.04em;padding:0 .07em;line-height:1}
+.tile span{font-size:.84em;display:block}
+.wb{background:var(--white);color:var(--black)}.rw{background:var(--red);color:var(--white)}.bw{background:var(--black);color:var(--white)}.wr{background:var(--white);color:var(--red)}
+.d{font-family:"Dela Gothic One"}.fr{font-family:Fraunces;font-weight:900}.cp{font-family:"Courier Prime";font-weight:700}.an{font-family:Anton}
+.brand{position:absolute;right:48px;bottom:44px;display:flex;gap:6px;font-size:52px}
+.content{position:absolute;left:66px;top:96px;width:740px}
+.name{display:flex;gap:8px;font-size:104px;margin-bottom:22px}
+.role{display:inline-block;background:var(--white);color:var(--black);font:34px/1 "Dela Gothic One";padding:12px 22px;transform:skewX(-16deg);margin-top:6px}
+.stack{margin-top:26px;font:700 24px/1.4 "Fira Code";color:var(--white);letter-spacing:.02em}
+.stack b{color:var(--red)}
+</style>
+</head>
+<body>
+  <div class="card" id="site">
+    <div class="burst"></div><div class="slab"></div>
+    <div class="content">
+      <div class="name">
+        <span class="tile wb d" style="transform:rotate(-6deg)"><span>T</span></span><span class="tile rw fr" style="transform:rotate(5deg)"><span>I</span></span><span class="tile wb cp" style="transform:rotate(-3deg)"><span>Z</span></span><span class="tile wr an" style="transform:rotate(8deg)"><span>I</span></span><span class="tile rw d" style="transform:rotate(-7deg)"><span>A</span></span><span class="tile wb fr" style="transform:rotate(4deg)"><span>N</span></span><span class="tile rw an" style="transform:rotate(-2deg)"><span>O</span></span>
+      </div>
+      <div class="name" style="margin-left:48px">
+        <span class="tile wr d" style="transform:rotate(5deg)"><span>B</span></span><span class="tile rw cp" style="transform:rotate(-8deg)"><span>A</span></span><span class="tile wb an" style="transform:rotate(3deg)"><span>S</span></span><span class="tile rw fr" style="transform:rotate(-4deg)"><span>I</span></span><span class="tile wb d" style="transform:rotate(7deg)"><span>L</span></span><span class="tile wr cp" style="transform:rotate(-5deg)"><span>E</span></span>
+      </div>
+      <span class="role">SENIOR SOFTWARE ENGINEER</span>
+      <div class="stack">JAVA <b>▸</b> QUARKUS <b>▸</b> SPRING BOOT <b>▸</b> K8S <b>▸</b> AI</div>
+    </div>
+    <div class="brand"><span class="tile wb d"><span>B</span></span><span class="tile rw d"><span>S</span></span><span class="tile bw cp"><span>T</span></span><span class="tile wr an"><span>Z</span></span><span class="tile wb fr"><span>.</span></span><span class="tile rw d"><span>I</span></span><span class="tile wb an"><span>T</span></span></div>
+  </div>
+
+  <!-- Text area for og-card.html: x 66..806, series kicker at y 96, title from y 150, date line at y 530. -->
+  <div class="card" id="post-base">
+    <div class="burst"></div><div class="slab"></div>
+    <div class="brand"><span class="tile wb d"><span>B</span></span><span class="tile rw d"><span>S</span></span><span class="tile bw cp"><span>T</span></span><span class="tile wr an"><span>Z</span></span><span class="tile wb fr"><span>.</span></span><span class="tile rw d"><span>I</span></span><span class="tile wb an"><span>T</span></span></div>
+  </div>
+</body>
+</html>
