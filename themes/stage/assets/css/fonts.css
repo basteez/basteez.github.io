@@ -1,0 +1,8 @@
+/* All faces are SIL OFL 1.1, self-hosted (static/fonts, licences alongside). Latin subset. */
+@font-face{font-family:"Dela Gothic One";src:url("{{ "fonts/dela-gothic-one-400.woff2" | relURL }}") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Fraunces";src:url("{{ "fonts/fraunces-900.woff2" | relURL }}") format("woff2");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"Courier Prime";src:url("{{ "fonts/courier-prime-700.woff2" | relURL }}") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Anton";src:url("{{ "fonts/anton-400.woff2" | relURL }}") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Literata";src:url("{{ "fonts/literata-var.woff2" | relURL }}") format("woff2");font-weight:200 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Literata";src:url("{{ "fonts/literata-var-italic.woff2" | relURL }}") format("woff2");font-weight:200 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Fira Code";src:url("{{ "fonts/fira-code-var.woff2" | relURL }}") format("woff2");font-weight:300 700;font-style:normal;font-display:swap}

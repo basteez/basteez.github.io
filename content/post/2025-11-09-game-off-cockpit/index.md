@@ -8,6 +8,8 @@ categories:
   - game-dev
 comments: true
 date: 2025-11-09
+series:
+  - Grav Sync Devlog
 ---
 
 Today I implemented a major visual upgrade to my GitHub Game Off 2025 project, **Grav-Sync**, by adding an interactive cockpit interface with animated control knobs. This enhancement significantly improves the game's visual feedback and makes the controls more intuitive and engaging.

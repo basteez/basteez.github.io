@@ -1,0 +1,26 @@
+{{- /* Which main-menu entry is "selected" on this page. */ -}}
+{{- $cur := "" -}}
+{{- if .IsHome -}}{{ $cur = "home" -}}
+{{- else if eq .Type "post" -}}{{ $cur = "posts" -}}
+{{- else if in (slice "taxonomy" "term") .Kind -}}
+  {{- $cur = cond (eq .Data.Plural "series") "series" "tags" -}}
+{{- else -}}
+  {{- range site.Menus.main }}{{ if eq .URL $.RelPermalink }}{{ $cur = .Identifier }}{{ end }}{{ end -}}
+{{- end -}}
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="{{ "/" | relURL }}">
+      <span class="visually-hidden">bstz.it, home</span>
+      {{- partial "collage.html" (dict "text" "BSTZ.IT" "case" "upper" "step" 0.03) -}}
+    </a>
+    <nav class="game-menu" aria-label="Main">
+      <ul>
+        {{- range $i, $m := site.Menus.main }}
+        <li style="--i:{{ $i }}">
+          <a href="{{ $m.URL | relURL }}"{{ if eq $m.Identifier $cur }} aria-current="page"{{ end }}><span>{{ $m.Name }}</span></a>
+        </li>
+        {{- end }}
+      </ul>
+    </nav>
+  </div>
+</header>

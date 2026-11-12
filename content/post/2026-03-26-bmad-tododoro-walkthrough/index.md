@@ -10,6 +10,8 @@ tags:
   - bmad
   - tododoro
 comments: true
+series:
+  - BMAD
 ---
 
 **This post is part of a series:**

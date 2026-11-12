@@ -1,0 +1,26 @@
+{{ define "main" }}
+{{- $st := site.Params.stage -}}
+{{- $posts := where site.RegularPages "Section" "in" site.Params.mainSections -}}
+<div class="wrap about">
+  <h1 class="section-head about__head"><span class="visually-hidden">{{ .Title }}</span>{{ partial "collage.html" (dict "text" "ABOUT ME" "class" "collage--outline" "case" "upper") }}</h1>
+
+  <section class="dialog slam-r" aria-label="About {{ index $st.name 0 | lower | title }}">
+    <p class="dialog__name drop" style="--delay:.35s" aria-hidden="true"><span>{{ index $st.name 0 }}</span></p>
+    <div class="dialog__text">
+      {{ .Content }}
+    </div>
+    <span class="dialog__next blink" aria-hidden="true">▼</span>
+  </section>
+
+  <ul class="stats about__stats" aria-label="Blog stats">
+    <li class="drop" style="--delay:.6s"><span class="stat"><b>{{ len $posts }}</b><span>POSTS</span></span></li>
+    <li class="drop" style="--delay:.8s"><span class="stat stat--black"><b>{{ len site.Taxonomies.series }}</b><span>SERIES</span></span></li>
+    <li class="drop" style="--delay:1s"><span class="stat stat--red"><b>{{ site.Params.footer.since }}</b><span>WRITING SINCE</span></span></li>
+  </ul>
+
+  <section aria-labelledby="contact">
+    {{- partial "section-head.html" (dict "text" "CONTACT" "id" "contact") }}
+    {{- partial "contacts.html" . }}
+  </section>
+</div>
+{{ end }}

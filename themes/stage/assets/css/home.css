@@ -1,0 +1,86 @@
+/* ------------------------------------------------------------ hero */
+.hero{position:relative;overflow-x:clip;margin-top:-14px;padding:44px 0 40px;min-height:430px;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px}
+.hero__burst{
+  position:absolute;z-index:-1;width:1800px;height:1800px;right:-560px;top:50%;margin-top:-900px;
+  background:repeating-conic-gradient(rgba(0,0,0,.22) 0 11deg,transparent 11deg 22.5deg);
+  border-radius:50%;animation:spin 40s linear infinite;
+  /* fade the rays out above and below the hero instead of cutting them off */
+  -webkit-mask-image:linear-gradient(to bottom,transparent 22%,#000 36%,#000 58%,transparent 74%);
+  mask-image:linear-gradient(to bottom,transparent 22%,#000 36%,#000 58%,transparent 74%);
+  pointer-events:none;
+}
+.hero{isolation:isolate}
+/* the black slab enters from the left and runs off the left edge of the screen */
+.hero__slab{position:relative;isolation:isolate;
+  padding:34px 90px 34px max(var(--gutter),calc((100vw - var(--wrap)) / 2 + var(--gutter)));
+  min-width:min(100%,640px)}
+.hero__slab::before,.hero__slab::after{content:"";position:absolute;inset:0;z-index:-1}
+.hero__slab::before{background:var(--white);clip-path:polygon(0 0,100% 0,95.2% 13%,97.9% 14.2%,86.2% 50%,90% 51.6%,75.9% 100%,0 100%)}
+.hero__slab::after{background:var(--black);clip-path:polygon(0 0,96.6% 0,91.7% 12%,94.5% 13.2%,83.1% 49%,86.6% 50.5%,72.8% 100%,0 100%)}
+.hero__slab-inner{max-width:560px}
+.hero__name{margin:0;display:grid;gap:.12em;justify-items:start}
+.hero__first{font-size:clamp(46px,8vw,80px)}
+.hero__last{font-size:clamp(42px,7.2vw,72px);margin-left:.5em}
+.hero__role{margin:22px 0 0}
+.hero__role span{display:inline-block;background:var(--white);color:var(--black);transform:skewX(-16deg);
+  padding:7px 16px 6px;font:400 clamp(15px,2.2vw,20px)/1 var(--f-display);letter-spacing:.04em}
+.hero__stack{margin:14px 0 0;font:700 13.5px/1.5 var(--f-mono);letter-spacing:.06em;color:var(--white)}
+.hero__stack span[aria-hidden]{color:var(--red)}
+.hero__sys{margin:14px 0 0;font:400 12px/1.4 var(--f-mono);color:#bdbdbd;letter-spacing:.04em}
+.hero__stats{padding-right:max(var(--gutter-r),calc((100vw - var(--wrap)) / 2 + var(--gutter-r)));
+  flex-direction:column;align-items:center;gap:30px}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:30px;min-height:0}
+  .hero__slab{padding-right:56px;min-width:0}
+  .hero__slab::before{clip-path:polygon(0 0,100% 0,97% 30%,99% 31%,93% 100%,0 100%)}
+  .hero__slab::after{clip-path:polygon(0 0,97.5% 0,94.5% 29%,96.5% 30%,90.5% 100%,0 100%)}
+  .hero__stats{flex-direction:row;justify-content:center;padding-inline:var(--gutter) var(--gutter-r)}
+  .stat{min-width:0;padding-inline:14px}
+  .stat b{font-size:30px}
+}
+
+/* ------------------------------------------------------------ latest posts as paper notes */
+.notes{list-style:none;margin:0;padding:0;display:grid;gap:22px;max-width:920px}
+.note-wrap{transform:rotate(var(--tilt))}
+.note{
+  position:relative;isolation:isolate;display:flex;align-items:center;gap:20px;
+  padding:16px 22px 16px 26px;min-height:84px;color:var(--black);
+  filter:drop-shadow(7px 5px 0 var(--black));
+}
+.note::before,.note::after{content:"";position:absolute;inset:0;z-index:-1}
+.note::before{background:var(--black);clip-path:polygon(0 5px,100% 0,calc(100% - 6px) 100%,4px calc(100% - 1px))}
+.note::after{background:var(--white);clip-path:polygon(3px 8px,calc(100% - 3px) 3px,calc(100% - 9px) calc(100% - 3px),7px calc(100% - 4px))}
+.note-wrap:nth-child(even) .note{filter:drop-shadow(7px 5px 0 var(--white))}
+.note__date{flex:none;display:grid;place-items:center;min-width:80px;padding:6px 10px 5px;background:var(--black);color:var(--white);transform:skewX(-10deg)}
+.note__date b{font:400 24px/1 var(--f-display)}
+.note__date span{font:700 11px/1.3 var(--f-mono);color:var(--white);letter-spacing:.06em;margin-top:3px;border-top:2px solid var(--red);padding-top:2px}
+.note__body{min-width:0;flex:1}
+.note__title{margin:0;font:900 clamp(18px,2.3vw,22px)/1.2 var(--f-note);letter-spacing:-.005em}
+.note__title a{text-decoration:none;color:var(--black)}
+.note__title a::after{content:"";position:absolute;inset:0;z-index:1} /* whole note is the link target */
+.note__title a:focus-visible{outline:none;box-shadow:none}
+.note:has(a:focus-visible){outline:3px solid var(--black);outline-offset:5px}
+.note__meta{margin:6px 0 0;font:700 12px/1.4 var(--f-mono);color:#4d4d4d;letter-spacing:.03em}
+.note__series{background:var(--red);color:var(--white);padding:1px 6px;text-transform:uppercase}
+.note__cover{flex:none;width:150px;height:auto;aspect-ratio:16/10;object-fit:cover;transform:rotate(3deg);border:3px solid var(--black);box-shadow:5px 5px 0 var(--red)}
+.note__new{position:absolute;right:16px;top:-16px;z-index:2;font-size:22px;transform:rotate(8deg);transform-origin:center}
+.note-wrap:hover .note,.note:has(a:focus-visible){filter:drop-shadow(11px 9px 0 var(--black))}
+.note-wrap:hover{transform:rotate(0deg) scale(1.01);transition:transform .15s var(--ease-slam)}
+@media (max-width:560px){
+  .note{flex-wrap:wrap;gap:12px 14px;padding:16px 16px 16px 18px}
+  .note__date{min-width:66px}
+  .note__body{flex-basis:calc(100% - 90px)}
+  .note__cover{width:100%;transform:rotate(1deg)}
+  .note__new{right:6px}
+}
+.more{margin:30px 0 0}
+
+/* ------------------------------------------------------------ series */
+.series-grid{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr))}
+.series-card{min-width:0}
+.series-card__name{margin:0 0 4px;display:inline-block;font:400 clamp(20px,2.6vw,26px)/1.1 var(--f-display);
+  background:var(--black);color:var(--white);padding:8px 16px 7px;transform:skewX(var(--skew)) rotate(-2deg);box-shadow:6px 5px 0 var(--white)}
+.series-card__name a{display:block;color:inherit;text-decoration:none;transform:skewX(14deg)}
+.series-card__name a:hover{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:3px}
+.series-card__count{margin:12px 0 10px 6px;font:700 12px/1 var(--f-mono);letter-spacing:.12em;color:var(--white);text-shadow:1px 1px 0 var(--black)}

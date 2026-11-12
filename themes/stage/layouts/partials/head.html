@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{- $description := partialCached "data/description.html" . .RelPermalink }}
+{{- $title := partial "data/title.html" . }}
+<meta name="description" content="{{ $description }}">
+{{- with .Params.keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
+<title>{{ $title }}</title>
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="theme-color" content="#e60012">
+<meta name="color-scheme" content="light dark">
+
+{{- /* Fonts: only the faces every page needs are preloaded; the collage faces load on demand. */}}
+<link rel="preload" href="{{ "fonts/dela-gothic-one-400.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- if .IsPage }}
+<link rel="preload" href="{{ "fonts/literata-var.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- end }}
+
+{{- $css := slice
+  (resources.Get "css/fonts.css" | resources.ExecuteAsTemplate "css/fonts.css" .)
+  (resources.Get "css/tokens.css")
+  (resources.Get "css/base.css")
+  (resources.Get "css/frame.css")
+  (resources.Get "css/collage.css")
+  (resources.Get "css/home.css")
+  (resources.Get "css/article.css")
+  (resources.Get "css/chroma.css")
+  (resources.Get "css/lists.css")
+  (resources.Get "css/motion.css")
+  | resources.Concat "css/stage.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+{{- range .AlternativeOutputFormats }}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+{{- end }}
+{{- with site.Params.favicon }}
+<link rel="shortcut icon" href="{{ . | relURL }}">
+{{- end }}
+
+{{- partial "opengraph.html" . }}
+{{- template "_internal/google_analytics.html" . }}
+{{- partial "head/custom.html" . }}

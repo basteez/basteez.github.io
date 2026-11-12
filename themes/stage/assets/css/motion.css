@@ -1,0 +1,31 @@
+/* Motion lives in the frame, never in the reading column. */
+@keyframes slam-l{from{transform:translateX(-110vw)}to{transform:none}}
+@keyframes slam-r{from{transform:translateX(110vw)}to{transform:none}}
+@keyframes drop{from{transform:translateY(-60vh) rotate(-30deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes thump{0%,100%{scale:1}12%{scale:1.15}24%{scale:1}}
+@keyframes blink{50%{opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes menu-in{from{transform:translateX(60vw);opacity:0}to{transform:none;opacity:1}}
+
+.slam-l{animation:slam-l .45s var(--ease-slam) both;animation-delay:var(--delay,0s)}
+.slam-r{animation:slam-r .45s var(--ease-slam) both;animation-delay:var(--delay,0s)}
+.drop{animation:drop .5s cubic-bezier(.2,1.6,.4,1) both;animation-delay:var(--delay,0s)}
+.thump{animation:thump 1.2s ease-in-out infinite}
+.blink{animation:blink 1s steps(1) infinite}
+
+/* Page transitions: cross-document View Transitions where supported (no JS).
+   The header stays put; the page slams in from the right. */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:.22s ease-in both vt-out}
+::view-transition-new(root){animation:.34s var(--ease-slam) both vt-in}
+@keyframes vt-out{to{transform:translateX(-6vw) skewX(6deg);opacity:0}}
+@keyframes vt-in{from{transform:translateX(12vw) skewX(-8deg);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0s!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:0s!important;scroll-behavior:auto!important}
+  /* no marquee: show the whole ticker text, wrapped */
+  .ticker__track{animation:none!important;transform:skewX(14deg);width:auto}
+  .ticker__track p{white-space:normal;padding-inline:14px;line-height:1.6}
+  .ticker__track p+p{display:none}
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}

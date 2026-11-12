@@ -8,6 +8,8 @@ categories:
   - game-dev
 comments: true
 date: 2025-11-08
+series:
+  - Grav Sync Devlog
 ---
 
 Over the past development cycle, I worked on two features for Grav Sync, these updates transformed the game from a static puzzle into a more dynamic and visually engaging experience.

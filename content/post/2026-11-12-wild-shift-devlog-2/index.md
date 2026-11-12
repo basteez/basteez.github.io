@@ -11,6 +11,8 @@ categories:
   - game-dev
 comments: true
 date: 2026-11-12
+series:
+  - Wild Shift Devlog
 ---
 
 Second update on **The Debugger 0x03: Wild Shift**, my GitHub Game Off 2026 entry (theme: **SHIFT**). If you missed it, [Devlog #1](https://bstz.it/p/wild-shift-devlog-1/) covered the register and the shift. This post is a mirror of the [second devlog on itch.io](https://basteez.itch.io/wild-shift/devlog/1771895/devlog-2-its-always-the-semicolon-infinite-loop-null-pointer-and-a-duck-that-talks). You can also play the current build in the browser on the [game page](https://basteez.itch.io/wild-shift).

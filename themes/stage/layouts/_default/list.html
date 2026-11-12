@@ -1,0 +1,27 @@
+{{ define "main" }}
+{{- $pages := where .Pages "Params.hidden" "!=" true -}}
+{{- $isSeries := and (eq .Kind "term") (eq .Data.Plural "series") -}}
+{{- $title := .Title -}}
+{{- if eq .Kind "term" }}{{ $title = printf "%s: %s" (.Data.Singular | title) .Title }}{{ if not $isSeries }}{{ if eq .Data.Plural "tags" }}{{ $title = printf "Tag: #%s" .Data.Term }}{{ end }}{{ end }}{{ end -}}
+{{- if and (eq .Kind "section") (in site.Params.mainSections .Section) }}{{ $title = "All posts" }}{{ end -}}
+{{- $n := len $pages -}}
+{{- partial "page-head.html" (dict "title" $title "kicker" "SELECT TARGET" "count" (printf "%d post%s" $n (cond (eq $n 1) "" "s"))) }}
+
+<div class="wrap list-body">
+  {{- with .Content }}<div class="list-intro">{{ . }}</div>{{ end }}
+  {{- if $isSeries }}
+  <ol class="menu-list">
+    {{- range $i, $p := $pages.ByDate }}{{ partial "menu-item.html" (dict "page" $p "i" $i "num" (printf "#%d" (add $i 1))) }}{{ end }}
+  </ol>
+  {{- else }}
+  {{- range $pages.GroupByDate "2006" }}
+  <section class="year" aria-labelledby="y-{{ .Key }}">
+    <h2 class="year__label" id="y-{{ .Key }}"><span class="visually-hidden">{{ .Key }}</span>{{ partial "collage.html" (dict "text" .Key "class" "collage--outline" "step" 0.04) }}<span class="year__count" aria-hidden="true">{{ len .Pages }}</span></h2>
+    <ol class="menu-list">
+      {{- range $i, $p := .Pages }}{{ partial "menu-item.html" (dict "page" $p "i" $i) }}{{ end }}
+    </ol>
+  </section>
+  {{- end }}
+  {{- end }}
+</div>
+{{ end }}
