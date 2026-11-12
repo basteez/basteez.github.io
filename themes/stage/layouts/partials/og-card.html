@@ -1,0 +1,56 @@
+{{- /*
+  Link-preview card (1200x630) for OpenGraph/Twitter. Returns an image resource.
+
+  - Posts: the series, title and date are written with images.Text onto
+    assets/og/post-base.png, the background drawn in _source/og-cards.html.
+  - Everything else: assets/og/site.png.
+
+  images.Text only wraps at the edge of the image, so the title is wrapped here,
+  by an estimated glyph width, to keep it inside the black slab (x 66..806).
+*/ -}}
+{{- $card := resources.Get "og/site.png" -}}
+{{- if and .IsPage (in site.Params.mainSections .Section) -}}
+  {{- $base := resources.Get "og/post-base.png" -}}
+  {{- $display := resources.Get "og/fonts/DelaGothicOne-Regular.ttf" -}}
+  {{- $mono := resources.Get "og/fonts/CourierPrime-Bold.ttf" -}}
+  {{- $x := 66 }}{{ $maxW := 740.0 -}}
+  {{- /* the card font has no emoji or pictographs: drop them (e.g. the 🚀 in the Lombok post) */ -}}
+  {{- $title := replaceRE `[\p{So}\p{Sk}\x{FE0F}\x{200D}]` "" .Title | strings.TrimSpace | replaceRE `\s+` " " -}}
+  {{- $series := index (.GetTerms "series") 0 -}}
+  {{- $top := cond (ne $series nil) 162 124 }}{{ $bottom := 466 -}}
+
+  {{- /* largest size whose wrapped title fits both the slab width and the height above the date line
+         (Dela Gothic One averages ~0.66em per glyph on these titles) */ -}}
+  {{- $size := 40 }}{{ $lines := slice -}}
+  {{- range $s := slice 66 58 52 46 40 -}}
+    {{- if not $lines -}}
+      {{- $cw := mul $s 0.66 -}}
+      {{- $acc := slice }}{{ $cur := "" -}}
+      {{- range $w := split $title " " -}}
+        {{- $try := cond (eq $cur "") $w (printf "%s %s" $cur $w) -}}
+        {{- if and (ne $cur "") (gt (mul (strings.RuneCount $try) $cw) $maxW) -}}
+          {{- $acc = $acc | append $cur }}{{ $cur = $w -}}
+        {{- else -}}
+          {{- $cur = $try -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $acc = $acc | append $cur -}}
+      {{- $h := mul (len $acc) (int (mul $s 1.22)) -}}
+      {{- if or (le $h (sub $bottom $top)) (eq $s 40) }}{{ $lines = $acc }}{{ $size = $s }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $filters := slice -}}
+  {{- with $series -}}
+    {{- $filters = $filters | append (images.Text (printf "SERIES · %s" (upper .LinkTitle)) (dict "font" $mono "size" 30 "color" "#ff3344" "x" $x "y" 104)) -}}
+  {{- end -}}
+  {{- $y := $top -}}
+  {{- $lh := int (mul $size 1.22) -}}
+  {{- range $i, $l := $lines -}}
+    {{- $filters = $filters | append (images.Text $l (dict "font" $display "size" $size "color" "#ffffff" "x" $x "y" (add $y (mul $i $lh)))) -}}
+  {{- end -}}
+  {{- $meta := printf "%s · %d MIN READ" (.Date.Format "Jan 02, 2006" | upper) .ReadingTime -}}
+  {{- $filters = $filters | append (images.Text $meta (dict "font" $mono "size" 30 "color" "#ffffff" "x" $x "y" 500)) -}}
+  {{- $card = $base | images.Filter $filters -}}
+{{- end -}}
+{{- return $card -}}
