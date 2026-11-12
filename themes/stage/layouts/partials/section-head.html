@@ -1,0 +1,6 @@
+{{- /* Collage heading on the red stage. Params: text, id, tag (default h2), label (accessible text, default = text) */ -}}
+{{- $tag := .tag | default "h2" -}}
+{{- printf "<%s class=\"section-head\"%s>" $tag (cond (ne .id nil) (printf " id=%q" (.id | default "")) "") | safeHTML -}}
+<span class="visually-hidden">{{ .label | default .text }}</span>
+{{- partial "collage.html" (dict "text" .text "class" "collage--outline" "case" "upper" "step" 0.04) -}}
+{{- printf "</%s>" $tag | safeHTML -}}

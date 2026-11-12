@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode | default "en" }}">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body class="kind-{{ .Kind }} {{ with .Section }}section-{{ . }}{{ end }} {{ with .Layout }}layout-{{ . }}{{ end }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {{- partial "site-header.html" . -}}
+  <main id="main" tabindex="-1">
+    {{- block "main" . }}{{ end -}}
+  </main>
+  {{- partial "site-footer.html" . -}}
+  {{- partial "scripts.html" . -}}
+  {{- /* Site-level hook kept from the previous theme: loads Mermaid only on pages that use it. */ -}}
+  {{- partial "footer/custom.html" . -}}
+</body>
+</html>

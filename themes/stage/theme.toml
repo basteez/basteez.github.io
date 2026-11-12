@@ -1,0 +1,9 @@
+name = "Stage"
+license = "MIT"
+description = "Red, black and white ransom-note theme for bstz.it, matching the \"Take the Stage\" GitHub profile."
+homepage = "https://bstz.it"
+min_version = "0.146.0"
+
+[author]
+  name = "Tiziano Basile"
+  homepage = "https://bstz.it"

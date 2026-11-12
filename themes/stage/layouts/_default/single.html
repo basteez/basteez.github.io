@@ -1,0 +1,81 @@
+{{ define "main" }}
+{{- $isPost := in site.Params.mainSections .Section -}}
+{{- $series := index (.GetTerms "series") 0 -}}
+{{- $toc := and (site.Params.article.toc | default true) (ne .Params.toc false) (strings.Contains .TableOfContents "<li>") -}}
+{{- $cover := partial "helper/image.html" (dict "Context" . "Type" "cover") -}}
+
+{{- if $isPost }}
+<div class="progress" aria-hidden="true"><span></span></div>
+{{- end }}
+
+<article class="post{{ if $toc }} post--toc{{ end }}">
+  <header class="post-head">
+    <div class="wrap">
+      <div class="post-head__slab slab slab--shadow-black slam-l">
+        {{- with $series }}
+        {{- $parts := .Pages.ByDate }}{{ $n := 0 }}
+        {{- range $i, $p := $parts }}{{ if eq $p.RelPermalink $.RelPermalink }}{{ $n = add $i 1 }}{{ end }}{{ end }}
+        <p class="post-head__series"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> <span>Part {{ $n }} of {{ len $parts }}</span></p>
+        {{- end }}
+        {{- partial "strips.html" (dict "title" .Title "class" "post-head__title") }}
+        {{- if $isPost }}
+        <ul class="stamps post-head__stamps" aria-label="Post details">
+          <li><time class="stamp" style="--r:-3deg" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format (site.Params.dateFormat.published | default "Jan 02, 2006") | upper }}</time></li>
+          {{- if site.Params.article.readingTime }}
+          <li><span class="stamp stamp--red" style="--r:2deg">{{ .ReadingTime }} min read</span></li>
+          {{- end }}
+          {{- range $i, $c := .GetTerms "categories" }}
+          <li><a class="stamp stamp--black" style="--r:{{ cond (modBool $i 2) "-1deg" "2deg" }}" href="{{ .RelPermalink }}"><span class="visually-hidden">Category: </span>{{ .LinkTitle }}</a></li>
+          {{- end }}
+          {{- range $i, $t := .GetTerms "tags" }}
+          <li><a class="stamp" style="--r:{{ cond (modBool $i 2) "1.5deg" "-2deg" }}" href="{{ .RelPermalink }}"><span class="visually-hidden">Tag: </span>#{{ .Data.Term }}</a></li>
+          {{- end }}
+        </ul>
+        {{- end }}
+      </div>
+    </div>
+  </header>
+
+  {{- if $cover.exists }}
+  {{- $src := $cover.permalink }}{{ $srcset := "" }}{{ $w := 0 }}{{ $h := 0 }}
+  {{- with $cover.resource }}
+    {{- $m := .Resize "1200x webp" }}{{ $s := .Resize "640x webp" }}
+    {{- $src = $m.RelPermalink }}{{ $srcset = printf "%s 640w, %s 1200w" $s.RelPermalink $m.RelPermalink }}{{ $w = $m.Width }}{{ $h = $m.Height }}
+  {{- end }}
+  <figure class="post-cover wrap drop" style="--delay:.25s">
+    <img src="{{ $src }}"{{ with $srcset }} srcset="{{ . }}" sizes="(min-width: 1000px) 900px, 100vw"{{ end }}{{ with $w }} width="{{ . }}"{{ end }}{{ with $h }} height="{{ . }}"{{ end }} alt="{{ .Params.imageAlt | default "" }}" fetchpriority="high">
+  </figure>
+  {{- end }}
+
+  <div class="post-layout wrap">
+    {{- if $toc }}
+    <aside class="toc-box" aria-labelledby="toc-label">
+      <details class="toc" data-toc>
+        <summary id="toc-label"><span>Contents</span></summary>
+        {{ .TableOfContents }}
+      </details>
+    </aside>
+    {{- end }}
+    <div class="paper"{{ if $isPost }} data-pagefind-body{{ end }}>
+      {{- if $isPost }}<span hidden data-pagefind-meta="title">{{ .Title }}</span><span hidden data-pagefind-meta="date">{{ .Date.Format "Jan 02, 2006" | upper }}</span>{{ end }}
+      <div class="prose">
+        {{- $wrappedTable := printf "<div class=\"table-wrapper\">${1}</div>" }}
+        {{- .Content | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
+      </div>
+      {{- if and $isPost site.Params.article.license.enabled }}
+      <footer class="paper__foot">
+        <p>{{ .Params.license | default site.Params.article.license.default | markdownify }}</p>
+      </footer>
+      {{- end }}
+    </div>
+  </div>
+
+  {{- if $isPost }}
+  <div class="wrap post-after">
+    {{- with $series }}{{ partial "series-nav.html" (dict "term" . "page" $) }}{{ end }}
+    {{- partial "post-nav.html" . }}
+    {{- partial "comments.html" . }}
+  </div>
+  {{- end }}
+</article>
+{{ end }}

@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{- partial "page-head.html" (dict "title" "Search" "kicker" "FIND TARGET") }}
+<div class="wrap list-body search">
+  <form class="search__form" role="search" action="{{ .RelPermalink }}" data-search data-bundle="{{ "pagefind/" | relURL }}">
+    <label class="search__label" for="search-q">Search every post</label>
+    <div class="search__row">
+      <input class="search__input" id="search-q" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="e.g. singleton, godot, bmad">
+      <button class="btn search__btn" type="submit"><span>Search ▶</span></button>
+    </div>
+  </form>
+  <p class="search__status" role="status" aria-live="polite" data-search-status>
+    <noscript>Search needs JavaScript. You can still browse <a href="{{ "post/" | relURL }}">every post</a> or <a href="{{ "tags/" | relURL }}">the tags</a>.</noscript>
+  </p>
+  <ol class="menu-list search__results" data-search-results></ol>
+</div>
+{{ end }}

@@ -1,0 +1,10 @@
+{{- /* Same titles as the previous theme: home = site title, taxonomy term = "Tags: java - Site", everything else = page title. */ -}}
+{{- $title := .Title -}}
+{{- if .IsHome -}}
+  {{- $title = site.Title -}}
+{{- else if eq .Kind "term" -}}
+  {{- $title = printf "%s: %s - %s" (title .Data.Singular) .Title site.Title -}}
+{{- else if eq .Kind "taxonomy" -}}
+  {{- $title = printf "%s - %s" .Title site.Title -}}
+{{- end -}}
+{{- return $title -}}
