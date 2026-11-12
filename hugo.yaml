@@ -1,6 +1,6 @@
 baseurl: https://bstz.it
 languageCode: en-us
-theme: hugo-theme-stack
+theme: stage
 title: Tiziano Basile | Software Engineer
 
 pagination:
@@ -35,7 +35,20 @@ permalinks:
   post: /p/:slug/
   page: /:slug/
 
+# `series` groups multi-part posts (BMAD, Wild Shift Devlog, ...).
+# Declaring taxonomies replaces Hugo's defaults, so tags and categories are listed too.
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
 params:
+  # "Take the Stage" theme (themes/stage)
+  stage:
+    name: [TIZIANO, BASILE]
+    role: SENIOR SOFTWARE ENGINEER
+    stack: [JAVA, QUARKUS, SPRING BOOT, K8S, AI]
+    latestCount: 5
   mainSections:
     - post
   featuredImageField: image
@@ -195,7 +208,31 @@ params:
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
-  main: []
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 1
+    - identifier: posts
+      name: Posts
+      url: /post/
+      weight: 2
+    - identifier: series
+      name: Series
+      url: /series/
+      weight: 3
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 4
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 5
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 6
 
   social:
     - identifier: github
@@ -208,6 +245,18 @@ menu:
       url: https://www.linkedin.com/in/tiziano-basile-264681147/
       params:
         icon: brand-linkedin
+    - identifier: devto
+      name: dev.to
+      url: https://dev.to/basteez
+    - identifier: stackoverflow
+      name: Stack Overflow
+      url: https://stackoverflow.com/users/1895405
+    - identifier: itchio
+      name: itch.io
+      url: https://basteez.itch.io
+    - identifier: email
+      name: Email
+      url: mailto:tiz.basile@gmail.com
 
 related:
   includeNewer: true

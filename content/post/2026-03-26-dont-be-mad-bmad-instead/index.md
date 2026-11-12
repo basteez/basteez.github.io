@@ -9,6 +9,8 @@ tags:
   - productivity
   - bmad
 comments: true
+series:
+  - BMAD
 ---
 
 **This post is part of a series:**

@@ -11,6 +11,8 @@ categories:
   - game-dev
 comments: true
 date: 2026-11-10
+series:
+  - Wild Shift Devlog
 ---
 
 It's November again, which means GitHub Game Off. Last year I built [Grav-Sync](https://bstz.it/p/adding-interactive-cockpit-controls-to-grav-sync/) in plain JavaScript; this year the theme is **SHIFT** and my entry is **The Debugger 0x03: Wild Shift**, a top-down boss rush made with Godot 4.7. You can follow it on [itch.io](https://basteez.itch.io/wild-shift), and this post is a mirror of the [first devlog I published there](https://basteez.itch.io/wild-shift/devlog/1767483/devlog-1-your-weapon-is-a-byte-building-the-register).

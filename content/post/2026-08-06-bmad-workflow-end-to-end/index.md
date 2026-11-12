@@ -10,6 +10,8 @@ tags:
   - bmad
   - spec-driven-development
 comments: true
+series:
+  - BMAD
 ---
 
 If the only way you've ever worked with an AI is to _vibe code_ with it, which is to say you open the editor, type a prompt, and keep whatever looks roughly right, then this is the post I wish someone had handed me back when I was doing exactly that. It isn't another argument about why spec-driven development is better, because I already made that case [here](/p/dont-be-mad-bmad-instead/); it's simply one complete pass through a real workflow, with the actual commands, so that you can see for yourself what the whole thing looks like from the inside.

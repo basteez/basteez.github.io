@@ -8,6 +8,8 @@ categories:
   - game-dev
 comments: true
 date: 2025-11-02
+series:
+  - Grav Sync Devlog
 ---
 
 This year again, as every November since 2012, [GitHub Game Off](https://itch.io/jam/game-off-2025) takes place, the game jam organized by GitHub where you have to develop a video game on a specific theme within a month.
