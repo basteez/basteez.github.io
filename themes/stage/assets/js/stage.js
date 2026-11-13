@@ -1,6 +1,40 @@
 // Stage theme: progressive enhancements only. Every page works without this file.
 (() => {
   "use strict";
+  // Pause motion (starburst + ticker). The choice is remembered on this device.
+  const root = document.documentElement;
+  const KEY = "stage-motion";
+  let paused = false;
+  try { paused = localStorage.getItem(KEY) === "paused"; } catch (e) { /* storage blocked: default to moving */ }
+  const applyMotion = () => {
+    if (paused) root.dataset.motion = "paused"; else delete root.dataset.motion;
+    document.querySelectorAll("[data-motion-toggle]").forEach((b) => {
+      b.setAttribute("aria-pressed", String(paused));
+      const icon = b.querySelector("[data-motion-icon]");
+      if (icon) icon.textContent = paused ? "▶" : "❚❚";
+    });
+  };
+  document.querySelectorAll("[data-motion-toggle]").forEach((b) => {
+    b.hidden = false;
+    b.addEventListener("click", () => {
+      paused = !paused;
+      try { localStorage.setItem(KEY, paused ? "paused" : "moving"); } catch (e) { /* ignore */ }
+      applyMotion();
+    });
+  });
+  applyMotion();
+
+  // Code blocks: Chroma puts line numbers in a layout table. Screen readers would read
+  // "1 2 3 4" before the code, so the table becomes presentational and the numbers are hidden.
+  document.querySelectorAll("table.lntable").forEach((t) => {
+    t.setAttribute("role", "presentation");
+    const nums = t.querySelector("td.lntd:first-child");
+    if (nums) {
+      nums.setAttribute("aria-hidden", "true");
+      nums.querySelectorAll("[tabindex]").forEach((el) => el.removeAttribute("tabindex"));
+    }
+  });
+
   // Reading progress: CSS scroll-driven animation where supported, this fallback elsewhere (e.g. Firefox).
   const bar = document.querySelector(".progress span");
   if (bar && !CSS.supports("animation-timeline: scroll()")) {

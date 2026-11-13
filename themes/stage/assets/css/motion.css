@@ -10,8 +10,8 @@
 .slam-l{animation:slam-l .45s var(--ease-slam) both;animation-delay:var(--delay,0s)}
 .slam-r{animation:slam-r .45s var(--ease-slam) both;animation-delay:var(--delay,0s)}
 .drop{animation:drop .5s cubic-bezier(.2,1.6,.4,1) both;animation-delay:var(--delay,0s)}
-.thump{animation:thump 1.2s ease-in-out infinite}
-.blink{animation:blink 1s steps(1) infinite}
+.thump{animation:thump 1.2s ease-in-out 3}
+.blink{animation:blink 1s steps(1) 4}
 
 /* Page transitions: cross-document View Transitions where supported (no JS).
    The header stays put; the page slams in from the right. */
@@ -29,3 +29,16 @@
   .ticker__track p+p{display:none}
   ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
 }
+
+/* The starburst and the ticker keep moving, so they can be paused (WCAG 2.2.2):
+   the ticker on hover/focus, and everything with the "Pause motion" button (stage.js),
+   which sets data-motion="paused" on <html> and remembers it. */
+.ticker:hover .ticker__track,.ticker:focus-within .ticker__track{animation-play-state:paused}
+html[data-motion="paused"] .hero__burst,html[data-motion="paused"] .ticker__track{animation-play-state:paused}
+.motion-toggle{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  padding:6px 12px;font:700 12.5px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--white);background:var(--black);border:2px solid var(--white);transform:skewX(var(--skew))}
+.motion-toggle>span{display:block;transform:skewX(14deg)}
+.motion-toggle:hover{background:var(--red)}
+.motion-toggle[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.motion-toggle{display:none}}

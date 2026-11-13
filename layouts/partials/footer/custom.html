@@ -39,50 +39,90 @@
             max-width: 100%;
             max-height: 100%;
         }
-        .mermaid-modal__hint {
+        .mermaid-modal__close {
             position: fixed;
             top: 1rem;
             right: 1.25rem;
-            color: #fff;
-            font-size: .85rem;
-            opacity: .75;
-            user-select: none;
+            padding: .45rem .9rem;
+            font: inherit;
+            font-size: .9rem;
+            color: #000;
+            background: #fff;
+            border: 2px solid #000;
+            cursor: pointer;
         }
+        .mermaid-modal__close:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+        .mermaid-zoom {
+            padding: .35rem .8rem;
+            font: inherit;
+            font-size: .85rem;
+            color: #fff;
+            background: #000;
+            border: 2px solid #000;
+            cursor: zoom-in;
+        }
+        .mermaid-zoom:hover { background: #e60012; }
     </style>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: false });
         await mermaid.run();
 
+        // Enlarged view: a real dialog with a close button, Esc, and focus returned to where it came from.
         const modal = document.createElement('div');
         modal.className = 'mermaid-modal';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-label', 'Enlarged diagram');
         modal.innerHTML =
-            '<span class="mermaid-modal__hint">click anywhere or press Esc to close</span>' +
+            '<button type="button" class="mermaid-modal__close">Close <span aria-hidden="true">✕</span></button>' +
             '<div class="mermaid-modal__body"></div>';
         document.body.appendChild(modal);
         const body = modal.querySelector('.mermaid-modal__body');
+        const closeBtn = modal.querySelector('.mermaid-modal__close');
+        let opener = null;
 
         const close = () => {
+            if (!modal.classList.contains('open')) return;
             modal.classList.remove('open');
             body.innerHTML = '';
+            if (opener) opener.focus();
         };
-        modal.addEventListener('click', close);
+        const open = (el, from) => {
+            const svg = el.querySelector('svg');
+            if (!svg) return;
+            // Mermaid scopes the diagram's CSS (and its arrow markers) to the SVG id, so the copy
+            // keeps its styles only if every reference to that id is renamed together.
+            const id = svg.id;
+            body.innerHTML = id ? svg.outerHTML.split(id).join(id + '-zoom') : svg.outerHTML;
+            const clone = body.querySelector('svg');
+            clone.removeAttribute('style');
+            clone.removeAttribute('width');
+            clone.removeAttribute('height');
+            opener = from;
+            modal.classList.add('open');
+            closeBtn.focus();
+        };
+        modal.addEventListener('click', (e) => { if (e.target !== closeBtn) close(); });
+        closeBtn.addEventListener('click', close);
         document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('open')) return;
             if (e.key === 'Escape') close();
+            if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); } // the close button is the only stop
         });
 
-        document.querySelectorAll('.mermaid').forEach((el) => {
-            el.addEventListener('click', () => {
-                const svg = el.querySelector('svg');
-                if (!svg) return;
-                const clone = svg.cloneNode(true);
-                clone.removeAttribute('style');
-                clone.removeAttribute('width');
-                clone.removeAttribute('height');
-                body.innerHTML = '';
-                body.appendChild(clone);
-                modal.classList.add('open');
-            });
+        document.querySelectorAll('.mermaid-figure').forEach((fig) => {
+            const el = fig.querySelector('.mermaid');
+            const cap = fig.querySelector('.mermaid-caption');
+            if (!el) return;
+            el.addEventListener('click', () => open(el, btn));
+            // Keyboard and screen-reader users get a real button in the caption.
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'mermaid-zoom';
+            btn.textContent = 'Enlarge diagram';
+            btn.addEventListener('click', () => open(el, btn));
+            if (cap) cap.replaceChildren(btn); else fig.appendChild(btn);
         });
     </script>
 {{ end }}

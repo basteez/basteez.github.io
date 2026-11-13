@@ -60,7 +60,7 @@
 .note__title a{text-decoration:none;color:var(--black)}
 .note__title a::after{content:"";position:absolute;inset:0;z-index:1} /* whole note is the link target */
 .note__title a:focus-visible{outline:none;box-shadow:none}
-.note:has(a:focus-visible){outline:3px solid var(--black);outline-offset:5px}
+.note:has(a:focus-visible){outline:3px dashed var(--white);outline-offset:8px} /* same ring as every other control */
 .note__meta{margin:6px 0 0;font:700 12px/1.4 var(--f-mono);color:#4d4d4d;letter-spacing:.03em}
 .note__series{background:var(--red);color:var(--white);padding:1px 6px;text-transform:uppercase}
 .note__cover{flex:none;width:150px;height:auto;aspect-ratio:16/10;object-fit:cover;transform:rotate(3deg);border:3px solid var(--black);box-shadow:5px 5px 0 var(--red)}
