@@ -203,7 +203,7 @@ earth = new Sprite(animation, earthX, earthY, random(0.1, 0.4), spriteScale);
 
 ### The Result
 
-![4.gif](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-08-game-off-waves-and-sprites/earth.gif?raw=true)
+![The game with the new animated Earth sprite rotating at the center, inside the blue player wave, while the white target wave closes in.](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-08-game-off-waves-and-sprites/earth.gif?raw=true)
 
 The sprite system brought immediate visual improvements:
 

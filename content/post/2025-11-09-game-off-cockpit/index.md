@@ -90,7 +90,7 @@ After implementing the cockpit feature, I also performed a minor refactoring to 
 
 ## Results
 
-![result.gif](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-09-game-off-cockpit/result.gif?raw=true)
+![The game with the new cockpit along the bottom of the screen: a red knob labelled F for frequency, a purple knob labelled A for amplitude, and a central panel showing the sync percentage and the score, with Earth and the waves above.](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-09-game-off-cockpit/result.gif?raw=true)
 
 The cockpit addition makes the game feel more polished and immersive. Players now have:
 

@@ -18,7 +18,7 @@ The **Singleton** pattern addresses this problem by:
 - Making the class constructor private to prevent direct instantiation from outside the class.
 - Providing a static public method that acts as a constructor. Before creating a new instance, it checks if an instance already exists in a private static field. If the field is `null`, it creates a new instance and assigns it to the field; otherwise, it returns the existing instance.
 
-![SingletonDiagram.svg](SingletonDiagram.svg)
+![UML class diagram of the Singleton pattern: Client calls getInstance() on the Singleton class, which has a private instance field of its own type, a private constructor, and a public getInstance() method that returns that instance.](SingletonDiagram.svg)
 ## Java example
 ```java
 public class Singleton {

@@ -23,7 +23,7 @@ The key advantages of this approach include:
 * **Reusability**: decorators can be combined in different ways to create complex scenarios
 * **Single responsibility principle**: each decorator adds only the set of concerns it needs
 
-![DecoratorDiagram.svg](DecoratorDiagram.svg)
+![UML class diagram of the Decorator pattern: Client uses the Component interface and its doSomething() method. ConcreteComponent and BaseDecorator implement it; BaseDecorator wraps a Component (wrappee) and forwards doSomething() to it. Concrete decorators extend BaseDecorator, call super.doSomething() and then doExtraStuff(). A note shows the client stacking them: a ConcreteComponent wrapped by ConcreteDecorator1, wrapped by ConcreteDecorator2, then calling doSomething() on the outermost one.](DecoratorDiagram.svg)
 ## Real-World example
 In a typical software application, you might have a notification system that sends out alerts, updates, or messages to users. This system could start simple, just sending plain notifications. However, as the application grows, new requirements often emerge, such as:
 

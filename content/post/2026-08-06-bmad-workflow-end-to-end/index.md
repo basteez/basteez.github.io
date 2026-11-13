@@ -54,6 +54,8 @@ Broadly speaking there are two stages to all of this, a **planning** stage in wh
 
 ```mermaid
 flowchart LR
+    accTitle: BMAD workflow, from a vague idea to reviewed code
+    accDescr: In the Planning stage the Analyst (Mary) brainstorms and writes brief.md, the PM (John) writes the PRD in prd.md, the Architect (Winston) writes architecture.md, and a story in story.md hands the context over. In the Implementation stage the Dev (Amelia) implements the story, and a code review turns it into reviewed code.
     idea([Vague idea]) --> A
 
     subgraph Planning
