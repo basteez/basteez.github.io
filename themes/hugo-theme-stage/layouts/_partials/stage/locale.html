@@ -1,4 +1,0 @@
-{{- /* The site's locale ("en-US"): Language.Locale on Hugo 0.158+, where LanguageCode is deprecated. May be "". */ -}}
-{{- $l := "" -}}
-{{- if ge hugo.Version "0.158.0" }}{{ $l = site.Language.Locale }}{{ else }}{{ $l = site.Language.LanguageCode }}{{ end -}}
-{{- return $l -}}

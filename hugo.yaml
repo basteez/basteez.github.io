@@ -1,7 +1,10 @@
 baseurl: https://bstz.it
 languageCode: en-us
-theme: hugo-theme-stage
 title: Tiziano Basile | Software Engineer
+
+module:
+  imports:
+    - path: github.com/basteez/hugo-theme-stage
 
 pagination:
   pagerSize: 10
