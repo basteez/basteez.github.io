@@ -1,9 +1,0 @@
-{{- /* A post as a game-menu entry ("SELECT TARGET"). Params: page, i (int), num (string, optional), current (bool) */ -}}
-{{- $p := .page -}}
-<li class="mi" style="--i:{{ mod .i 4 }}">
-  <a href="{{ $p.RelPermalink }}"{{ if .current }} aria-current="page"{{ end }}>
-    {{- with .num }}<span class="mi__num">{{ . }}</span>{{ end }}
-    <span class="mi__label">{{ $p.Title }}</span>
-    <time class="mi__meta" datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "Jan 02, 2006" | upper }}</time>
-  </a>
-</li>

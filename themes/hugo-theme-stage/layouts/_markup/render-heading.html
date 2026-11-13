@@ -1,0 +1,3 @@
+{{- /* Headings keep their id (the TOC and links point to it) and any {.class} attribute. */ -}}
+<h{{ .Level }} id="{{ .Anchor }}"{{ with .Attributes.class }} class="{{ . }}"{{ end }}>{{ .Text }}</h{{ .Level }}>
+{{- /* no trailing newline */ -}}

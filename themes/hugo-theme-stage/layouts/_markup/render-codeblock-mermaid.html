@@ -1,0 +1,12 @@
+{{- /*
+  ```mermaid {caption="..."}
+  Diagrams are drawn in the browser by Mermaid (params.stage.mermaid), loaded only on pages that have one.
+  Without JavaScript the diagram source stays readable as text. The caption, if any, becomes a figcaption.
+*/ -}}
+{{- .Page.Store.Set "hasMermaid" true -}}
+<figure class="mermaid-figure">
+<pre class="mermaid">{{ .Inner | htmlEscape | safeHTML }}</pre>
+{{- with .Attributes.caption }}
+<figcaption class="mermaid-caption">{{ . }}</figcaption>
+{{- end }}
+</figure>

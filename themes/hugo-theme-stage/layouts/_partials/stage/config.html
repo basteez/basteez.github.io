@@ -1,0 +1,119 @@
+{{- /*
+  Stage configuration: every theme setting, resolved once per language.
+
+  Each setting is read from params.stage.*, then from the older names used by sites
+  coming from other themes (params.article.toc, params.footer.since, ...), then falls
+  back to a default. Call it with:
+
+    {{ $cfg := partialCached "stage/config.html" . site.Language.Lang }}
+
+  The full list of settings, with defaults, is documented in README.md.
+*/ -}}
+{{- $p := "stage/param.html" -}}
+
+{{- /* ---------------------------------------------------------------- identity */ -}}
+{{- $host := (urls.Parse site.BaseURL).Hostname | strings.TrimPrefix "www." -}}
+{{- $brandDefault := site.Title -}}
+{{- if and $host (not (in (slice "localhost" "127.0.0.1" "example.org" "example.com") $host)) }}{{ $brandDefault = $host }}{{ end -}}
+{{- $brand := partial $p (dict "paths" (slice "stage.brand")) | default $brandDefault | string | upper -}}
+
+{{- $name := partial $p (dict "paths" (slice "stage.hero.name" "stage.name") "default" site.Title) -}}
+{{- if not (reflect.IsSlice $name) }}{{ $name = split (string $name) " " }}{{ end -}}
+{{- $nameLines := slice }}{{ range $name }}{{ with strings.TrimSpace (string .) }}{{ $nameLines = $nameLines | append (upper .) }}{{ end }}{{ end -}}
+{{- if not $nameLines }}{{ $nameLines = slice $brand }}{{ end -}}
+
+{{- $stack := partial $p (dict "paths" (slice "stage.hero.stack" "stage.stack") "default" slice) -}}
+{{- if not (reflect.IsSlice $stack) }}{{ $stack = slice $stack }}{{ end -}}
+
+{{- $since := partial $p (dict "paths" (slice "stage.since" "footer.since") "default" "") -}}
+
+{{- $description := partial $p (dict "paths" (slice "stage.description" "description" "sidebar.subtitle") "default" "") -}}
+
+{{- /* ---------------------------------------------------------------- home */ -}}
+{{- $sections := partial $p (dict "paths" (slice "stage.home.sections") "default" (slice "latest" "series" "contact")) -}}
+{{- $tickerItems := partial $p (dict "paths" (slice "stage.home.ticker.items") "default" slice) -}}
+{{- if not (reflect.IsSlice $tickerItems) }}{{ $tickerItems = slice $tickerItems }}{{ end -}}
+
+{{- /* ---------------------------------------------------------------- article */ -}}
+{{- $license := partial $p (dict "paths" (slice "stage.article.license") "default" "") -}}
+{{- if and (eq $license "") (partial $p (dict "paths" (slice "article.license.enabled") "default" false)) -}}
+  {{- $license = partial $p (dict "paths" (slice "article.license.default") "default" "") -}}
+{{- end -}}
+
+{{- /* ---------------------------------------------------------------- comments */ -}}
+{{- $provider := partial $p (dict "paths" (slice "stage.comments.provider") "default" "") -}}
+{{- if eq $provider "" -}}
+  {{- if partial $p (dict "paths" (slice "comments.enabled") "default" false) -}}
+    {{- $provider = partial $p (dict "paths" (slice "comments.provider") "default" "") -}}
+  {{- end -}}
+{{- end -}}
+{{- $provider = lower (string $provider) -}}
+{{- if not (in (slice "disqus" "giscus") $provider) }}{{ $provider = "none" }}{{ end -}}
+{{- if and (eq $provider "disqus") (not site.Config.Services.Disqus.Shortname) }}{{ $provider = "none" }}{{ end -}}
+{{- $giscus := dict -}}
+{{- range $k, $legacy := dict
+    "repo" "repo" "repoId" "repoID" "category" "category" "categoryId" "categoryID"
+    "mapping" "mapping" "strict" "strict" "reactionsEnabled" "reactionsEnabled" "emitMetadata" "emitMetadata"
+    "inputPosition" "inputPosition" "lang" "lang" "lightTheme" "lightTheme" "darkTheme" "darkTheme" -}}
+  {{- $v := partial $p (dict "paths" (slice (printf "stage.comments.giscus.%s" $k) (printf "comments.giscus.%s" $legacy))) -}}
+  {{- if ne $v nil }}{{ $giscus = merge $giscus (dict $k $v) }}{{ end -}}
+{{- end -}}
+{{- if and (eq $provider "giscus") (not (and $giscus.repo $giscus.repoId $giscus.categoryId)) }}{{ $provider = "none" }}{{ end -}}
+
+{{- /* ---------------------------------------------------------------- favicon */ -}}
+{{- $favicon := dict
+    "ico"        (partial $p (dict "paths" (slice "stage.favicon.ico" "favicon") "default" ""))
+    "svg"        (partial $p (dict "paths" (slice "stage.favicon.svg") "default" ""))
+    "appleTouch" (partial $p (dict "paths" (slice "stage.favicon.appleTouch") "default" ""))
+    "letter"     (partial $p (dict "paths" (slice "stage.favicon.letter")) | default (substr $brand 0 1))
+-}}
+{{- /* zero-config: icons the site already ships in static/ are used as they are */ -}}
+{{- if and (not $favicon.svg) (os.FileExists "static/favicon.svg") }}{{ $favicon = merge $favicon (dict "svg" "/favicon.svg") }}{{ end -}}
+{{- if and (not $favicon.appleTouch) (os.FileExists "static/apple-touch-icon.png") }}{{ $favicon = merge $favicon (dict "appleTouch" "/apple-touch-icon.png") }}{{ end -}}
+
+{{- $cfg := dict
+  "brand" $brand
+  "description" (string $description)
+  "since" $since
+  "dateFormat" (partial $p (dict "paths" (slice "stage.dateFormat" "dateFormat.published")) | default ":date_medium")
+  "footerText" (partial $p (dict "paths" (slice "stage.footer.text" "footer.customText") "default" ""))
+  "coverField" (partial $p (dict "paths" (slice "stage.cover.field" "featuredImageField")) | default "image")
+  "hero" (dict
+    "name" $nameLines
+    "role" (partial $p (dict "paths" (slice "stage.hero.role" "stage.role") "default" ""))
+    "stack" $stack
+    "status" (partial $p (dict "paths" (slice "stage.hero.status") "default" true))
+    "stats" (partial $p (dict "paths" (slice "stage.hero.stats") "default" true))
+  )
+  "home" (dict
+    "sections" $sections
+    "latestCount" (int (partial $p (dict "paths" (slice "stage.home.latest.count" "stage.latestCount") "default" 5)))
+    "latestTitle" (partial $p (dict "paths" (slice "stage.home.latest.title") "default" ""))
+    "seriesTitle" (partial $p (dict "paths" (slice "stage.home.series.title") "default" ""))
+    "contactTitle" (partial $p (dict "paths" (slice "stage.home.contact.title") "default" ""))
+    "contactRSS" (partial $p (dict "paths" (slice "stage.home.contact.rss") "default" true))
+    "ticker" (partial $p (dict "paths" (slice "stage.home.ticker.enabled") "default" true))
+    "tickerItems" $tickerItems
+  )
+  "article" (dict
+    "toc" (partial $p (dict "paths" (slice "stage.article.toc" "article.toc") "default" true))
+    "readingTime" (partial $p (dict "paths" (slice "stage.article.readingTime" "article.readingTime") "default" true))
+    "progress" (partial $p (dict "paths" (slice "stage.article.progress") "default" true))
+    "externalLinksNewTab" (partial $p (dict "paths" (slice "stage.article.externalLinksNewTab") "default" true))
+    "license" (string $license)
+  )
+  "motion" (partial $p (dict "paths" (slice "stage.motion.enabled") "default" true))
+  "search" (partial $p (dict "paths" (slice "stage.search.enabled") "default" true))
+  "comments" (dict "provider" $provider "giscus" $giscus)
+  "mermaid" (dict
+    "enabled" (partial $p (dict "paths" (slice "stage.mermaid.enabled") "default" true))
+    "url" (partial $p (dict "paths" (slice "stage.mermaid.url")) | default "https://cdn.jsdelivr.net/npm/mermaid@12.3.0/dist/mermaid.esm.min.mjs")
+  )
+  "og" (dict
+    "cards" (partial $p (dict "paths" (slice "stage.og.cards") "default" true))
+    "twitterSite" (partial $p (dict "paths" (slice "stage.og.twitter.site" "opengraph.twitter.site") "default" ""))
+    "twitterCard" (partial $p (dict "paths" (slice "stage.og.twitter.card" "opengraph.twitter.card")) | default "summary_large_image")
+  )
+  "favicon" $favicon
+-}}
+{{- return $cfg -}}

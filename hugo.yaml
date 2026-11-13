@@ -1,6 +1,6 @@
 baseurl: https://bstz.it
 languageCode: en-us
-theme: stage
+theme: hugo-theme-stage
 title: Tiziano Basile | Software Engineer
 
 pagination:

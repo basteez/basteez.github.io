@@ -1,0 +1,62 @@
+{{- /*
+  Ransom-note collage, rendered server-side.
+
+  Every letter is its own cut-paper tile with a ragged polygon, a font, a colour
+  scheme, a tilt and a staggered pop-in. The "randomness" is a linear congruential
+  generator seeded with hash.FNV32a of the text, so the same text always comes
+  out the same: no JS, no layout shift, stable between builds.
+
+  The output is decorative and aria-hidden. Callers must put the real text next
+  to it (usually in a .visually-hidden span inside the same heading).
+
+  Params (dict):
+    text     string   required
+    class    string   extra classes on the wrapper
+    schemes  string   "all" (default) | "hero" (no black tiles, for black slabs)
+    delay    float    seconds before the first tile pops (default 0)
+    step     float    seconds between tiles (default .05)
+    case     string   "mixed" (default) | "upper"
+*/ -}}
+{{- $text := .text -}}
+{{- $x := hash.FNV32a $text -}}
+{{- $schemes := slice "wb" "rw" "bw" "wr" -}}
+{{- if eq .schemes "hero" }}{{ $schemes = slice "wb" "rw" "wr" "rb" }}{{ end -}}
+{{- $delay := .delay | default 0.0 -}}
+{{- $step := .step | default 0.05 -}}
+{{- $mixed := ne .case "upper" -}}
+{{- $i := 0 -}}
+<span class="collage {{ .class }}" aria-hidden="true">
+{{- range $w, $word := split $text " " -}}
+  {{- if $word -}}
+  <span class="cw">
+  {{- range $ch := split $word "" -}}
+    {{- /* Draw six numbers in 0..999 from the LCG. */ -}}
+    {{- $r := slice -}}
+    {{- range seq 6 -}}
+      {{- $x = mod (add (mul $x 1664525) 1013904223) 4294967296 -}}
+      {{- $r = $r | append (div $x 4294968) -}}
+    {{- end -}}
+    {{- $scheme := index $schemes (mod (index $r 0) (len $schemes)) -}}
+    {{- $font := mod (index $r 1) 4 -}}
+    {{- $rot := sub (div (mul (index $r 2) 20.0) 1000) 10 -}}
+    {{- $dy := sub (div (mul (index $r 3) 0.18) 1000) 0.09 -}}
+    {{- $scale := add 0.86 (div (mul (index $r 4) 0.26) 1000) -}}
+    {{- $j := index $r 5 -}}
+    {{- /* Ragged edges: four corner offsets (0..7%) taken from the digits of one draw. */ -}}
+    {{- $j1 := mod $j 8 }}{{ $j2 := mod (div $j 8) 8 }}{{ $j3 := mod (div $j 64) 8 }}{{ $j4 := mod (add $j 3) 8 -}}
+    {{- $clip := printf "polygon(%d%% %d%%,%d%% %d%%,%d%% %d%%,%d%% %d%%)" $j1 $j2 (sub 100 $j3) $j1 (sub 100 $j2) (sub 100 $j4) $j4 (sub 100 $j3) -}}
+    {{- $glyph := $ch -}}
+    {{- if and $mixed (findRE `[A-Za-z]` $ch) (ge (index $r 2) 720) -}}
+      {{- $glyph = lower $ch -}}
+    {{- else -}}
+      {{- $glyph = upper $ch -}}
+    {{- end -}}
+    {{- $style := printf "--r:%.1fdeg;--dy:%.2fem;--s:%.2f;--d:%.2fs;clip-path:%s" $rot $dy $scale (add $delay (mul $i $step)) $clip -}}
+    <span class="tile t-{{ $scheme }} f{{ $font }}" style="{{ $style | safeCSS }}"><span>{{ $glyph }}</span></span>
+    {{- $i = add $i 1 -}}
+  {{- end -}}
+  </span>
+  {{- end -}}
+{{- end -}}
+</span>
+

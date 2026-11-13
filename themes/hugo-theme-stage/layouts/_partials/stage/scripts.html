@@ -1,0 +1,9 @@
+{{- /* One small vanilla script, deferred. Every page works without it: it adds the motion toggle, the
+       reading-progress fallback, the TOC cursor, lazy comments and search. Strings come from i18n via data-*. */ -}}
+{{- $js := resources.Get "js/stage.js" | minify | fingerprint -}}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- $cfg := partialCached "stage/config.html" . site.Language.Lang -}}
+{{- if and $cfg.mermaid.enabled (.Store.Get "hasMermaid") }}
+{{- $m := resources.Get "js/mermaid.js" | minify | fingerprint }}
+<script type="module" src="{{ $m.RelPermalink }}" integrity="{{ $m.Data.Integrity }}" data-mermaid-src="{{ $cfg.mermaid.url }}" data-enlarge="{{ T "enlargeDiagram" }}" data-enlarged="{{ T "enlargedDiagram" }}" data-close="{{ T "close" }}"></script>
+{{- end }}

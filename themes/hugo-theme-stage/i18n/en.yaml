@@ -1,0 +1,104 @@
+# Stage theme strings. Override any of them in your site's i18n/<lang>.yaml.
+# Collage texts (kickers, section heads) are shown in capitals; keep them short.
+
+# frame
+skipToContent: Skip to content
+homeLink: "{{ .Brand }}, home"
+mainMenu: Main
+builtWith: Built with <a href="https://gohugo.io/">Hugo</a>.
+rss: RSS
+
+# home
+heroStatus: "SYS://{{ .Brand }} ONLINE"
+heroSince: "BLOG SINCE {{ .Year }}"
+pauseMotion: Pause motion
+blogStats: Blog stats
+statPosts: POSTS
+statSeries: SERIES
+statTags: TAGS
+statSince: WRITING SINCE
+homeLatest: NEW INTEL
+homeLatestLabel: Latest posts
+homeSeries: SERIES
+homeContact: CONTACT
+allPosts:
+  one: "The only post"
+  other: "All {{ .Count }} posts"
+newBadge: New
+
+# ticker
+tickerPosts:
+  one: "{{ .Count }} POST"
+  other: "{{ .Count }} POSTS"
+tickerSeries: "{{ .Count }} SERIES"
+tickerTags:
+  one: "{{ .Count }} TAG"
+  other: "{{ .Count }} TAGS"
+tickerLatest: "LATEST: {{ .Title }}"
+tickerSince: "WRITING SINCE {{ .Year }}"
+tickerThanks: THANKS FOR STOPPING BY
+
+# lists
+selectTarget: SELECT TARGET
+findTarget: FIND TARGET
+allPostsTitle: All posts
+tagTitle: "Tag: #{{ .Term }}"
+termTitle: "{{ .Taxonomy }}: {{ .Term }}"
+postCount:
+  one: "{{ .Count }} post"
+  other: "{{ .Count }} posts"
+parts:
+  one: "{{ .Count }} PART"
+  other: "{{ .Count }} PARTS"
+latestOn: "LATEST {{ .Date }}"
+minRead: "{{ .Count }} min read"
+
+# post
+postDetails: Post details
+categoryPrefix: "Category: "
+tagPrefix: "Tag: "
+partOf: "Part {{ .Part }} of {{ .Total }}"
+contents: Contents
+series: Series
+previousPart: Previous part
+nextPart: Next part
+morePosts: More posts
+newer: Newer
+older: Older
+opensInNewTab: (opens in a new tab)
+enlargeDiagram: Enlarge diagram
+enlargedDiagram: Enlarged diagram
+close: Close
+
+# comments
+comments: COMMENTS
+loadComments: Load comments
+commentsLocalhost: Comments are not loaded on localhost.
+commentsNoscriptDisqus: Comments are powered by Disqus and need JavaScript. <a href="https://disqus.com/?ref_noscript">View the comments on Disqus</a>.
+commentsNoscriptGiscus: Comments are powered by giscus and need JavaScript. They are stored as GitHub Discussions.
+
+# search
+search: Search
+searchLabel: Search every post
+searchPlaceholder: Type a word or a phrase
+searchButton: Search
+searchNoScript: Search needs JavaScript. You can still browse <a href="{{ .Posts }}">every post</a> or <a href="{{ .Tags }}">the tags</a>.
+# {n} = number of results, {q} = the query
+searchUnavailable: The search index isn't available here. It is built when the site is deployed.
+searchResultsOne: "1 result for “{q}”."
+searchResultsMany: "{n} results for “{q}”."
+searchResultsFirst: "{n} results for “{q}”, showing the first 20."
+searchNoResults: "No results for “{q}”."
+
+# about
+aboutKicker: ABOUT ME
+aboutLabel: "About {{ .Name }}"
+
+# 404
+notFound: "404: page not found"
+notFoundMessage: Message
+notFoundText: <p>Nothing lives at this address. The page may have moved, or the link has a typo.</p><p>Pick where to go next.</p>
+notFoundNav: Where to go
+notFoundHome: Back to the home page
+notFoundPosts: Browse every post
+notFoundSearch: Search the blog

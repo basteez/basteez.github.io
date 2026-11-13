@@ -1,0 +1,26 @@
+{{- /*
+  The cover image of a page, from the front matter field params.stage.cover.field (default "image").
+
+  The value can be a page resource ("cover.jpg"), a global resource under assets/
+  ("images/cover.jpg"), a path under static/ ("/img/cover.jpg") or an absolute URL.
+  Returns dict: exists (bool), permalink (string), resource (image resource or nil;
+  nil for SVG and remote images, which Hugo does not resize).
+*/ -}}
+{{- $cfg := partialCached "stage/config.html" . site.Language.Lang -}}
+{{- $out := dict "exists" false "permalink" "" "resource" nil -}}
+{{- with index .Params $cfg.coverField -}}
+  {{- $v := string . -}}
+  {{- $r := "" -}}
+  {{- if (urls.Parse $v).IsAbs -}}
+    {{- $out = dict "exists" true "permalink" $v "resource" nil -}}
+  {{- else -}}
+    {{- $r = or ($.Resources.Get $v) (resources.Get $v) -}}
+    {{- if $r -}}
+      {{- $img := cond (and (eq $r.ResourceType "image") (ne (lower (path.Ext $r.Name)) ".svg")) $r nil -}}
+      {{- $out = dict "exists" true "permalink" $r.RelPermalink "resource" $img -}}
+    {{- else -}}
+      {{- $out = dict "exists" true "permalink" ($v | relURL) "resource" nil -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

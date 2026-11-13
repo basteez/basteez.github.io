@@ -1,0 +1,4 @@
+{{- /* The blog's posts: regular pages in site.Params.mainSections, without hidden ones. Newest first. */ -}}
+{{- $sections := site.Params.mainSections | default (slice "post" "posts") -}}
+{{- $posts := where (where site.RegularPages "Section" "in" $sections) "Params.hidden" "!=" true -}}
+{{- return $posts.ByDate.Reverse -}}

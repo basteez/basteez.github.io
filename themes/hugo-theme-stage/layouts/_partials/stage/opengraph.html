@@ -1,0 +1,51 @@
+{{- /* OpenGraph + Twitter card. A cover image wins; otherwise the card drawn by og-card.html (params.stage.og.cards). */ -}}
+{{- $cfg := partialCached "stage/config.html" . site.Language.Lang -}}
+{{- $title := partial "stage/data/title.html" . -}}
+{{- $description := partialCached "stage/data/description.html" . .RelPermalink -}}
+{{- $image := partial "stage/cover.html" . }}
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+{{- with .Params.locale }}
+<meta property="og:locale" content="{{ . }}">
+{{- end }}
+{{- if .IsPage }}
+<meta property="article:section" content="{{ .Section | title }}">
+{{- range .Params.tags }}
+<meta property="article:tag" content="{{ . }}">
+{{- end }}
+{{- if not .Date.IsZero }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+{{- end }}
+{{- if not .Lastmod.IsZero }}
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}">
+{{- end }}
+{{- else if not site.Lastmod.IsZero }}
+<meta property="og:updated_time" content="{{ site.Lastmod.Format "2006-01-02T15:04:05-07:00" }}">
+{{- end }}
+{{- $src := "" }}
+{{- if $image.exists }}
+{{- $src = absURL $image.permalink }}
+<meta property="og:image" content="{{ $src }}">
+{{- else if $cfg.og.cards }}
+{{- $key := cond (and .IsPage (in site.Params.mainSections .Section)) .RelPermalink (printf "site-%s" site.Language.Lang) }}
+{{- with partialCached "stage/og-card.html" . $key }}
+{{- $src = .Permalink }}
+<meta property="og:image" content="{{ .Permalink }}">
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+<meta property="og:image:alt" content="{{ $title }}">
+{{- end }}
+{{- end }}
+{{- with $cfg.og.twitterSite }}
+<meta name="twitter:site" content="@{{ strings.TrimPrefix "@" . }}">
+<meta name="twitter:creator" content="@{{ strings.TrimPrefix "@" . }}">
+{{- end }}
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{- with $src }}
+<meta name="twitter:card" content="{{ $cfg.og.twitterCard }}">
+<meta name="twitter:image" content="{{ . }}">
+{{- end }}

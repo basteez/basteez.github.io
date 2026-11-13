@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{- $plural := .Data.Plural -}}
+{{- $terms := .Data.Terms.ByCount -}}
+{{- partial "stage/page-head.html" (dict "title" .Title "kicker" (T "selectTarget") "count" (printf "%d %s" (len $terms) (lower .Title))) }}
+<div class="wrap list-body">
+  <ol class="menu-list menu-list--terms">
+    {{- range $i, $t := $terms }}
+    {{- $latest := index $t.Pages.ByDate.Reverse 0 }}
+    <li class="mi" style="--i:{{ mod $i 4 }}">
+      <a href="{{ $t.Page.RelPermalink }}">
+        <span class="mi__num">{{ $t.Count }}</span>
+        <span class="mi__label">{{ if eq $plural "tags" }}#{{ $t.Term }}{{ else }}{{ $t.Page.LinkTitle }}{{ end }}</span>
+        <span class="mi__meta">{{ if eq $plural "series" }}{{ T "parts" (dict "Count" $t.Count) }} · {{ end }}{{ T "latestOn" (dict "Date" ($latest.Date | time.Format "Jan 2006" | upper)) }}</span>
+      </a>
+    </li>
+    {{- end }}
+  </ol>
+</div>
+{{ end }}
