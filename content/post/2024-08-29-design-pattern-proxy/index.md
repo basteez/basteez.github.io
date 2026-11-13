@@ -24,12 +24,56 @@ With this pattern, the client interacts with the proxy, which then communicates 
 In this scenario, there are three key components: the client, the proxy, and the real object. Both the proxy and the real object should implement the same interface, ensuring that the client remains unaware of which object it is communicating with.
 
 
-![UML class diagram of the Proxy pattern: Client uses the ObjectInterface interface and its doSomething() method. Both RealObject and Proxy implement that interface; Proxy receives an ObjectInterface in its constructor, keeps it as service and delegates doSomething() to it.](ProxyDiagram.svg)
+```mermaid
+classDiagram
+    accTitle: UML class diagram of the Proxy pattern
+    accDescr: UML class diagram of the Proxy pattern: Client uses the ObjectInterface interface and its doSomething() method. Both RealObject and Proxy implement that interface; Proxy receives an ObjectInterface in its constructor, keeps it as service and delegates doSomething() to it.
+    direction BT
+    class Client
+    class ObjectInterface {
+        <<interface>>
+        +doSomething()
+    }
+    class Proxy {
+        -service: ObjectInterface
+        +Proxy(s: ObjectInterface)
+        +doSomething()
+    }
+    class RealObject {
+        +doSomething()
+    }
+    Client --> ObjectInterface
+    Proxy ..|> ObjectInterface
+    RealObject ..|> ObjectInterface
+    Proxy o--> ObjectInterface
+```
 
 ## Real-World example
 Imagine you have a remote service that fetches data from a server. Accessing this service might be slow or expensive, so you want to add some logging to see when it's being accessed. Instead of modifying the service itself, you can use a proxy to handle the logging.
 
-![UML class diagram of the example: Client uses the DataService interface and its fetchData() method. RealDataService and DataServiceProxy both implement it; DataServiceProxy receives a RealDataService in its constructor and keeps it as service.](RemoteServiceDiagram.svg)
+```mermaid
+classDiagram
+    accTitle: UML class diagram of the Proxy example with a remote data service
+    accDescr: UML class diagram of the example: Client uses the DataService interface and its fetchData() method. RealDataService and DataServiceProxy both implement it; DataServiceProxy receives a RealDataService in its constructor and keeps it as service.
+    direction BT
+    class Client
+    class DataService {
+        <<interface>>
+        +fetchData()
+    }
+    class DataServiceProxy {
+        -service: RealDataService
+        +DataServiceProxy(s: RealDataService)
+        +fetchData()
+    }
+    class RealDataService {
+        +fetchData()
+    }
+    Client --> DataService
+    DataServiceProxy ..|> DataService
+    RealDataService ..|> DataService
+    DataServiceProxy o--> RealDataService
+```
 ## Java example
 ```java
 // The interface of a remote service
