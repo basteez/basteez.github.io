@@ -1,0 +1,102 @@
+# Stage theme strings, Italian.
+
+# frame
+skipToContent: Vai al contenuto
+homeLink: "{{ .Brand }}, home page"
+mainMenu: Principale
+builtWith: Realizzato con <a href="https://gohugo.io/">Hugo</a>.
+rss: RSS
+
+# home
+heroStatus: "SYS://{{ .Brand }} ONLINE"
+heroSince: "BLOG DAL {{ .Year }}"
+pauseMotion: Ferma animazioni
+blogStats: Statistiche del blog
+statPosts: ARTICOLI
+statSeries: SERIE
+statTags: TAG
+statSince: SCRIVE DAL
+homeLatest: ULTIME NOTIZIE
+homeLatestLabel: Ultimi articoli
+homeSeries: SERIE
+homeContact: CONTATTI
+allPosts:
+  one: "L'unico articolo"
+  other: "Tutti gli articoli ({{ .Count }})"
+newBadge: Nuovo
+
+# ticker
+tickerPosts:
+  one: "{{ .Count }} ARTICOLO"
+  other: "{{ .Count }} ARTICOLI"
+tickerSeries: "{{ .Count }} SERIE"
+tickerTags:
+  one: "{{ .Count }} TAG"
+  other: "{{ .Count }} TAG"
+tickerLatest: "ULTIMO: {{ .Title }}"
+tickerSince: "SCRIVE DAL {{ .Year }}"
+tickerThanks: GRAZIE DELLA VISITA
+
+# lists
+selectTarget: SCEGLI IL BERSAGLIO
+findTarget: TROVA IL BERSAGLIO
+allPostsTitle: Tutti gli articoli
+tagTitle: "Tag: #{{ .Term }}"
+termTitle: "{{ .Taxonomy }}: {{ .Term }}"
+postCount:
+  one: "{{ .Count }} articolo"
+  other: "{{ .Count }} articoli"
+parts:
+  one: "{{ .Count }} PARTE"
+  other: "{{ .Count }} PARTI"
+latestOn: "ULTIMO {{ .Date }}"
+minRead: "{{ .Count }} min di lettura"
+
+# post
+postDetails: Dettagli dell'articolo
+categoryPrefix: "Categoria: "
+tagPrefix: "Tag: "
+partOf: "Parte {{ .Part }} di {{ .Total }}"
+contents: Indice
+series: Serie
+previousPart: Parte precedente
+nextPart: Parte successiva
+morePosts: Altri articoli
+newer: Più recente
+older: Meno recente
+opensInNewTab: (si apre in una nuova scheda)
+enlargeDiagram: Ingrandisci il diagramma
+enlargedDiagram: Diagramma ingrandito
+close: Chiudi
+
+# comments
+comments: COMMENTI
+loadComments: Carica i commenti
+commentsLocalhost: I commenti non vengono caricati su localhost.
+commentsNoscriptDisqus: I commenti usano Disqus e richiedono JavaScript. <a href="https://disqus.com/?ref_noscript">Leggi i commenti su Disqus</a>.
+commentsNoscriptGiscus: I commenti usano giscus e richiedono JavaScript. Sono salvati come GitHub Discussions.
+
+# search
+search: Cerca
+searchLabel: Cerca in tutti gli articoli
+searchPlaceholder: Scrivi una parola o una frase
+searchButton: Cerca
+searchNoScript: La ricerca richiede JavaScript. Puoi comunque sfogliare <a href="{{ .Posts }}">tutti gli articoli</a> o <a href="{{ .Tags }}">i tag</a>.
+searchUnavailable: L'indice di ricerca non è disponibile qui. Viene creato quando il sito è pubblicato.
+searchResultsOne: "1 risultato per “{q}”."
+searchResultsMany: "{n} risultati per “{q}”."
+searchResultsFirst: "{n} risultati per “{q}”, mostro i primi 20."
+searchNoResults: "Nessun risultato per “{q}”."
+
+# about
+aboutKicker: CHI SONO
+aboutLabel: "Chi è {{ .Name }}"
+
+# 404
+notFound: "404: pagina non trovata"
+notFoundMessage: Messaggio
+notFoundText: <p>A questo indirizzo non c'è niente. La pagina potrebbe essere stata spostata, o il link contiene un errore.</p><p>Scegli dove andare.</p>
+notFoundNav: Dove andare
+notFoundHome: Torna alla home page
+notFoundPosts: Sfoglia tutti gli articoli
+notFoundSearch: Cerca nel blog

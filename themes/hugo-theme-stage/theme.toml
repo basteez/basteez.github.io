@@ -1,0 +1,28 @@
+name = "Stage"
+license = "MIT"
+licenselink = "https://github.com/basteez/hugo-theme-stage/blob/main/LICENSE"
+description = "A loud red, black and white blog theme inspired by the UI of Persona 5: ransom-note collage titles, game-menu navigation and paper notes around a quiet, accessible reading column. Series, search, generated link-preview cards, no JavaScript required. Independent fan project, not affiliated with Atlus or SEGA."
+homepage = "https://github.com/basteez/hugo-theme-stage"
+demosite = "https://basteez.github.io/hugo-theme-stage/"
+tags = ["blog", "personal", "dark", "light", "red", "bold", "accessible", "multilingual", "minimal-js", "responsive", "series"]
+features = [
+  "ransom-note collage titles rendered at build time",
+  "light and dark reading paper following the system",
+  "series with part navigation",
+  "table of contents with reading cursor",
+  "reading progress bar",
+  "Pagefind search",
+  "Disqus or giscus comments, lazy-loaded",
+  "Mermaid diagrams",
+  "OpenGraph and Twitter cards generated at build time",
+  "letter favicon generated at build time",
+  "i18n (English, Italian)",
+  "WCAG 2.1 AA, reduced motion and pause motion",
+  "self-hosted OFL fonts",
+  "works without JavaScript",
+]
+min_version = "0.146.0"
+
+[author]
+  name = "Tiziano Basile"
+  homepage = "https://bstz.it"

@@ -1,0 +1,20 @@
+{{- $cfg := partialCached "stage/config.html" . site.Language.Lang -}}
+{{- with site.Taxonomies.series }}
+<section aria-labelledby="series">
+  {{- partial "stage/section-head.html" (dict "text" ($cfg.home.seriesTitle | default (T "homeSeries")) "id" "series") }}
+  {{- /* most recently updated series first */ -}}
+  {{- $terms := slice }}{{ range . }}{{ $terms = $terms | append (dict "t" .Page "pages" .Pages.ByDate "last" (index .Pages.ByDate.Reverse 0).Date.Unix) }}{{ end }}
+  <div class="series-grid">
+    {{- range sort $terms "last" "desc" }}
+    {{- $n := len .pages }}
+    <section class="series-card" aria-labelledby="s-{{ .t.Data.Term | urlize }}">
+      <h3 class="series-card__name" id="s-{{ .t.Data.Term | urlize }}"><a href="{{ .t.RelPermalink }}">{{ .t.Title }}</a></h3>
+      <p class="series-card__count">{{ T "parts" (dict "Count" $n) }}</p>
+      <ol class="menu-list">
+        {{- range $i, $p := .pages }}{{ partial "stage/menu-item.html" (dict "page" $p "i" $i "num" (printf "#%d" (add $i 1))) }}{{ end }}
+      </ol>
+    </section>
+    {{- end }}
+  </div>
+</section>
+{{- end }}

@@ -1,0 +1,17 @@
+{{- $cfg := partialCached "stage/config.html" . site.Language.Lang -}}
+<!doctype html>
+<html lang="{{ partialCached "stage/locale.html" . site.Language.Lang | default site.Language.Lang | default "en" }}"{{ if not $cfg.motion }} class="no-motion"{{ end }}>
+<head>
+  {{- partial "stage/head.html" . -}}
+</head>
+<body class="kind-{{ .Kind }}{{ with .Section }} section-{{ . }}{{ end }}{{ with .Layout }} layout-{{ . }}{{ end }}">
+  <a class="skip-link" href="#main">{{ T "skipToContent" }}</a>
+  {{- partial "stage/site-header.html" . -}}
+  <main id="main" tabindex="-1">
+    {{- block "main" . }}{{ end -}}
+  </main>
+  {{- partial "stage/site-footer.html" . -}}
+  {{- partial "stage/scripts.html" . -}}
+  {{- partial "footer/custom.html" . -}}
+</body>
+</html>

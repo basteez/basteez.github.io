@@ -1,0 +1,23 @@
+{{- /*
+  Favicons. Icons the site provides (params.stage.favicon.*, or static/favicon.svg and
+  static/apple-touch-icon.png) are used as they are. Otherwise the theme draws a PNG
+  icon with one letter (params.stage.favicon.letter, default: the first letter of the brand).
+*/ -}}
+{{- $cfg := partialCached "stage/config.html" . site.Language.Lang -}}
+{{- $f := $cfg.favicon -}}
+{{- with $f.ico }}
+<link rel="icon" href="{{ . | relURL }}" sizes="32x32">
+{{- end }}
+{{- with $f.svg }}
+<link rel="icon" href="{{ . | relURL }}" type="image/svg+xml">
+{{- end }}
+{{- $gen := dict -}}
+{{- if or (not (or $f.ico $f.svg)) (not $f.appleTouch) }}{{ $gen = partialCached "stage/favicon-image.html" $f.letter $f.letter }}{{ end -}}
+{{- if not (or $f.ico $f.svg) }}{{ with $gen.small }}
+<link rel="icon" href="{{ .RelPermalink }}" type="image/png" sizes="{{ .Width }}x{{ .Height }}">
+{{- end }}{{ end }}
+{{- with $f.appleTouch }}
+<link rel="apple-touch-icon" href="{{ . | relURL }}">
+{{- else }}{{ with $gen.large }}
+<link rel="apple-touch-icon" href="{{ .RelPermalink }}">
+{{- end }}{{ end }}

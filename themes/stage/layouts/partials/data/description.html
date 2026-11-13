@@ -1,9 +1,0 @@
-{{- /* Same precedence as the previous theme: page description, else post summary, else site description. */ -}}
-{{- $description := site.Params.sidebar.subtitle -}}
-{{- with site.Params.description }}{{ $description = . }}{{ end -}}
-{{- if .Description -}}
-  {{- $description = .Description -}}
-{{- else if .IsPage -}}
-  {{- $description = .Summary -}}
-{{- end -}}
-{{- return (replaceRE "\n" " " $description | plainify) -}}

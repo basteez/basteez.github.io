@@ -1,0 +1,5 @@
+{{- $cfg := partialCached "stage/config.html" . site.Language.Lang -}}
+<section aria-labelledby="contact">
+  {{- partial "stage/section-head.html" (dict "text" ($cfg.home.contactTitle | default (T "homeContact")) "id" "contact") }}
+  {{- partial "stage/contacts.html" . }}
+</section>

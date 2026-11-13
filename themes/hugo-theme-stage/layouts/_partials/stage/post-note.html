@@ -1,0 +1,29 @@
+{{- /* A post as a crooked paper note: black/red date block, title, meta, optional cover, NEW! on the latest.
+       Params: page, latest (bool), i (int, for stagger) */ -}}
+{{- $cfg := partialCached "stage/config.html" . site.Language.Lang -}}
+{{- $p := .page -}}
+{{- $h := hash.FNV32a $p.Title -}}
+{{- $tilt := sub (div (mul (mod $h 1000) 2.4) 1000) 1.2 -}}
+{{- $cover := partial "stage/cover.html" $p -}}
+<li class="note-wrap drop" style="{{ printf "--tilt:%.2fdeg;--delay:%.2fs" $tilt (add 0.1 (mul .i 0.12)) | safeCSS }}">
+  <article class="note{{ if $cover.exists }} note--cover{{ end }}">
+    <time class="note__date" datetime="{{ $p.Date.Format "2006-01-02" }}"><b>{{ $p.Date.Format "02" }}</b><span>{{ $p.Date | time.Format "Jan 2006" | upper }}</span></time>
+    <div class="note__body">
+      <h3 class="note__title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+      <p class="note__meta">
+        {{- $meta := slice -}}
+        {{- with $p.GetTerms "series" }}{{ with index . 0 }}<span class="note__series">{{ .LinkTitle }}</span>{{ $meta = $meta | append "s" }}{{ end }}{{ end -}}
+        {{- if $cfg.article.readingTime }}{{ if $meta }} · {{ end }}{{ T "minRead" (dict "Count" $p.ReadingTime) }}{{ $meta = $meta | append "r" }}{{ end -}}
+        {{- with $p.Params.tags }}{{ if $meta }} · {{ end }}{{ range $j, $t := first 3 . }}{{ if $j }} {{ end }}#{{ $t }}{{ end }}{{ end -}}
+      </p>
+    </div>
+    {{- if $cover.exists }}
+      {{- $src := $cover.permalink }}{{ $w := 0 }}{{ $hgt := 0 }}
+      {{- with $cover.resource }}{{ $t := .Fill "320x200 Center webp" }}{{ $src = $t.RelPermalink }}{{ $w = $t.Width }}{{ $hgt = $t.Height }}{{ end }}
+    <img class="note__cover" src="{{ $src }}" alt="" loading="lazy" decoding="async"{{ with $w }} width="{{ . }}"{{ end }}{{ with $hgt }} height="{{ . }}"{{ end }}>
+    {{- end }}
+    {{- if .latest }}
+    <span class="note__new thump"><span class="visually-hidden">{{ T "newBadge" }}</span>{{ partial "stage/collage.html" (dict "text" (printf "%s!" (upper (T "newBadge"))) "case" "upper" "delay" 0.6) }}</span>
+    {{- end }}
+  </article>
+</li>

@@ -1,0 +1,18 @@
+{{- /* Series navigation: every part as a menu entry, the current one selected, plus previous/next part. */ -}}
+{{- $term := .term }}{{ $page := .page -}}
+{{- $parts := $term.Pages.ByDate -}}
+{{- $idx := -1 }}{{ range $i, $p := $parts }}{{ if eq $p.RelPermalink $page.RelPermalink }}{{ $idx = $i }}{{ end }}{{ end -}}
+<nav class="series-nav" aria-labelledby="series-nav-title">
+  <h2 class="series-nav__title" id="series-nav-title"><span class="series-nav__kicker">{{ T "series" }}</span> <a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a></h2>
+  <ol class="menu-list">
+    {{- range $i, $p := $parts }}{{ partial "stage/menu-item.html" (dict "page" $p "i" $i "num" (printf "#%d" (add $i 1)) "current" (eq $i $idx)) }}{{ end }}
+  </ol>
+  <div class="pager">
+    {{- if gt $idx 0 }}{{ with index $parts (sub $idx 1) }}
+    <a class="btn pager__prev" rel="prev" href="{{ .RelPermalink }}"><span><span aria-hidden="true">◀ </span>{{ T "previousPart" }}<span class="visually-hidden">: {{ .Title }}</span></span></a>
+    {{- end }}{{ end }}
+    {{- if lt (add $idx 1) (len $parts) }}{{ with index $parts (add $idx 1) }}
+    <a class="btn pager__next" rel="next" href="{{ .RelPermalink }}"><span>{{ T "nextPart" }}<span aria-hidden="true"> ▶</span><span class="visually-hidden">: {{ .Title }}</span></span></a>
+    {{- end }}{{ end }}
+  </div>
+</nav>

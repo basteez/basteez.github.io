@@ -1,0 +1,9 @@
+{{- /* Page description, else the summary of a regular page, else the site description. */ -}}
+{{- $cfg := partialCached "stage/config.html" . site.Language.Lang -}}
+{{- $description := $cfg.description -}}
+{{- if .Description -}}
+  {{- $description = .Description -}}
+{{- else if .IsPage -}}
+  {{- $description = .Summary -}}
+{{- end -}}
+{{- return (replaceRE "\n" " " $description | plainify) -}}

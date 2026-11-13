@@ -1,3 +1,0 @@
-{{- /* One small vanilla script, deferred. Everything works without it; it only adds the reading-progress fallback, the TOC cursor, lazy comments and search. */ -}}
-{{- $js := resources.Get "js/stage.js" | minify | fingerprint -}}
-<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
