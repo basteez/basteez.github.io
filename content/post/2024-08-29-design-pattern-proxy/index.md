@@ -24,12 +24,12 @@ With this pattern, the client interacts with the proxy, which then communicates 
 In this scenario, there are three key components: the client, the proxy, and the real object. Both the proxy and the real object should implement the same interface, ensuring that the client remains unaware of which object it is communicating with.
 
 
-![ProxyDiagram.svg](ProxyDiagram.svg)
+![UML class diagram of the Proxy pattern: Client uses the ObjectInterface interface and its doSomething() method. Both RealObject and Proxy implement that interface; Proxy receives an ObjectInterface in its constructor, keeps it as service and delegates doSomething() to it.](ProxyDiagram.svg)
 
 ## Real-World example
 Imagine you have a remote service that fetches data from a server. Accessing this service might be slow or expensive, so you want to add some logging to see when it's being accessed. Instead of modifying the service itself, you can use a proxy to handle the logging.
 
-![remoteServiceDiagram](RemoteServiceDiagram.svg)
+![UML class diagram of the example: Client uses the DataService interface and its fetchData() method. RealDataService and DataServiceProxy both implement it; DataServiceProxy receives a RealDataService in its constructor and keeps it as service.](RemoteServiceDiagram.svg)
 ## Java example
 ```java
 // The interface of a remote service

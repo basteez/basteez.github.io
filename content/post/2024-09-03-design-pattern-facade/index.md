@@ -18,7 +18,7 @@ This is where the **Facade** pattern proves useful.
 By providing a unified interface, the facade allows clients to interact with the system using only the subset of functionality they need, while hiding the complexities of the underlying subsystem.
 This enhances both decoupling and simplicity.
 
-![FacadeDiagram.svg](FacadeDiagram.svg)
+![UML diagram of the Facade pattern: Client calls subsystemOperation() on the Facade, which holds references to the subsystem objects and delegates the work to the many SubsystemClass instances grouped inside a cloud that stands for the complex subsystem.](FacadeDiagram.svg)
 
 ## Real-World example
 Imagine a software that uses different logging mechanisms:

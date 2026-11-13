@@ -56,7 +56,7 @@ But how to implement it?
 Initially, since you need to make something small for a jam, I simply thought of showing two sine waves, the first being the target wave and the second controlled by the player, but that would have been incredibly boring, so why not put Earth at the center and make the waves "arrive" on it?
 
 So here's planet Earth in all its splendor
-![](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/pale-blue-dot.png?raw=true)
+![A small blue and green pixel-art Earth in the middle of a black screen.](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/pale-blue-dot.png?raw=true)
 
 But how do you create a circular sine wave?
 Searching a bit on the web, it turns out that the formula for drawing a sine wave on a circumference is this
@@ -109,7 +109,7 @@ function drawWave(wave) {
 
 and here's the result
 
-![1.gif](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/1.gif?raw=true)
+![Animation of the prototype: around Earth, a large white circular sine wave (the target) and a small blue one (the player), with the controls, the sync percentage and the score in the top-left corner.](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/1.gif?raw=true)
 
 At this point, however, it seemed more like the circumferences were rotating rather than being sine waves, so I decided to add some disturbance, but only for rendering purposes so as not to influence the player's synchronization calculation.
 
@@ -152,7 +152,7 @@ function drawWave(wave, currentTime) {
 }
 ```
 
-![2.gif](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/2.gif?raw=true)
+![The same scene with the noise added for rendering: both circular waves now have a rough, jittery outline.](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/2.gif?raw=true)
 
 At this point, the last thing to do before closing the day was to make the target wave circumference reduce over time and once it reached the player's circumference, calculate the score based on the sync value (for now I add a point to the score if sync > 80%, we'll see later)
 
@@ -171,11 +171,11 @@ if (targetWave.baseRadius === playerWave.baseRadius) {
 }
 ```
 
-![3.gif](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/3.gif?raw=true)
+![The white target wave shrinks towards Earth until it reaches the blue player wave.](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/3.gif?raw=true)
 
 Obviously the player can use the keyboard to modify the amplitude and frequency of their own wave to align with the target wave
 
-![4.gif](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/4.gif?raw=true)
+![The player changes the amplitude and frequency of the blue wave with the keyboard to match the white target wave.](https://github.com/basteez/basteez.github.io/blob/main/content/post/2025-11-02-game-off-prototype/4.gif?raw=true)
 
 ## First day done
 
