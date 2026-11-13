@@ -23,7 +23,37 @@ The key advantages of this approach include:
 * **Reusability**: decorators can be combined in different ways to create complex scenarios
 * **Single responsibility principle**: each decorator adds only the set of concerns it needs
 
-![UML class diagram of the Decorator pattern: Client uses the Component interface and its doSomething() method. ConcreteComponent and BaseDecorator implement it; BaseDecorator wraps a Component (wrappee) and forwards doSomething() to it. Concrete decorators extend BaseDecorator, call super.doSomething() and then doExtraStuff(). A note shows the client stacking them: a ConcreteComponent wrapped by ConcreteDecorator1, wrapped by ConcreteDecorator2, then calling doSomething() on the outermost one.](DecoratorDiagram.svg)
+```mermaid
+classDiagram
+    accTitle: UML class diagram of the Decorator pattern
+    accDescr: UML class diagram of the Decorator pattern: Client uses the Component interface and its doSomething() method. ConcreteComponent and BaseDecorator implement it; BaseDecorator wraps a Component (wrappee) and forwards doSomething() to it. Concrete decorators extend BaseDecorator, call super.doSomething() and then doExtraStuff(). A note shows the client stacking them: a ConcreteComponent wrapped by ConcreteDecorator1, wrapped by ConcreteDecorator2, then calling doSomething() on the outermost one.
+    direction BT
+    class Client
+    class Component {
+        <<interface>>
+        +doSomething()
+    }
+    class ConcreteComponent {
+        +doSomething()
+    }
+    class BaseDecorator {
+        -wrappee: Component
+        +BaseDecorator(c: Component)
+        +doSomething()
+    }
+    class ConcreteDecorator {
+        +doSomething()
+        +doExtraStuff()
+    }
+    Client --> Component
+    ConcreteComponent ..|> Component
+    BaseDecorator ..|> Component
+    BaseDecorator o--> Component
+    ConcreteDecorator --|> BaseDecorator
+    note for Client "comp1 = new ConcreteComponent();\ncomp2 = new ConcreteDecorator1(comp1);\ncomp3 = new ConcreteDecorator2(comp2);\ncomp3.doSomething();"
+    note for BaseDecorator "doSomething(): wrappee.doSomething();"
+    note for ConcreteDecorator "doSomething(): super.doSomething(); doExtraStuff();"
+```
 ## Real-World example
 In a typical software application, you might have a notification system that sends out alerts, updates, or messages to users. This system could start simple, just sending plain notifications. However, as the application grows, new requirements often emerge, such as:
 
