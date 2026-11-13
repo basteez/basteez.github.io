@@ -15,7 +15,7 @@ series:
   - Wild Shift Devlog
 ---
 
-Third update on **The Debugger 0x03: Wild Shift**, my GitHub Game Off 2026 entry (theme: **SHIFT**). [Devlog #1](https://bstz.it/p/wild-shift-devlog-1/) covered the register and the shift, [Devlog #2](https://bstz.it/p/wild-shift-devlog-2/) the first two bosses. This post is a mirror of the [third devlog on itch.io](https://basteez.itch.io/wild-shift/devlog). You can also play the current build in the browser on the [game page](https://basteez.itch.io/wild-shift).
+Third update on **The Debugger 0x03: Wild Shift**, my GitHub Game Off 2026 entry (theme: **SHIFT**). [Devlog #1](https://bstz.it/p/wild-shift-devlog-1/) covered the register and the shift, [Devlog #2](https://bstz.it/p/wild-shift-devlog-2/) the first two bosses. This post is a mirror of the [third devlog on itch.io](https://basteez.itch.io/wild-shift/devlog/1774453/devlog-3-sigsegv-incoming-segfault-two-new-combos-an-intro-and-an-ending). You can also play the current build in the browser on the [game page](https://basteez.itch.io/wild-shift).
 
 The last bug is in. Since the last devlog **The Debugger 0x03: Wild Shift** got its final boss, two new combos, an intro and an ending. For the first time the run has a beginning, a middle and a `return 0;`.
 
