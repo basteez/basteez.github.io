@@ -91,13 +91,14 @@
         const open = (el, from) => {
             const svg = el.querySelector('svg');
             if (!svg) return;
-            const clone = svg.cloneNode(true);
+            // Mermaid scopes the diagram's CSS (and its arrow markers) to the SVG id, so the copy
+            // keeps its styles only if every reference to that id is renamed together.
+            const id = svg.id;
+            body.innerHTML = id ? svg.outerHTML.split(id).join(id + '-zoom') : svg.outerHTML;
+            const clone = body.querySelector('svg');
             clone.removeAttribute('style');
             clone.removeAttribute('width');
             clone.removeAttribute('height');
-            clone.removeAttribute('id');
-            body.innerHTML = '';
-            body.appendChild(clone);
             opener = from;
             modal.classList.add('open');
             closeBtn.focus();
