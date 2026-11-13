@@ -19,7 +19,7 @@
 .mi a:hover .mi__num,.mi a:focus-visible .mi__num,.mi a[aria-current="page"] .mi__num{background:var(--black)}
 .mi a:hover .mi__meta,.mi a:focus-visible .mi__meta,.mi a[aria-current="page"] .mi__meta{color:var(--white)}
 .mi a:hover::before,.mi a:focus-visible::before,.mi a[aria-current="page"]::before{
-  content:"▶";position:absolute;left:-34px;top:50%;transform:translateY(-50%) skewX(14deg);
+  content:"▶";content:"▶" / "";position:absolute;left:-34px;top:50%;transform:translateY(-50%) skewX(14deg);
   font:400 20px/1 var(--f-display);color:var(--white);text-shadow:2px 2px 0 var(--black);
 }
 .mi a:focus-visible{box-shadow:0 0 0 3px var(--black),0 0 0 7px var(--white),12px 10px 0 7px var(--white)}

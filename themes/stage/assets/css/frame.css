@@ -40,7 +40,7 @@
   outline:none;z-index:1;
 }
 .game-menu a[aria-current="page"]::before,.game-menu a:hover::before,.game-menu a:focus-visible::before{
-  content:"▶";position:absolute;left:-26px;top:50%;
+  content:"▶";content:"▶" / "";position:absolute;left:-26px;top:50%;
   transform:translateY(-50%) skewX(14deg);
   font:400 16px/1 var(--f-display);color:var(--white);text-shadow:2px 2px 0 var(--red);
 }
@@ -151,3 +151,19 @@ a.stamp--black:hover,a.stamp--black:focus-visible{background:var(--red)}
 
 /* keyboard focus must look different from "current page": add a dashed ring outside the selected silhouette */
 .game-menu a:focus-visible,.btn:focus-visible,.contacts a:focus-visible,.stamp:focus-visible{outline:3px dashed var(--white);outline-offset:9px}
+
+/* ------------------------------------------------------------ Windows High Contrast / forced colors */
+@media (forced-colors:active){
+  .game-menu a[aria-current="page"],.mi a[aria-current="page"],.toc a.is-current{outline:3px solid CanvasText;outline-offset:2px}
+  .strip{border:2px solid CanvasText}
+  .tile{border:1px solid CanvasText}
+  .progress span{background:Highlight}
+}
+/* ------------------------------------------------------------ prefers-contrast: more */
+@media (prefers-contrast:more){
+  body{background-image:none}                      /* no halftone behind small text */
+  .hero__burst,.site-header::after{display:none}
+  .hero__sys,.page-head__count,.post-head__series span,.mi__meta,.site-footer__note{color:var(--white)}
+  .note__meta{color:#000}
+  :root{--ink-muted:#222}
+}

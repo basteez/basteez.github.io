@@ -46,7 +46,7 @@
 .toc{background:var(--black);color:var(--white);border:2px solid var(--white);box-shadow:6px 5px 0 var(--black)}
 .toc summary{cursor:pointer;list-style:none;padding:10px 14px;font:400 15px/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
 .toc summary::-webkit-details-marker{display:none}
-.toc summary::after{content:"▼";color:var(--red);font-size:12px;transition:transform .15s}
+.toc summary::after{content:"▼";content:"▼" / "";color:var(--red);font-size:12px;transition:transform .15s}
 .toc[open] summary::after{transform:rotate(180deg)}
 .toc nav{padding:2px 12px 14px 8px}
 .toc ol,.toc ul{list-style:none;margin:0;padding:0}
@@ -54,7 +54,7 @@
 .toc a{position:relative;display:block;padding:5px 8px 5px 22px;color:#e6e6e6;text-decoration:none;font:400 14.5px/1.35 var(--f-body)}
 .toc a:hover,.toc a:focus-visible{color:var(--white);background:#1f1f1f}
 .toc a.is-current{color:var(--white);background:var(--red);font-weight:700;transform:skewX(-8deg)}
-.toc a.is-current::before{content:"▶";position:absolute;left:5px;top:6px;font-size:11px;color:var(--white)}
+.toc a.is-current::before{content:"▶";content:"▶" / "";position:absolute;left:5px;top:6px;font-size:11px;color:var(--white)}
 
 /* ------------------------------------------------------------ prose: sober and very readable */
 .prose{max-width:var(--measure);margin-inline:auto;font:400 var(--body-size)/1.7 var(--f-body);color:var(--ink);font-optical-sizing:auto;hanging-punctuation:first;overflow-wrap:break-word}
@@ -108,3 +108,6 @@
 .comments__box noscript p{font:400 16px/1.6 var(--f-body)}
 .comments__box noscript a{color:var(--link)}
 .comments__load{color:var(--white)}
+
+/* links that open a new tab say so (the arrow is drawn, the words are read) */
+.prose a[target="_blank"]::after{content:"\2009↗";content:"\2009↗" / " (opens in a new tab)";font-size:.8em;text-decoration:none;display:inline-block}

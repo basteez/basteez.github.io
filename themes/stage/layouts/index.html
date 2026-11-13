@@ -15,6 +15,8 @@
       <p class="hero__role slam-l" style="--delay:1.2s"><span>{{ $st.role }}</span></p>
       <p class="hero__stack">{{ range $i, $s := $st.stack }}{{ if $i }}<span aria-hidden="true"> ▸ </span><span class="visually-hidden">, </span>{{ end }}{{ $s }}{{ end }}</p>
       <p class="hero__sys" aria-hidden="true">SYS://BSTZ.IT ONLINE · BLOG SINCE {{ site.Params.footer.since }} · <span class="blink">█</span></p>
+      {{- /* WCAG 2.2.2: the starburst and the ticker move for more than 5s, so they can be paused. Shown by stage.js. */}}
+      <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" hidden><span><span aria-hidden="true" data-motion-icon>❚❚</span> Pause motion</span></button>
     </div>
   </div>
   <ul class="stats hero__stats" aria-label="Blog stats">
