@@ -15,7 +15,7 @@ series:
   - Wild Shift Devlog
 ---
 
-Fourth update on **The Debugger 0x03: Wild Shift**, my GitHub Game Off 2026 entry (theme: **SHIFT**). [Devlog #1](https://bstz.it/p/wild-shift-devlog-1/) covered the register and the shift, [Devlog #2](https://bstz.it/p/wild-shift-devlog-2/) the first two bosses, [Devlog #3](https://bstz.it/p/wild-shift-devlog-3/) the final boss and the ending. This post is a mirror of the [fourth devlog on itch.io](https://basteez.itch.io/wild-shift/devlog). You can also play the current build in the browser on the [game page](https://basteez.itch.io/wild-shift).
+Fourth update on **The Debugger 0x03: Wild Shift**, my GitHub Game Off 2026 entry (theme: **SHIFT**). [Devlog #1](https://bstz.it/p/wild-shift-devlog-1/) covered the register and the shift, [Devlog #2](https://bstz.it/p/wild-shift-devlog-2/) the first two bosses, [Devlog #3](https://bstz.it/p/wild-shift-devlog-3/) the final boss and the ending. This post is a mirror of the [fourth devlog on itch.io](https://basteez.itch.io/wild-shift/devlog/1777465/devlog-4-dont-lose-your-run-save-gamepad-practice-mode-and-placeholder-music). You can also play the current build in the browser on the [game page](https://basteez.itch.io/wild-shift).
 
 The game is complete, and now it has to survive other people. Since the last devlog **The Debugger 0x03: Wild Shift** got its audio plumbing, a final sound pass, save and resume, a gamepad, a practice mode and a few quality-of-life switches. Less `console.log("boss")`, more `return 0;` with a nice exit code.
 
