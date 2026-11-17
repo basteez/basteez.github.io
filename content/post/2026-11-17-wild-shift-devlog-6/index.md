@@ -15,7 +15,7 @@ series:
   - Wild Shift Devlog
 ---
 
-Sixth update on **The Debugger 0x03: Wild Shift**, my GitHub Game Off 2026 entry (theme: **SHIFT**). [Devlog #5](https://bstz.it/p/wild-shift-devlog-5/) covered the first playtest and the new tutorial. This post is a mirror of the [sixth devlog on itch.io](https://basteez.itch.io/wild-shift/devlog). You can also play the current build in the browser on the [game page](https://basteez.itch.io/wild-shift).
+Sixth update on **The Debugger 0x03: Wild Shift**, my GitHub Game Off 2026 entry (theme: **SHIFT**). [Devlog #5](https://bstz.it/p/wild-shift-devlog-5/) covered the first playtest and the new tutorial. This post is a mirror of the [sixth devlog on itch.io](https://basteez.itch.io/wild-shift/devlog/1786885/devlog-6-i-couldnt-find-my-own-turning-the-background-down). You can also play the current build in the browser on the [game page](https://basteez.itch.io/wild-shift).
 
 Small devlog, one bug: **I couldn't find my own player.** I was looking at screenshots of the tutorial and kept losing the `@` in the grass. When everything on screen is the same white glyph on the same black background, the player, the bosses, the tutorial text and the scenery all shout at the same volume. So this update turns the background down.
 
