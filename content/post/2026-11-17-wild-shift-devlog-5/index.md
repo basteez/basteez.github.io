@@ -15,7 +15,7 @@ series:
   - Wild Shift Devlog
 ---
 
-Fifth update on **The Debugger 0x03: Wild Shift**, my GitHub Game Off 2026 entry (theme: **SHIFT**). [Devlog #4](https://bstz.it/p/wild-shift-devlog-4/) covered save, gamepad and practice mode. This post is a mirror of the [fifth devlog on itch.io](https://basteez.itch.io/wild-shift/devlog). You can also play the current build in the browser on the [game page](https://basteez.itch.io/wild-shift).
+Fifth update on **The Debugger 0x03: Wild Shift**, my GitHub Game Off 2026 entry (theme: **SHIFT**). [Devlog #4](https://bstz.it/p/wild-shift-devlog-4/) covered save, gamepad and practice mode. This post is a mirror of the [fifth devlog on itch.io](https://basteez.itch.io/wild-shift/devlog/1786585/devlog-5-someone-else-played-it-a-tutorial-a-fairer-and-a-backlog-burn-down). You can also play the current build in the browser on the [game page](https://basteez.itch.io/wild-shift).
 
 The first person who isn't me played **The Debugger 0x03: Wild Shift**, and the bug report was short: *"I can't work out what to do."* Fair. A debugger that needs a debugger isn't a great look. So this devlog is about the oldest fix in the book: watching someone use your thing and then rewriting it.
 
