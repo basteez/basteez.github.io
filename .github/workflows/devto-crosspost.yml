@@ -22,3 +22,6 @@ jobs:
           devto-api-key: ${{ secrets.DEVTO_API_KEY }}
           before: ${{ github.event.before }}
           after: ${{ github.event.after }}
+          site-url: https://bstz.it
+          permalink-pattern: /p/:slug/
+          mermaid: image
