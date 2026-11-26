@@ -16,6 +16,8 @@ comments: true
 date: 2026-11-26
 series:
   - Bonooru Devlog
+image: boards-and-ocarina-on-the-switch-2.jpg
+imageAlt: "The bridge (blue LED) and controller (amber LED) RP2040-Zero boards on a breadboard, in front of a Switch 2 showing Link playing the ocarina"
 ---
 
 *Ode to Joy* now plays on the Switch 2 from the PC: a command on my Mac, my own bridge firmware, my own controller firmware, every note right. And if I yank the bridge out mid-song, the controller lets go of every button in about 20 ms at worst, and it measured that itself.
